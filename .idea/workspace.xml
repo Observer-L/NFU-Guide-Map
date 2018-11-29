@@ -2,273 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f8bdd72-7375-4f93-92eb-f0ee3e5f77e7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.eslintignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/nfsysu-map.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.wepycache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.wepyignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloudfunctions/loadComments/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloudfunctions/loadComments/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloudfunctions/login/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloudfunctions/sum/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloudfunctions/sum/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloudfunctions/sum/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project.config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app.wpy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/back-btn.wpy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/music-player.wpy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/action-sheet/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/action-sheet/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/action-sheet/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/action-sheet/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/area/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/area/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/area/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/area/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/badge-group/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/badge-group/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/badge-group/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/badge-group/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/badge/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/badge/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/badge/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/badge/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/button/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/button/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/button/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/button/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/card/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/card/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/card/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/card/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/cell-group/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/cell-group/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/cell-group/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/cell-group/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/cell/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/cell/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/cell/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/cell/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/checkbox-group/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/checkbox-group/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/checkbox-group/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/checkbox-group/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/checkbox/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/checkbox/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/checkbox/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/checkbox/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/col/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/col/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/col/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/col/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/common/class-names.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/common/component.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/common/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/common/style/clearfix.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/common/style/ellipsis.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/common/style/hairline.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/common/style/mixins/clearfix.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/common/style/mixins/ellipsis.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/common/style/mixins/hairline.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/common/style/var.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/common/utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/dialog/dialog.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/dialog/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/dialog/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/dialog/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/dialog/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/field/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/field/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/field/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/field/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/goods-action-button/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/goods-action-button/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/goods-action-button/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/goods-action-button/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/goods-action-icon/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/goods-action-icon/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/goods-action-icon/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/goods-action-icon/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/goods-action/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/goods-action/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/goods-action/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/goods-action/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/icon/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/icon/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/icon/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/icon/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/loading/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/loading/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/loading/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/loading/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/mixins/basic.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/mixins/button.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/mixins/link.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/mixins/observer/behavior.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/mixins/observer/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/mixins/observer/props.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/mixins/open-type.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/mixins/touch.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/mixins/transition.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/nav-bar/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/nav-bar/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/nav-bar/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/nav-bar/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/notice-bar/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/notice-bar/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/notice-bar/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/notice-bar/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/notify/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/notify/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/notify/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/notify/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/notify/notify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/overlay/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/overlay/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/overlay/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/overlay/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/panel/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/panel/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/panel/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/panel/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/popup/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/popup/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/popup/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/popup/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/progress/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/progress/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/progress/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/progress/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/radio-group/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/radio-group/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/radio-group/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/radio-group/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/radio/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/radio/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/radio/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/radio/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/row/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/row/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/row/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/row/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/search/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/search/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/search/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/search/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/slider/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/slider/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/slider/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/slider/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/stepper/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/stepper/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/stepper/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/stepper/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/steps/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/steps/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/steps/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/steps/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/submit-bar/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/submit-bar/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/submit-bar/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/submit-bar/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/swipe-cell/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/swipe-cell/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/swipe-cell/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/swipe-cell/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/switch-cell/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/switch-cell/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/switch-cell/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/switch-cell/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/switch/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/switch/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/switch/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/switch/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tab/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tab/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tab/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tabbar-item/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tabbar-item/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tabbar-item/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tabbar-item/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tabbar/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tabbar/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tabbar/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tabbar/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tabs/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tabs/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tabs/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tabs/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tag/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tag/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tag/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tag/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/toast/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/toast/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/toast/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/toast/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/toast/toast.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/transition/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/transition/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/transition/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/transition/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tree-select/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tree-select/index.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tree-select/index.wxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/vant/tree-select/index.wxss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/QRcode.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/back_black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/back_white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/base.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/btn-go.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/comment.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/end.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/location.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/nfsysu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/panorama.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/park.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/play.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/route.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/start.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/stop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/target.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/ico/教学楼.psd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/nfsysu-logo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.template.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/about.wpy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/comment.wpy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/index.wpy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/routes.wpy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/search.wpy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/web-view.wpy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/style/base.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/style/icon.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/style/index.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/amap-wx.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/db.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/format-timestamp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/time-filter.wxs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wepy.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/img/showcase.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -313,12 +49,13 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="editorconfig" value="1" />
-          <entry key="gitignore" value="4" />
+          <entry key="gitignore" value="5" />
           <entry key="html" value="1" />
           <entry key="jpg" value="1" />
           <entry key="js" value="63" />
           <entry key="json" value="13" />
           <entry key="less" value="18" />
+          <entry key="md" value="1" />
           <entry key="png" value="4" />
           <entry key="ts" value="1" />
           <entry key="wpy" value="121" />
@@ -335,7 +72,8 @@
           <entry key="JSON" value="13" />
           <entry key="JavaScript" value="64" />
           <entry key="Less" value="18" />
-          <entry key="PLAIN_TEXT" value="6" />
+          <entry key="Markdown" value="1" />
+          <entry key="PLAIN_TEXT" value="7" />
           <entry key="TypeScript" value="1" />
           <entry key="Vue.js" value="121" />
         </counts>
@@ -350,6 +88,7 @@
           <entry key="js" value="1071" />
           <entry key="json" value="919" />
           <entry key="less" value="176" />
+          <entry key="md" value="20" />
           <entry key="wpy" value="30588" />
           <entry key="wxs" value="207" />
           <entry key="wxss" value="30" />
@@ -361,6 +100,7 @@
           <entry key="JSON" value="919" />
           <entry key="JavaScript" value="1277" />
           <entry key="Less" value="176" />
+          <entry key="Markdown" value="20" />
           <entry key="Vue.js" value="30589" />
         </counts>
       </usages-collector>
@@ -368,24 +108,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/comment.wpy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/style/index.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/routes.wpy">
           <provider selected="true" editor-type-id="text-editor">
@@ -398,11 +120,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Desktop/points (1).json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="570">
               <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="60">
+                <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -558,7 +301,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/utils/amap-wx.js" />
         <option value="$PROJECT_DIR$/src/pages/home.wpy" />
         <option value="$PROJECT_DIR$/src/pages/index2.wpy" />
         <option value="$PROJECT_DIR$/src/style/index.less" />
@@ -609,6 +351,7 @@
         <option value="$PROJECT_DIR$/src/pages/search.wpy" />
         <option value="$PROJECT_DIR$/src/pages/index.wpy" />
         <option value="$USER_HOME$/Desktop/points (1).json" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -667,6 +410,12 @@
               <item name="nfsysu-map" type="b2602c69:ProjectViewProjectNode" />
               <item name="nfsysu-map" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nfsysu-map" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nfsysu-map" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -692,16 +441,16 @@
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\南苑通小程序\nfsysu-map\src\img\ico" />
-      <recent name="D:\南苑通小程序\nfsysu-map\src" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\南苑通小程序\nfsysu-map\src\img" />
       <recent name="D:\南苑通小程序\nfsysu-map\src\components" />
       <recent name="D:\南苑通小程序\nfsysu-map\src\pages\map" />
       <recent name="D:\南苑通小程序\nfsysu-map\src" />
       <recent name="D:\南苑通小程序\nfsysu-map\src\pages" />
-      <recent name="D:\南苑通小程序\nfsysu-map" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\南苑通小程序\nfsysu-map\src\img\ico" />
+      <recent name="D:\南苑通小程序\nfsysu-map\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -769,18 +518,18 @@
       <workItem from="1542939414291" duration="18966000" />
       <workItem from="1543066181539" duration="608000" />
       <workItem from="1543120476837" duration="1530000" />
-      <workItem from="1543485366494" duration="238000" />
+      <workItem from="1543485366494" duration="831000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="424716000" />
+    <option name="totallyTimeSpent" value="425309000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.124200426" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.124200426" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -797,7 +546,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="Terminal" order="3" visible="true" weight="0.24626866" />
+      <window_info anchor="right" id="Terminal" order="3" visible="true" weight="0.24626866" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10554371" />
@@ -827,9 +576,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/vant/icon/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/vant/icon/index.wxss">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -982,13 +728,6 @@
     <entry file="file://$PROJECT_DIR$/src/img/ico/base.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1082,6 +821,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="60">
+            <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
