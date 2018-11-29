@@ -1,0 +1,188 @@
+<template lang="wxml">
+  <view class="player">
+
+    <view class="progress-wrapper">
+
+    <text class="time">{{niceCurTime}}</text>
+      <slider
+        class="progress-bar"
+        step="1"
+        value="{{curTimeVal}}"
+        min="0"
+        max="{{duration}}"
+        backgroundColor="#eee"
+        activeColor="#FF1744"
+        block-size="16"
+        @change="change"/>
+
+    <text class="time">{{niceDuration}}</text>
+    </view>
+    <!--控制按钮-->
+    <view class="control">
+      <image
+        class="album {{isPlay ? 'rotate' : 'rotate pause'}}"
+        src="{{defaultCover}}"
+         />
+      <view class="options">
+        <image class="play" src="../img/ico/play.png" wx:if="{{!isPlay}}" @tap="play"/>
+        <image class="stop" src="../img/ico/stop.png" wx:else @tap="pause"/>
+      </view>
+    </view>
+
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  let innerAudioContext
+
+  export default class MusicPlayer extends wepy.component {
+    data = {
+      duration: 0,
+      curTimeVal: 0,
+      isPlay: false,
+      niceDuration: '00:00',
+      niceCurTime: '00:00',
+      defaultCover: 'cloud://enanyuan-6db383.656e-enanyuan-6db383/music/南芳.jpg',
+  // {{baseURL + music + '.jpg'}}
+      baseURL: 'cloud://enanyuan-6db383.656e-enanyuan-6db383/music/'
+    }
+    props = {
+      music: String
+    }
+
+    methods = {
+      play () {
+        this.isPlay = true
+        innerAudioContext.play()
+      },
+      pause () {
+        this.isPlay = false
+        innerAudioContext.pause()
+      },
+      change (e) {
+        const self = this
+        self.isPlay = true
+        let curval = e.detail.value
+        innerAudioContext.seek(curval)
+        innerAudioContext.onSeeked(() => {
+          self.updateTime()
+          innerAudioContext.play()
+        })
+      }
+    }
+
+    onLoad () {
+      const self = this
+      if (!self.music) return
+      innerAudioContext = wx.createInnerAudioContext()
+      innerAudioContext.src = self.baseURL + self.music + '.mp3'
+      innerAudioContext.onCanplay(() => {
+        innerAudioContext.duration // 此行玄学，真机测试有问题
+        setTimeout(() => {
+          self.duration = innerAudioContext.duration.toFixed(0)
+          if (self.duration === '0') {
+            self.niceDuration = '04:56'
+          } else {
+            self.formatDuration()
+          }
+          self.$apply()
+        }, 500)
+      })
+      innerAudioContext.onPlay(() => {
+        self.updateTime()
+        console.log('updateTime')
+      })
+      innerAudioContext.onEnded(() => {
+        self.setStopState()
+      })
+    }
+    onUnload () {
+      if (!this.music) return
+      innerAudioContext.destroy()
+    }
+    updateTime () {
+      const self = this
+      innerAudioContext.onTimeUpdate(() => {
+        self.curTimeVal = innerAudioContext.currentTime.toFixed(0)
+        self.formatCurTime()
+        self.$apply()
+      })
+      // 播放到最后一秒
+      // if (self.duration - innerAudioContext.currentTime.toFixed(0) <= 0) {
+      //   self.setStopState()
+      // }
+    }
+
+    setStopState () {
+      this.curTimeVal = 0
+      this.niceCurTime = '00:00'
+      this.isPlay = false
+      innerAudioContext.stop()
+      this.$apply()
+    }
+
+    formatDuration () {
+      const duration = this.duration
+      const mins = Math.floor(duration / 60)
+      const seconds = duration % 60
+      this.niceDuration = `${mins < 10 ? '0' + mins : mins}:${seconds < 10 ? '0' + seconds : seconds}`
+    }
+    formatCurTime() {
+      let curTime = this.curTimeVal
+      let curMins = Math.floor(curTime / 60)
+      let curSeconds = curTime % 60
+      this.niceCurTime = `${curMins < 10 ? '0' + curMins : curMins}:${curSeconds < 10 ? '0' + curSeconds : curSeconds}`
+    }
+  }
+</script>
+<style lang="less">
+.player {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  .progress-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items:center;
+    margin-right:40rpx;
+    .progress-bar {
+      flex: 1;
+    }
+    .time {
+      font-size:10px;
+    }
+  }
+  .control {
+    position: relative;
+    .album {
+      width: 120rpx;
+      height: 120rpx;
+      border-radius:50%;
+      background:rgba(0,0,0,.5);
+      &.rotate{
+        animation: play 10s linear infinite;
+      }
+      &.pause {
+        animation-play-state:paused;
+      }
+    }
+    .options {
+      position: absolute;
+      left:30rpx;
+      top:30rpx;
+      image {
+        width: 60rpx;
+        height: 60rpx;
+      }
+    }
+  }
+}
+
+@keyframes play{
+  0%{transform: rotate(0deg);}
+  100%{transform: rotate(360deg);}
+}
+
+</style>

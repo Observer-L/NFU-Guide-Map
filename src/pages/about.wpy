@@ -1,0 +1,156 @@
+<style lang="less">
+  @import '../style/base';
+  .swiper {
+    height:400rpx;
+    .swiper-image {
+      width: 100%;
+      height:100%;
+    }
+  }
+
+  .building {
+    position: relative;
+    box-shadow: 0px 2px 10px #eee;
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    .route {
+      width:80rpx;
+      height:60rpx;
+    }
+    .logo {
+      width:80px;
+      height:80px;
+      position:absolute;
+      top:-40px;
+      border-radius:50%;
+      border:5px solid #fff;
+      left:6px;
+      background:#1d1d1d;
+    }
+    .name-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .name {
+      color:#1d1d1d;
+      font-size:20px;
+    }
+  }
+
+  .content {
+    background: #fff;
+    width: 100%;
+    min-height: 49vh;
+    color: #000;
+    .description {
+      padding: 40rpx 40rpx;
+      line-height: 30px;
+      font-size: 16px;
+    }
+    rich-text {
+      font-size: 14px;
+    }
+  }
+
+  .contact {
+    .data {
+      text {
+        font-size:14px;
+      }
+      &:nth-child(even) {
+        margin-top: 6px;
+      }
+    }
+    i {
+      color: @blue;
+      margin-right:5px;
+    }
+  }
+</style>
+
+<template>
+  <view>
+    <back/>
+    <swiper class="swiper" indicator-dots="{{building.img.length == 1 ? false : true}}" indicator-active-color="#fff" autoplay="1" interval="3000" duration="500">
+      <block wx:for="{{building.img}}" wx:key="{{index}}">
+        <swiper-item>
+          <image class="swiper-image" src="{{cloundURL}}南苑导览/{{item}}"> </image>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <view class="building" style="{{building.logo ? 'padding-top: 6px' : ''}}">
+      <image src="..{{building.logo}}" class="logo" wx:if="{{building.logo}}"/>
+      <view class="name-wrapper" style="{{building.logo ? 'margin-left: 80px' : ''}}">
+        <view class="name">{{building.name}}</view>
+        <image wx:if="{{!building.location}}" class="route" src="../img/ico/route.png" @tap="goPolyLine"></image>
+      </view>
+      <music :music.sync="music" wx:if="{{building.music}}"></music>
+      <view class="contact" style="{{building.music ? '' : 'margin-top:32rpx'}}">
+        <view class="data location" @tap="goPolyLine" wx:if="{{building.location}}">
+          <i class="iconfont icon-location"></i>
+          <text>{{building.location}}</text>
+        </view>
+        <view class="data phone" wx:if="{{building.phone}}">
+          <i class="iconfont icon-info"></i>
+          <text>{{building.phone}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="content">
+      <view class='description'>
+        <rich-text nodes="{{ building.description || '<h2>暂无内容介绍</h2>' }}"></rich-text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import Music from 'components/music-player'
+  import BackBtn from 'components/back-btn'
+  import { cloundURL } from 'config'
+  export default class About extends wepy.page {
+    components = {
+      music: Music,
+      back: BackBtn
+    }
+    data = {
+      building: null,
+      tid: 0,
+      bid: 0,
+      music: '',
+      cloundURL: cloundURL,
+    }
+    onLoad(options) {
+      console.log(options)
+      const bid = parseInt(options.bid)
+      const tid = parseInt(options.tid)
+      const rid = parseInt(options.rid)
+      let data
+      if (options.rid) {
+        data = this.$parent.globalData.schoolData.routes[rid].data[bid]
+      } else if (!options.bid || !options.tid) {
+        data = this.$parent.globalData.schoolData.introduce
+      } else {
+        data = this.$parent.globalData.schoolData.points[tid].data[bid]
+      }
+      this.building = data
+      this.music = data.music || ''
+      this.bid = bid
+      this.tid = tid
+      this.$apply()
+    }
+    goPolyLine () {
+      const lon = this.building.longitude
+      const lat = this.building.latitude
+      const name = this.building.name
+      wx.navigateTo({
+        url: `routes?longitude=${lon}&latitude=${lat}&name=${name}`
+      })
+    }
+  }
+</script>

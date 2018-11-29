@@ -1,0 +1,158 @@
+<style lang="less">
+  navbar .van-nav-bar{
+    height: 140rpx;
+  }
+
+  .top-switch {
+    background-color: #fff;
+    height: 6vh;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    .top-switch-btn {
+      letter-spacing: 3rpx;
+      height: 65rpx;
+      line-height: 65rpx;
+      color: #000;
+      font-size: 14px;
+      transition: all .3s ease;
+      border-bottom: solid white 0;
+      &.active {
+        border-bottom: solid tomato 1px;
+        display: inline-block;
+      }
+    }
+  }
+
+  .cell-icon {
+    width: 25px;
+    height: 25px;
+    margin-right:4px;
+  }
+</style>
+
+<template>
+  <view>
+    <navbar
+      left-text="玩转南苑"
+      left-arrow
+      bind:click-left="back"
+    />
+    <search value="{{ value }}" placeholder="请输入搜索关键词" bind:change="search"/>
+    <view  wx:if="{{!isSearch}}">
+      <scroll-view scroll-x style="width: 100%" scroll-into-view="{{targetType}}">
+        <view class="top-switch" style="width:{{buildData.length * 120 < windowWidth ? windowWidth: buildData.length * 120}}rpx;">
+          <label wx:for="{{buildData}}" wx:key="id" id="{{'t' + index}}" @tap="changeType"
+                 class="top-switch-btn {{isSelectedBuildType == index ? 'active' : ''}}">
+            {{item.name}}
+          </label>
+        </view>
+      </scroll-view>
+      <view class="search-placeholder">
+        <cell-group>
+          <cell
+            wx:for="{{buildData[isSelectedBuildType].data}}"
+            wx:key="{{item.id}}"
+            title="{{item.name}}"
+            clickable="{{true}}"
+            url='about?tid={{isSelectedBuildType}}&bid={{index}}'
+            border="{{true}}" >
+            <image slot="icon" class="cell-icon" src="..{{item.iconPath}}"/>
+          </cell>
+        </cell-group>
+      </view>
+    </view>
+    <view wx:else>
+      <view class="search-results">
+        <cell-group>
+          <cell
+            wx:for="{{searchResults}}"
+            wx:key="{{item.id}}"
+            title="{{item.name}}"
+            clickable="{{true}}"
+            url='about?tid={{item.tid}}&bid={{item.id - 1}}'
+            border="{{true}}" >
+            <image slot="icon" wx:if="{{item.iconPath}}" class="cell-icon" src="{{item.iconPath}}"/>
+          </cell>
+        </cell-group>
+      </view>
+    </view>
+
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Search extends wepy.page {
+    config = {
+      usingComponents: {
+        'navbar': '../components/vant/nav-bar/index',
+        'search': '../components/vant/search/index',
+        'cell': '../components/vant/cell/index',
+        'cell-group': '../components/vant/cell-group/index'
+      }
+    }
+    data = {
+      value: '',
+      isSelectedBuild: 0,
+      isSelectedBuildType: 0,
+      buildData: null,
+      windowWidth: '',
+      targetType: 't1',
+      isSearch: false,
+      searchResults: []
+    }
+
+    onLoad() {
+      this.buildData = this.$parent.globalData.schoolData.points
+      const self = this
+      wx.getSystemInfo({
+        success: function(res) {
+          // 获取当前设备宽度与高度，用于定位控键的位置
+          self.windowHeight = res.windowHeight
+          self.windowWidth = res.windowWidth
+          self.$apply()
+        }
+      })
+    }
+    changeType(e) {
+      this.targetType = e.target.id
+      this.isSelectedBuildType = Number(e.target.id.replace('t', ''))
+      this.isSelectedBuild = 0
+    }
+    navigateSearch() {
+      wx.navigateTo({
+        url: 'search'
+      })
+    }
+    back () {
+      wx.navigateBack({
+        delta: 1
+      })
+    }
+    search (e) {
+      const results = []
+      const buildData = this.buildData
+      const keyword = e.detail.replace(/(^\s*)|(\s*$)/g, '')
+      if (keyword) {
+        this.isSearch = true
+        for (const i in buildData) {
+          for (const data of buildData[i]['data']) {
+            if (data.name.includes(keyword)) {
+              let result = {}
+              result = data
+              result.tid = i
+              results.push(result)
+            }
+          }
+        }
+        this.searchResults = results
+        console.log(results)
+      } else {
+        this.isSearch = false
+        this.searchResults = []
+      }
+    }
+  }
+</script>

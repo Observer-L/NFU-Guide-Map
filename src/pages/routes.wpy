@@ -1,0 +1,188 @@
+<style lang="less">
+  navbar .van-nav-bar {
+    width: 100%;
+    height: 140rpx;
+  }
+  .options {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width: 100%;
+    &>view {
+      flex: 1;
+      height: 80rpx;
+      line-height: 80rpx;
+      text-align: center;
+      font-size: 22px;
+      transition: background .3s ease;
+      &.active {
+        background: #fff;
+        border-bottom: 2px #3388ff solid;
+      }
+    }
+  }
+</style>
+
+<template>
+  <navbar
+    left-text="路线规划"
+    left-arrow
+    bind:click-left="back"
+  />
+  <view class="options">
+    <view @tap="routing" id="driving" class="iconfont icon-car {{mode === 'driving' ? 'active' : ''}}"></view>
+    <view @tap="routing" id="walking" class="iconfont icon-walk {{mode === 'walking' ? 'active' : ''}}"></view>
+    <!--<view @tap="routing" id="transit" class="iconfont icon-bus {{routeInfo.mode === 'transit' ? 'active' : ''}}"></view>-->
+    <view @tap="routing" id="bicycling" class="iconfont icon-zihangche {{mode === 'bicycling' ? 'active' : ''}}"></view>
+  </view>
+  <map
+    id="myMap"
+    style="width: 100%; height: 57vh;"
+    longitude="{{routeInfo.startLng}}" latitude="{{routeInfo.startLat}}"
+    include-points="{{polyline[0].points}}"
+    show-location
+    enable-overlooking="{{ true }}"
+    enable-3D="{{ true }}"
+    polyline="{{polyline}}"
+    markers="{{markers}}"
+  ></map>
+  <view>
+    <van-cell-group>
+      <van-cell title="我的位置 到 {{endName}}" />
+      <van-cell title="总长" value="{{detail.distance}}米" />
+      <van-cell title="耗时" value="{{detail.duration}}分钟" />
+      <van-cell wx:if="{{detail.taxi_fare}}" title="预估打车费" value="{{detail.taxi_fare.fare}}元" border="{{ false }}" />
+    </van-cell-group>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  // const QQMapWX = require('../utils/qqmap-wx-jssdk.min')
+  import { key } from '../config'
+  export default class Routes extends wepy.page {
+    config = {
+      usingComponents: {
+        'navbar': '../components/vant/nav-bar/index',
+        "map-route": "plugin://myPlugin/mapRoute",
+        "van-cell": "../components/vant/cell/index",
+        "van-cell-group": "../components/vant/cell-group/index"
+      }
+    }
+    data = {
+      key: key,
+      markers: null,
+      polyline: null,
+      routeInfo: {
+        startLat: 23.643795,
+        startLng: 113.671738,
+        endLat: 23.632674,
+        endLng: 113.679404,
+    },
+      endName: "幻想乡",
+      mode: "driving",
+      detail: null
+  }
+    onLoad(options) {
+      const cp = this.$parent.globalData.currentPosition
+      const self = this
+      if (cp) {
+        self.routeInfo.startLat = cp.latitude
+        self.routeInfo.startLng = cp.longitude
+        self.routeInfo.endLat = options.latitude
+        self.routeInfo.endLng = options.longitude
+        self.endName = options.name
+        self.$apply()
+        self.routing('driving')
+      } else {
+        wx.getLocation({
+          type: 'gcj02',
+          success (res) {
+            self.routeInfo.startLat = res.latitude
+            self.routeInfo.startLng = res.longitude
+            self.detail = res.latitude
+            self.routeInfo.endLat = options.latitude
+            self.routeInfo.endLng = options.longitude
+            self.endName = options.name
+            self.$apply()
+            self.routing('driving')
+          },
+          fail(e) {
+            console.log('定位失败', e)
+            self.detail = 'failed'
+            wx.showModal({
+              title: '无法使用该功能',
+              content: '请点击右上角在“关于南苑导览”设置中给予定位权限',
+              showCancel: false,
+              success() {
+                wx.navigateBack({
+                  delta: 1
+                })
+              }
+            })
+          }
+        })
+      }
+    }
+
+    back() {
+      wx.navigateBack({
+        delta: 1
+      })
+    }
+
+    routing(e) {
+      const routeInfo = this.routeInfo
+      const way = typeof e === 'string' ? e : e.target.id
+      this.mode = way
+      let url = `https://apis.map.qq.com/ws/direction/v1/${way}/?from=${routeInfo.startLat},${routeInfo.startLng}&to=${routeInfo.endLat},${routeInfo.endLng}&key=${key}`
+      if (way === 'transit') {
+        url = url + '&policy=LEAST_TIME&callback=callback_function'
+      }
+      const self = this
+      const opt={
+        url: url,
+        method: 'GET',
+        dataType: 'json',
+        success: function(res){
+          const data = res.data.result.routes[0]
+          self.detail = {
+            distance: data.distance,
+            duration: data.duration,
+            taxi_fare: data.taxi_fare
+          }
+          const coors = data.polyline,pl=[]
+          //坐标解压（返回的点串坐标，通过前向差分进行压缩）
+          const kr = 1000000
+          for (let i = 2; i < coors.length; i++) {
+            coors[i] = Number(coors[i - 2]) + Number(coors[i]) / kr
+          }
+          //将解压后的坐标放入点串数组pl中
+          for (let i = 0; i < coors.length; i+=2){
+            pl.push({ latitude: coors[i], longitude:coors[i+1]})
+          }
+          self.polyline = [{
+            points: pl,
+            color: '#FF0000DD',
+            width: 2
+          }]
+          self.markers = [{
+            "width": "25",
+            "height": "35",
+            iconPath: "/img/ico/start.png",
+            latitude: self.routeInfo.startLat,
+            longitude: self.routeInfo.startLng
+          }, {
+            "width": "25",
+            "height": "35",
+            iconPath: "/img/ico/end.png",
+            latitude: pl[pl.length-1].latitude,
+            longitude: pl[pl.length-1].longitude
+          }]
+          self.$apply()
+        }
+      }
+      wx.request(opt)
+    }
+  }
+</script>

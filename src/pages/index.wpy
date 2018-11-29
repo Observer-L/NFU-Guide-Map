@@ -1,0 +1,582 @@
+<style lang="less">
+  @import "../style/base.less";
+
+  .side-menu {
+    position:absolute;
+    top: 11%;
+    right:20rpx;
+    z-index:100;
+    .menu-item {
+      margin-top: 6px;
+      .icon {
+        width:80rpx;
+        height:80rpx;
+      }
+      &.pick {
+        transform: scale(1);
+        transition: @toggle;
+        &.scale {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  .danmaku {
+    overflow:hidden;
+    position:absolute;
+    right: 20rpx;
+    top:160rpx;
+    height:82rpx;
+    width:95%;
+    background:rgba(0,0,0,.1);
+    border-radius:26px;
+    box-sizing:border-box;
+    line-height:80rpx;
+    font-size:32rpx;
+    padding:0 12px;
+    opacity: 0;
+    transform: translate(100vw);
+    transition: transform .8s ease, opacity 3s ease;
+    .dm {
+      text-overflow:ellipsis;
+      padding-right: 80rpx;
+      transition: all 16s linear;
+      text-align:center;
+      line-height:inherit;
+    }
+    &.show {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+
+
+  .pan {
+    width:400rpx;
+    height:400rpx;
+    background:rgba(0,0,0,.1);
+    border-radius:50%;
+    position:absolute;
+    left:50%;
+    bottom:20rpx;
+    margin-left:-200rpx;
+    transform: scale(0);
+    opacity: 0;
+    transition: @toggle;
+    z-index: 90;
+
+    &.active {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .search, .location {
+    position: absolute;
+    z-index: 100;
+    transition: @toggle;
+  }
+  .search {
+    right: 180rpx;
+    bottom: 180rpx;
+    &.active {
+      transform:translateX(120rpx);
+    }
+  }
+  .location {
+    left: 180rpx;
+    bottom: 180rpx;
+    &.active {
+      transform:translateX(-120rpx);
+    }
+  }
+
+  .img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .btn-go {
+    width: 200rpx;
+    height: 200rpx;
+    position:absolute;
+    left:50%;
+    bottom:120rpx;
+    margin-left:-100rpx;
+    z-index:100;
+  }
+  .menu-item-wrapper {
+    position: absolute;
+    width:400rpx;
+    height:400rpx;
+    border-radius:50%;
+    bottom:20rpx;
+    left: 50%;
+    margin-left: -200rpx;
+    z-index: 100;
+    &.active {
+      .menu-item {
+        transform: scale(1);
+        opacity: 1;
+        &.first {
+          transform: translateY(0rpx);
+        }
+        &.second {
+          transform: translateX(0rpx);
+        }
+        &.third {
+          transform: translateY(0rpx);
+        }
+        &.four {
+          transform: translateX(0rpx);
+        }
+      }
+    }
+
+    .menu-item {
+      width:80rpx;
+      height:80rpx;
+      border-radius:50%;
+      text-align:center;
+      line-height:80rpx;
+      position:absolute;
+      transform: scale(0);
+      opacity: 0;
+      transition: @toggle;
+      z-index: 100;
+      background:#fff;
+      &.first {
+        top:30rpx;
+        left:160rpx;
+        transform: translateY(50rpx);
+      }
+      &.second {
+        top:160rpx;
+        right: 30rpx;
+        transform: translateX(-50rpx);
+      }
+      &.third {
+        bottom:30rpx;
+        left:160rpx;
+        transform: translateY(-50rpx);
+      }
+      &.four {
+        top:160rpx;
+        left: 30rpx;
+        transform: translateX(50rpx);
+      }
+    }
+  }
+
+  .picker {
+    height:520rpx;
+    width:100rpx;
+    right: 10rpx;
+    top: 523rpx;
+    transform: translateX(50px);
+    opacity: 0;
+    position:absolute;
+    z-index: 1;
+    background:rgba(255,255,255,.6);
+    overflow-y: scroll;
+    transition: @toggle;
+    border-radius:4px;
+    &.show {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+    .option {
+      height:80rpx;
+      font-size:12px;
+      line-height:80rpx;
+      text-align:center;
+      transition:background .5s ease;
+      &.selected {
+        background:@themeColor;
+        color:#fff;
+      }
+    }
+  }
+
+  .route-wrapper {
+    position: relative;
+    padding: 20rpx;
+    box-sizing: border-box;
+    .btn-close {
+      font-size:18px;
+      position: absolute;
+      right: 20rpx;
+      top: 20rpx;
+    }
+    .title {
+      margin-bottom:10rpx;
+      font-size:24px;
+    }
+    .desc {
+      font-size:14px;
+      color:rgba(0,0,0,.5);
+    }
+  }
+  .route {
+    margin:40rpx 0;
+    .points {
+      overflow-x:scroll;
+      align-items:center;
+      position: relative;
+      z-index: 100;
+      .end {
+        width:2px;
+        height:100%;
+        background:tomato;
+        position:absolute;
+        right:0;
+      }
+    }
+    .line {
+      width:100%;
+      height:2px;
+      background:#aaa;
+      position:absolute;
+      top:30rpx;
+      z-index:99;
+      border-left:50rpx solid #0091ff;
+      border-right:50rpx solid #CB4042;
+
+    }
+    .point {
+      width: 160rpx;
+      display:inline-block;
+      box-sizing:border-box;
+      .info {
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        font-size: 12px;
+        text {
+          padding-top:10rpx;
+        }
+      }
+      image {
+        width: 64rpx;
+        height: 64rpx;
+        background:#fff;
+        border-radius:50%;
+      }
+    }
+  }
+</style>
+
+<template>
+  <view>
+    <map longitude="{{longitude}}"
+         latitude="{{latitude}}"
+         scale="{{routeScale || buildData[isSelectedBuildType].scale}}"
+         markers="{{routeData || buildData[isSelectedBuildType].data}}"
+         polyline="{{polyline[0].points ? polyline : ''}}"
+         polygons="{{polygons[0].points ? polygons : ''}}"
+         circles="{{circles[0].longitude ? circles : ''}}"
+         @markertap="markertap"
+         include-points="{{buildData[isSelectedBuildType].data}}"
+         show-location="{{true}}"
+         enable-overlooking="{{ true }}"
+         enable-3D="{{ true }}"
+         subkey="XIHBZ-UJU32-JDPU5-CIJNJ-YR7L6-NZF6M"
+         style="width: 100%; height:{{toggleRoutes ? '75vh' : '100vh'}};}}"
+    >
+
+      <cover-view class="danmaku {{danmuShow ? 'show' : ''}}"  style="{{toggleRoutes ? 'display: none' : ''}}">
+        <cover-view class="dm">{{comments[danmuCounter].content}}</cover-view>
+      </cover-view>
+
+      <cover-view class="picker {{showPicker ? 'show' : ''}}" @tap="selectBuildingType">
+        <cover-view
+          wx:for="{{buildData}}"
+          wx:key="{{index}}"
+          id="{{index}}"
+          class="option {{item.selected ? 'selected' : ''}}"
+        >
+          {{item.name}}
+        </cover-view>
+      </cover-view>
+
+      <cover-view class="side-menu"  style="{{toggleRoutes ? 'display: none' : ''}}">
+        <cover-view @tap="navigateComment" class="menu-item">
+          <cover-image class="icon dms" src="/img/ico/comment.png"/>
+        </cover-view>
+        <cover-view @tap="navigateAbout" class="menu-item">
+          <cover-image class="icon" src="/img/ico/nfsysu.png"/>
+        </cover-view>
+        <cover-view @tap="navigatePanorama" class="menu-item">
+            <cover-image class="icon" src="/img/ico/panorama.png"/>
+        </cover-view>
+        <cover-view @tap="picking" class="menu-item pick {{showPicker ? 'scale' : ''}}">
+          <cover-image class="icon" src="/img/ico/park.png"/>
+        </cover-view>
+        </cover-view>
+
+
+      <cover-view class="pan {{active ? 'active' : ''}}" style="{{toggleRoutes ? 'display: none' : ''}}"></cover-view>
+      <cover-view class="menu-item-wrapper {{active ? 'active' : ''}}" @tap="drawLine" style="{{toggleRoutes ? 'display: none' : ''}}">
+        <cover-view class="menu-item first" id="0">中</cover-view>
+        <cover-view class="menu-item second" id="1">东</cover-view>
+        <cover-view class="menu-item third" id="2">后</cover-view>
+        <cover-view class="menu-item four" id="3">西</cover-view>
+      </cover-view>
+      <cover-image class="btn-go" @tap="go" src="/img/ico/btn-go.png"  style="{{toggleRoutes ? 'display: none' : ''}}"/>
+
+        <cover-view @tap="locate" class="location {{active ? 'active' : ''}}"  style="{{toggleRoutes ? 'display: none' : ''}}">
+          <cover-image class="img" src="/img/ico/target.png"/>
+        </cover-view>
+        <cover-view @tap="navigateSearch" style="{{toggleRoutes ? 'display: none' : ''}}" class="search {{active ? 'active' : ''}}">
+          <cover-image class="img" src="/img/ico/search.png"/>
+        </cover-view>
+        <cover-view @tap="locate" class="location" style="display:none;{{toggleRoutes ? 'display:block;left:20rpx;bottom:30rpx;' : ''}}">
+          <cover-image class="img" src="/img/ico/target.png"/>
+        </cover-view>
+    </map>
+
+    <view class="route-wrapper" style="height: 25vh;width:100%;" wx:if="{{toggleRoutes}}">
+      <view class="title">{{routes[polyline[0].id].name}}</view>
+      <view class="desc">共有{{polyline[0].num}}个景点</view>
+      <i class="icon-close iconfont btn-close" @tap="closeRoutes"></i>
+      <scroll-view class="route {{showPicker ? 'show' : ''}}" scroll-x>
+        <view class="points" style="width:{{routeData.length * 160 < windowWidth ? windowWidth : routeData.length * 160}}rpx;">
+          <view
+            wx:for="{{polyline[0].points}}"
+            wx:key="{{index}}"
+            id="{{index}}"
+            class="point {{item.selected ? 'selected' : ''}}"
+            @tap="focusPoint"
+            wx:if="{{item.name}}"
+          >
+            <view class="info">
+              <image src="{{item.iconPath}}" wx:if="{{item.iconPath}}" />
+              <text>{{item.name}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="line" style="width:{{routeData.length * 140}}rpx"></view>
+      </scroll-view>
+    </view>
+
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import db from 'utils/db'
+  import * as config from 'config'
+  let timer
+  export default class Index extends wepy.page {
+    data = {
+      latitude: 23.632674,
+      longitude: 113.679404,
+      comments: null,
+      danmuCounter: 0,
+      buildData: null,
+      rid: 0,
+      toggleRoutes: false,
+      routeScale: 0,
+      routeData: null,
+      routes: null,
+      isSelectedBuild: 0,
+      isSelectedBuildType: 0,
+      cloundURL: config.cloundURL,
+      danmuShow: false,
+      active: false,
+      showPicker: false,
+      polyline: [Object.assign({}, config.polylineStyle)],
+      polygons: [Object.assign({points: []}, config.polylineStyle)],
+      circles: [Object.assign({}, config.circlesStyle)]
+    }
+
+    onLoad() {
+      const self = this
+      let schoolData = db.Get('schoolData')
+      if (!schoolData) {
+        console.log('没缓存，读取网络数据')
+        this.$parent.loadSchoolData().then(data => {
+          db.Set('schoolData', data)
+          self.$parent.globalData.schoolData = data
+          self.longitude = data.introduce.longitude
+          self.latitude = data.introduce.latitude
+          self.buildData = data.points
+          this.polyline[0].points = this.buildData[0].points
+          self.routes = data.routes
+          self.$apply()
+        })
+      } else {
+        console.log('有缓存，读取缓存')
+        self.longitude = self.$parent.globalData.schoolData.introduce.longitude
+        self.latitude = self.$parent.globalData.schoolData.introduce.latitude
+        self.buildData = self.$parent.globalData.schoolData.points
+        self.routes = self.$parent.globalData.schoolData.routes
+      }
+      setTimeout(() => {
+        self.showPicker = true
+        self.$apply()
+      }, 1000)
+    }
+    onShow() {
+      this.loadComments()
+    }
+    onHide() {
+      clearInterval(timer)
+    }
+    drawLine(e) {
+      if (!e.target.id) return
+      this.toggleRoutes = true
+      this.active = false
+      this.showPicker = false
+      const points = []
+      const routeData = []
+      this.rid = e.target.id
+      const route = this.routes[e.target.id]
+      let num = 0
+      this.routeScale = route.scale
+      for (const point of route.data) {
+        if (point.name) num += 1
+        points.push(point)
+      }
+      let index = 0
+      for (const i in points) {
+        const point = points[i]
+        if (point.name) {
+          index += 1
+          point.iconPath = '/img/ico/' + index + '.png'
+          point.width = 22
+          point.height = 22
+          point.id = String(i)
+          point.callout = {
+            content: point.name,
+            display: 'BYCLICK',
+            borderColor: config.polylineStyle.color,
+            borderWidth: 1
+          }
+          Object.assign(point.callout, config.calloutStyle)
+          // point.label = {content: String(index)}
+          // Object.assign(point.label, config.labelStyle)
+          routeData.push(point)
+        }
+      }
+      this.routeData = routeData
+      this.polyline[0].points = points
+      this.polyline[0].num = num
+      this.polyline[0].id = e.target.id
+      this.latitude = points[0].latitude
+      this.longitude = points[0].longitude
+    //  polygons，失效
+      if (route.area) {
+        this.polygons[0].points = route.area
+      }
+    //  circles
+      if (route.circle) {
+        this.circles[0].longitude = route.circle[0].longitude
+        this.circles[0].latitude = route.circle[0].latitude
+        this.circles[0].radius = route.circle[0].radius
+      }
+    }
+    focusPoint (e) {
+      if (!e.currentTarget.id) return
+      for (const point of this.polyline[0].points) {
+        if (point.callout) point.callout.display = 'BYCLICK'
+      }
+      const point = this.polyline[0].points[e.currentTarget.id]
+      point.callout.display = 'ALWAYS'
+      this.routeScale = 18
+      this.latitude = point.latitude
+      this.longitude = point.longitude
+    }
+    closeRoutes () {
+      this.toggleRoutes = false
+      this.routeData = null
+      this.routeScale = 0
+      this.latitude = 23.632674
+      this.longitude = 113.679404
+      this.circles[0].longitude = ''
+      this.polygons[0].points = null
+      this.polyline[0].points = null
+    }
+    go() {
+      this.showPicker = false
+      this.active = !this.active
+    }
+    hideMenu () {
+      this.active = false
+    }
+    picking () {
+      this.active = false
+      this.showPicker = !this.showPicker
+    }
+    selectBuildingType (e) {
+      console.log('selectBuildingType', e.target.id)
+      this.isSelectedBuildType = e.target.id
+      this.buildData.forEach(i => { i.selected = false })
+      this.buildData[e.target.id].selected = true
+      this.polyline[0].points = this.buildData[e.target.id].points
+    }
+    locate() {
+      const self = this
+      wx.getLocation({
+        type: 'gcj02',
+        success: function(res) {
+          self.longitude = res.longitude
+          self.latitude = res.latitude
+          self.$apply()
+        }
+      })
+    }
+    markertap(e) {
+      console.log('e.markerId', e.markerId)
+      if (typeof e.markerId === 'string') {
+        wepy.navigateTo({
+          url: 'about?rid=' + this.rid + '&bid=' + e.markerId
+        })
+      } else {
+        wepy.navigateTo({
+          url: 'about?bid=' + (Number(e.markerId) - 1) + '&tid=' + this.isSelectedBuildType
+        })
+      }
+    }
+    loadComments() {
+      const self = this
+      wx.cloud.callFunction({
+        name: 'loadComments',
+        success: res => {
+          self.comments = res.result.data.reverse()
+          setTimeout(() => {
+            self.danmuShow = true
+            timer = setInterval(() => {
+              self.danmuCounter = self.danmuCounter < self.comments.length - 1 ? self.danmuCounter += 1 : 0
+              self.$apply()
+            }, 2000)
+            self.$apply()
+          }, 1000)
+          self.$apply()
+        }
+      })
+    }
+    navigateSearch() {
+      wx.navigateTo({
+        url: 'search'
+      })
+    }
+    navigateAbout () {
+      wx.navigateTo({
+        url: 'about'
+      })
+    }
+    navigateComment() {
+      wx.navigateTo({
+        url: 'comment'
+      })
+    }
+    navigatePanorama () {
+      wepy.navigateTo({
+        url: 'web-view?url=https://720yun.com/t/67e22mf5jts'
+        // url: 'web-view'
+      })
+    }
+  }
+</script>
