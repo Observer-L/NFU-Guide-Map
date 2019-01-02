@@ -16,13 +16,7 @@
 
 
 ## Demo
-<img src="showcase/home.jpg" width="250">
-<img src="showcase/routes.jpg" width="250">
-<img src="showcase/detail.jpg" width="250">
-<img src="showcase/comment.jpg" width="250">
-<img src="showcase/search.jpg" width="250">
-<img src="showcase/360.jpg" width="250">
-
+![demo](showcase/demo.png)
 ![image](showcase/showcase.jpg)
 
 ## 开发使用
