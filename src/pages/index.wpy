@@ -269,10 +269,12 @@
 
 <template>
   <view>
-    <map longitude="{{longitude}}"
-         latitude="{{latitude}}"
-         scale="{{routeScale || buildData[isSelectedBuildType].scale}}"
-         markers="{{routeData || buildData[isSelectedBuildType].data}}"
+    <map
+        id="map"
+        longitude="{{map.longitude}}"
+         latitude="{{map.latitude}}"
+         scale="{{map.scale}}"
+         markers="{{routeData || _markers}}"
          polyline="{{polyline[0].points ? polyline : ''}}"
          polygons="{{polygons[0].points ? polygons : ''}}"
          circles="{{circles[0].longitude ? circles : ''}}"
@@ -285,18 +287,21 @@
          style="width: 100%; height:{{toggleRoutes ? '75vh' : '100vh'}};}}"
     >
 
+      <!--markers="{{routeData || buildData[isSelectedBuildType].data}}"-->
+
       <cover-view class="danmaku {{danmuShow ? 'show' : ''}}"  style="{{toggleRoutes ? 'display: none' : ''}}">
         <cover-view class="dm">{{comments[danmuCounter].content}}</cover-view>
       </cover-view>
 
-      <cover-view class="picker {{showPicker ? 'show' : ''}}" @tap="selectBuildingType">
+      <!-- Cats Picker -->
+      <cover-view class="picker {{showCats ? 'show' : ''}}" @tap="selectCat">
         <cover-view
-          wx:for="{{buildData}}"
+          wx:for="{{__markers}}"
           wx:key="{{index}}"
-          id="{{index}}"
-          class="option {{item.selected ? 'selected' : ''}}"
+          data-id="{{index}}"
+          class="option {{catIndex === index ? 'selected' : ''}}"
         >
-          {{item.name}}
+          {{item.type}}
         </cover-view>
       </cover-view>
 
@@ -365,64 +370,87 @@
 
 <script>
   import wepy from 'wepy'
-  import db from 'utils/db'
-  import * as config from 'config'
-  let timer
+
   export default class Index extends wepy.page {
     data = {
-      latitude: 23.632674,
-      longitude: 113.679404,
-      comments: null,
-      danmuCounter: 0,
-      buildData: null,
-      rid: 0,
-      toggleRoutes: false,
-      routeScale: 0,
-      routeData: null,
-      routes: null,
-      isSelectedBuild: 0,
-      isSelectedBuildType: 0,
-      cloundURL: config.cloundURL,
-      danmuShow: false,
-      active: false,
-      showPicker: false,
-      polyline: [Object.assign({}, config.polylineStyle)],
-      polygons: [Object.assign({points: []}, config.polylineStyle)],
-      circles: [Object.assign({}, config.circlesStyle)]
+      config: null,
+      _markers: null,
+      __markers: null,
+      catIndex: 0,
+      map: {
+        maoContext: null,
+        scale: 16,
+        skew: 0,
+        rotate: 0,
+        latitude: 23.632674,
+        longitude: 113.679404
+      },
+      showCats: true
+      // ___________________________________
+      // comments: null,
+      // danmuCounter: 0,
+      // buildData: null,
+      // rid: 0,
+      // toggleRoutes: false,
+      // routeScale: 0,
+      // routeData: null,
+      // routes: null,
+      // isSelectedBuild: 0,
+      // isSelectedBuildType: 0,
+      // cloundURL: config.cloundURL,
+      // danmuShow: false,
+      // active: false,
+      // showPicker: false,
+      // polyline: [Object.assign({}, config.polylineStyle)],
+      // polygons: [Object.assign({points: []}, config.polylineStyle)],
+      // circles: [Object.assign({}, config.circlesStyle)]
     }
 
-    onLoad() {
-      const self = this
-      let schoolData = db.Get('schoolData')
-      if (!schoolData) {
-        console.log('没缓存，读取网络数据')
-        this.$parent.loadSchoolData().then(data => {
-          db.Set('schoolData', data)
-          self.$parent.globalData.schoolData = data
-          self.longitude = data.introduce.longitude
-          self.latitude = data.introduce.latitude
-          self.buildData = data.points
-          this.polyline[0].points = this.buildData[0].points
-          self.routes = data.routes
-          self.$apply()
-        })
-      } else {
-        console.log('有缓存，读取缓存')
-        self.longitude = self.$parent.globalData.schoolData.introduce.longitude
-        self.latitude = self.$parent.globalData.schoolData.introduce.latitude
-        self.buildData = self.$parent.globalData.schoolData.points
-        self.routes = self.$parent.globalData.schoolData.routes
+    methods = {
+      selectCat(e) {
+        const targetId = e.target.dataset.id
+        if (this.catIndex !== targetId) {
+          this.catIndex = targetId
+          this._markers = this.__markers[this.catIndex].data
+          // this.map.scale = this.__markers[this.catIndex].scale
+          this.includePoints(100)
+        }
+      },
+
+      locate() {
+        // 定位当前位置
+        // 使用MapContext而非wx.getLocation
+        this.mapContext.moveToLocation()
       }
-      setTimeout(() => {
-        self.showPicker = true
-        self.$apply()
-      }, 1000)
     }
+
+    includePoints(padding) {
+      this.mapContext.includePoints({
+        padding: [padding, padding, padding, padding],
+        points: this._markers
+      })
+    }
+
+
+    onLoad() {
+      this.$parent.loadMarkers().then(res => {
+        this.$parent.clearMarkers(res).then(res => {
+          this._markers = res[this.catIndex].data
+          this.__markers = this.$parent.globalData.markers
+          this.$apply()
+        })
+      })
+    }
+
+    onReady() {
+      this.mapContext = wx.createMapContext('map')
+    }
+
     onShow() {
-      this.loadComments()
+      // this.loadComments()
     }
     onHide() {
-      clearInterval(timer)
+      // clearInterval(timer)
     }
     drawLine(e) {
       if (!e.target.id) return
@@ -508,24 +536,6 @@
     picking () {
       this.active = false
       this.showPicker = !this.showPicker
-    }
-    selectBuildingType (e) {
-      console.log('selectBuildingType', e.target.id)
-      this.isSelectedBuildType = e.target.id
-      this.buildData.forEach(i => { i.selected = false })
-      this.buildData[e.target.id].selected = true
-      this.polyline[0].points = this.buildData[e.target.id].points
-    }
-    locate() {
-      const self = this
-      wx.getLocation({
-        type: 'gcj02',
-        success: function(res) {
-          self.longitude = res.longitude
-          self.latitude = res.latitude
-          self.$apply()
-        }
-      })
     }
     markertap(e) {
       console.log('e.markerId', e.markerId)
