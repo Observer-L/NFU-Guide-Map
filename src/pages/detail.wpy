@@ -165,10 +165,16 @@
   import config from '../config'
 
   export default class Detail extends wepy.page {
+
+    config = {
+      disableScroll: true
+    }
+
     components = {
       music: Music,
       back: BackBtn
     }
+
     data = {
       marker: {},
       images: [],

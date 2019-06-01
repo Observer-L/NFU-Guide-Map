@@ -41,7 +41,7 @@
     globalData = {
       school_data: null,
       currentPosition: null,
-      window: {},
+      menuButtonBounding: null,
       config: config,
       markers: null
     }
@@ -53,28 +53,10 @@
     }
 
     onLaunch() {
-
       wx.cloud.init({
         env: 'enanyuan-6db383',
         traceUser: true
       })
-
-      wx.clearStorage()
-      this.globalData.schoolData = db.Get('schoolData')
-      // wx.getSetting({
-      //   success (res) {
-      //     if (res.authSetting['scope.userLocation']) {
-      //       wx.getLocation({
-      //         type: 'gcj02',
-      //         success (res) {
-      //           self.globalData.currentPosition = res
-      //           console.log(self.globalData.currentPosition)
-      //         }
-      //       })
-      //     }
-      //   }
-      // })
-    //  _______________________________________________________
     }
 
     loadMarkers() {

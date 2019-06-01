@@ -1,23 +1,54 @@
 <style lang="less">
   @import "../style/base.less";
 
+  @padding: 20rpx;
+
+  /* SIDE MENU */
+  @menuButtonSize: 80rpx;
+  @menuButtonMarginTop: 12rpx;
+
   .side-menu {
     position:absolute;
-    top: 11%;
-    right:20rpx;
-    z-index:100;
+    right: @padding;
     .menu-item {
-      margin-top: 6px;
-      .icon {
-        width:80rpx;
-        height:80rpx;
+      margin-top: @menuButtonMarginTop;
+      width:@menuButtonSize;
+      height:@menuButtonSize;
+      transform: scale(1);
+      transition: @toggle;
+      &.selected {
+        transform: scale(1.1);
       }
-      &.pick {
-        transform: scale(1);
-        transition: @toggle;
-        &.scale {
-          transform: scale(1.1);
-        }
+    }
+  }
+
+  /* PICKER */
+  @catSize: 80rpx;
+  .picker {
+    position:absolute;
+    max-height: @catSize * 8 - (@catSize/2);
+    overflow-y: scroll;
+    width: @catSize + @padding;
+    right: @padding / 2;
+    margin-top: @catSize * 4 + @menuButtonMarginTop * 4;
+    transform: translateX(@catSize + @padding);
+    opacity: 0;
+    background:rgba(255,255,255,.6);
+    border-radius: 4px;
+    transition: @toggle;
+    &.show {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+    .option {
+      height:@catSize;
+      line-height:@catSize;
+      font-size:12px;
+      text-align:center;
+      transition:background .3s ease;
+      &.selected {
+        background: @themeColor;
+        color: #fff;
       }
     }
   }
@@ -169,35 +200,6 @@
     }
   }
 
-  .picker {
-    height:520rpx;
-    width:100rpx;
-    right: 10rpx;
-    top: 523rpx;
-    transform: translateX(50px);
-    opacity: 0;
-    position:absolute;
-    z-index: 1;
-    background:rgba(255,255,255,.6);
-    overflow-y: scroll;
-    transition: @toggle;
-    border-radius:4px;
-    &.show {
-      transform: translateX(0px);
-      opacity: 1;
-    }
-    .option {
-      height:80rpx;
-      font-size:12px;
-      line-height:80rpx;
-      text-align:center;
-      transition:background .5s ease;
-      &.selected {
-        background:@themeColor;
-        color:#fff;
-      }
-    }
-  }
 
   .route-wrapper {
     position: relative;
@@ -293,7 +295,11 @@
       </cover-view>
 
       <!-- Cats Picker -->
-      <cover-view class="picker {{showCats ? 'show' : ''}}" @tap="selectCat">
+      <cover-view
+        class="picker {{showCats ? 'show' : ''}}"
+        style="top: {{menuButtonBounding.height + menuButtonBounding.top}}px"
+        @tap="selectCat"
+      >
         <cover-view
           wx:for="{{__markers}}"
           wx:key="{{index}}"
@@ -304,20 +310,17 @@
         </cover-view>
       </cover-view>
 
-      <cover-view class="side-menu"  style="{{toggleRoutes ? 'display: none' : ''}}">
-        <cover-view @tap="navigateComment" class="menu-item">
-          <cover-image class="icon dms" src="/img/ico/comment.png"/>
-        </cover-view>
-        <cover-view @tap="navigateAbout" class="menu-item">
-          <cover-image class="icon" src="/img/ico/nfsysu.png"/>
-        </cover-view>
-        <cover-view @tap="navigatePanorama" class="menu-item">
-            <cover-image class="icon" src="/img/ico/panorama.png"/>
-        </cover-view>
-        <cover-view @tap="picking" class="menu-item pick {{showPicker ? 'scale' : ''}}">
-          <cover-image class="icon" src="/img/ico/park.png"/>
-        </cover-view>
-        </cover-view>
+      <!-- SIDE MENU -->
+      <cover-view
+        class="side-menu"
+        wx:if="{{!toggleRoutes}}"
+        style="top: {{menuButtonBounding.height + menuButtonBounding.top}}px"
+      >
+        <cover-image @tap="navigateComment" class="menu-item" src="/img/ico/comment.png"></cover-image>
+        <cover-image @tap="navigateAbout" class="menu-item" src="/img/ico/nfsysu.png"></cover-image>
+        <cover-image @tap="navigatePanorama" class="menu-item" src="/img/ico/panorama.png"></cover-image>
+        <cover-image @tap="picking" class="menu-item {{showCats ? 'selected' : ''}}" src="/img/ico/park.png"></cover-image>
+      </cover-view>
 
 
       <cover-view class="pan {{active ? 'active' : ''}}" style="{{toggleRoutes ? 'display: none' : ''}}"></cover-view>
@@ -371,7 +374,12 @@
   import wepy from 'wepy'
 
   export default class Index extends wepy.page {
+    config = {
+      disableScroll: true
+    }
+
     data = {
+      menuButtonBounding: null,
       config: null,
       _markers: null,
       __markers: null,
@@ -442,18 +450,15 @@
           this.$apply()
         })
       })
+
+      this.$parent.globalData.menuButtonBounding = wx.getMenuButtonBoundingClientRect()
+      this.menuButtonBounding = this.$parent.globalData.menuButtonBounding
     }
 
     onReady() {
       this.mapContext = wx.createMapContext('map')
     }
 
-    onShow() {
-      // this.loadComments()
-    }
-    onHide() {
-      // clearInterval(timer)
-    }
     drawLine(e) {
       if (!e.target.id) return
       this.toggleRoutes = true
