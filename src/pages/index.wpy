@@ -278,16 +278,15 @@
          polyline="{{polyline[0].points ? polyline : ''}}"
          polygons="{{polygons[0].points ? polygons : ''}}"
          circles="{{circles[0].longitude ? circles : ''}}"
-         @markertap="markertap"
+         @markertap="markerTap"
          include-points="{{buildData[isSelectedBuildType].data}}"
          show-location="{{true}}"
+          enable-rotate="{{true}}"
          enable-overlooking="{{ true }}"
          enable-3D="{{ true }}"
          subkey="XIHBZ-UJU32-JDPU5-CIJNJ-YR7L6-NZF6M"
          style="width: 100%; height:{{toggleRoutes ? '75vh' : '100vh'}};}}"
     >
-
-      <!--markers="{{routeData || buildData[isSelectedBuildType].data}}"-->
 
       <cover-view class="danmaku {{danmuShow ? 'show' : ''}}"  style="{{toggleRoutes ? 'display: none' : ''}}">
         <cover-view class="dm">{{comments[danmuCounter].content}}</cover-view>
@@ -412,7 +411,6 @@
         if (this.catIndex !== targetId) {
           this.catIndex = targetId
           this._markers = this.__markers[this.catIndex].data
-          // this.map.scale = this.__markers[this.catIndex].scale
           this.includePoints(100)
         }
       },
@@ -421,6 +419,11 @@
         // 定位当前位置
         // 使用MapContext而非wx.getLocation
         this.mapContext.moveToLocation()
+      },
+      markerTap(e) {
+        wx.navigateTo({
+          url: `./detail?index=${this.catIndex}&id=${e.markerId}`
+        })
       }
     }
 
@@ -430,7 +433,6 @@
         points: this._markers
       })
     }
-
 
     onLoad() {
       this.$parent.loadMarkers().then(res => {

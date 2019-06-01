@@ -1,41 +1,18 @@
-<style lang="less">
-  .QRcode {
-    position:relative;
-    top:250rpx;
-    text-align:center;
-    image {
-      width: 600rpx;
-      height: 600rpx;
-    }
-  }
-</style>
 <template>
-  <block>
-    <view wx:if="{{!url}}" class="QRcode">
-      <image src="cloud://enanyuan-6db383.656e-enanyuan-6db383/全景二维码.png" @tap="previewImage"></image>
-    </view>
-    <web-view src="{{url}}" wx:else></web-view>
-  </block>
+  <web-view src="https://720yun.com/t/67e22mf5jts?scene_id={{scene_id}}"></web-view>
 </template>
 
 <script>
-  // 个人类型与海外类型的小程序暂不支持使用。
   import wepy from 'wepy'
-  import { cloundURL } from 'config'
 
   export default class WebView extends wepy.page {
-    // navigationStyle: 'custom' 下存在高度下移问题，待官方修复
-    // https://developers.weixin.qq.com/community/develop/doc/000a6876b588382d7297b2d695a400?highLine=web-view%25E9%25AB%2598%25E5%25BA%25A6
+
     data = {
-      url: null
+      scene_id: 0
     }
+
     onLoad(options) {
-      this.url = options.url ? encodeURI(options.url) : ''
-    }
-    previewImage() {
-      wx.previewImage({
-        urls: [cloundURL + '全景二维码.png'] // 需要预览的图片http链接列表
-      })
+      this.scene_id = options.scene_id
     }
   }
 </script>

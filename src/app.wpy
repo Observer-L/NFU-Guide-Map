@@ -17,7 +17,7 @@
       pages: [
         'pages/index',
         'pages/search',
-        'pages/about',
+        'pages/detail',
         'pages/comment',
         'pages/web-view',
         'pages/routes'

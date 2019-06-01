@@ -1,0 +1,230 @@
+<style lang="less">
+  @import '../style/base';
+
+  @swiperSize: 400rpx;
+  @logoSize: 140rpx;
+  @padding: 10rpx;
+
+  page {
+    background: #f8f8f8;
+  }
+
+  swiper {
+    height: @swiperSize;
+
+    swiper-item > image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .header {
+    .head {
+      background: #ffffff;
+      display: flex;
+      padding: @padding*2 @padding;
+
+      .logo {
+        position: relative;
+        top: -@logoSize / 2;
+        left: 0;
+        width: @logoSize;
+        height: @logoSize;
+        margin-bottom: -@logoSize / 2;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        background: #fff;
+      }
+
+      .title {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        margin: 0 @padding * 2;
+
+        .name {
+          letter-spacing: 2px;
+        }
+
+        .action {
+          width: 64rpx;
+          height: 58rpx;
+        }
+      }
+    }
+    .more {
+      background: #ffffff;
+      padding: @padding;
+      margin-bottom: @padding*2;
+      .info {
+        display: flex;
+        font-size: 12px;
+        padding: @padding;
+        align-items: center;
+        .icon {
+          width: 42rpx;
+          height: 36rpx;
+          margin-right: 8rpx;
+        }
+      }
+    }
+    .desc {
+      background: #ffffff;
+      padding: @padding*2;
+      .title{
+        margin-bottom: @padding*2;
+        &:before {
+          content: '|';
+          color: @themeColor;
+          margin-right: 8rpx;
+        }
+      }
+      .content {
+        font-size: 14px;
+      }
+    }
+    &.more {
+      .more {
+        display: none;
+      }
+      .head {
+        margin-bottom: 20rpx;
+      }
+    }
+  }
+
+  .music-player {
+    background: #ffffff;
+    padding: 20rpx 10rpx;
+  }
+</style>
+
+<template>
+  <view>
+    <back/>
+    <swiper indicator-dots="{{images !== 1}}" indicator-active-color="#fff" autoplay="1" interval="3000" duration="500">
+      <block wx:for="{{images}}" wx:key="{{index}}">
+        <swiper-item>
+          <image
+            data-id="{{index}}"
+            @tap="previewImage"
+            src="{{item}}"
+          ></image>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <view class="header {{showMore ? '' : 'more'}}">
+      <view class="head van-hairline--bottom">
+        <image
+          class="logo"
+          wx:if="{{marker.logo}}"
+          src="{{config.cloud.cloudUrl + 'logo/' + marker.logo + '.jpg'}}"
+        ></image>
+        <view class="title">
+          <view class="name">{{marker.name}}</view>
+          <image class="action navigate" src="../img/icons/navigate.png" @tap="navigate"></image>
+        </view>
+      </view>
+
+      <view class="more">
+        <view class="info address" wx:if="{{marker.contact.address}}" @tap="navigate">
+          <image class="icon" src="../img/icons/location_map.png"></image>
+          <view class="content">{{marker.contact.address}}</view>
+        </view>
+        <view class="info phone" wx:if="{{marker.contact.phone}}" @tap="call">
+          <image class="icon" src="../img/icons/contact.png"></image>
+          <view class="content">{{marker.contact.phone}}</view>
+        </view>
+        <view
+          class="info panorama"
+          wx:if="{{activePanorama}}"
+          @tap="show360"
+        >
+          <image class="icon" src="../img/icons/sidebar/panorama.png"></image>
+          <view class="content">全景看景</view>
+        </view>
+      </view>
+
+
+      <view class="desc">
+        <view class="title">简介</view>
+        <view class="detail"></view>
+        <!-- TODO: rich-text -->
+        <view class="content">{{marker.desc}}</view>
+      </view>
+    </view>
+
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import Music from 'components/music-player'
+  import BackBtn from 'components/back-btn'
+  import config from '../config'
+
+  export default class Detail extends wepy.page {
+    components = {
+      music: Music,
+      back: BackBtn
+    }
+    data = {
+      marker: {},
+      images: [],
+      config: config
+    }
+
+    methods = {
+      previewImage(e) {
+        wx.previewImage({
+          current: this.images[e.target.dataset.id],
+          urls: this.images
+        })
+      },
+      navigate() {
+        wx.openLocation({
+          latitude: Number(this.marker.latitude),
+          longitude: Number(this.marker.longitude),
+          name: this.marker.name,
+          scale: 15
+        })
+      },
+      show360() {
+        wx.navigateTo({
+          url: './web-view?scene_id=' + this.marker.panorama
+        })
+      },
+      call() {
+        wx.makePhoneCall({phoneNumber: this.marker.contact.phone})
+      }
+    }
+
+    computed = {
+      showMore() {
+        return this.marker.contact && (this.marker.contact.address || this.marker.contact.phone || this.marker.panorama)
+      },
+      activePanorama() {
+        return config.panorama.active && this.marker.panorama
+      }
+    }
+
+    onLoad(options) {
+      this.marker = this.getTargetMarker(options.index, options.id)
+      this.images = this.loadImages()
+    }
+
+    getTargetMarker(catIndex, markerId) {
+      const markers = this.$parent.globalData.markers[catIndex].data
+      return markers.filter(m => m.id === Number(markerId))[0]
+    }
+
+    loadImages() {
+      const imgArr = []
+      for (let i = 0; i < this.marker.images; i++) {
+        imgArr.push(config.cloud.cloudUrl + 'images/' + (this.marker.short_name || this.marker.name) + '/' + i + '.jpg')
+      }
+      return imgArr
+    }
+  }
+</script>
