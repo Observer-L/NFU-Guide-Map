@@ -26,7 +26,7 @@
   @catSize: 80rpx;
   .picker {
     position:absolute;
-    max-height: @catSize * 8 - (@catSize/2);
+    max-height: @catSize * 6 - (@catSize/2);
     overflow-y: scroll;
     width: @catSize + @padding;
     right: @padding / 2;
@@ -281,17 +281,28 @@
          polygons="{{polygons[0].points ? polygons : ''}}"
          circles="{{circles[0].longitude ? circles : ''}}"
          @markertap="markerTap"
-         include-points="{{buildData[isSelectedBuildType].data}}"
          show-location="{{true}}"
           enable-rotate="{{true}}"
          enable-overlooking="{{ true }}"
          enable-3D="{{ true }}"
-         subkey="XIHBZ-UJU32-JDPU5-CIJNJ-YR7L6-NZF6M"
          style="width: 100%; height:{{toggleRoutes ? '75vh' : '100vh'}};}}"
     >
 
+      <!-- DANMAKU -->
       <cover-view class="danmaku {{danmuShow ? 'show' : ''}}"  style="{{toggleRoutes ? 'display: none' : ''}}">
         <cover-view class="dm">{{comments[danmuCounter].content}}</cover-view>
+      </cover-view>
+
+      <!-- SIDE MENU -->
+      <cover-view
+        class="side-menu"
+        wx:if="{{!toggleRoutes}}"
+        style="top: {{menuButtonBounding.height + menuButtonBounding.top}}px"
+      >
+        <cover-image @tap="navigateComment" class="menu-item" src="/img/ico/comment.png"></cover-image>
+        <cover-image @tap="navigateAbout" class="menu-item" src="/img/ico/nfsysu.png"></cover-image>
+        <cover-image @tap="navigatePanorama" class="menu-item" src="/img/ico/panorama.png"></cover-image>
+        <cover-image @tap="toggleCats" class="menu-item {{showCats ? 'selected' : ''}}" src="/img/ico/park.png"></cover-image>
       </cover-view>
 
       <!-- Cats Picker -->
@@ -310,36 +321,50 @@
         </cover-view>
       </cover-view>
 
-      <!-- SIDE MENU -->
+      <!-- FAB -->
       <cover-view
-        class="side-menu"
         wx:if="{{!toggleRoutes}}"
-        style="top: {{menuButtonBounding.height + menuButtonBounding.top}}px"
+        class="pan {{showDeck ? 'active' : ''}}"
+      ></cover-view>
+
+      <cover-view
+        wx:if="{{!toggleRoutes}}"
+        class="menu-item-wrapper {{showDeck ? 'active' : ''}}"
+        @tap="drawLine"
       >
-        <cover-image @tap="navigateComment" class="menu-item" src="/img/ico/comment.png"></cover-image>
-        <cover-image @tap="navigateAbout" class="menu-item" src="/img/ico/nfsysu.png"></cover-image>
-        <cover-image @tap="navigatePanorama" class="menu-item" src="/img/ico/panorama.png"></cover-image>
-        <cover-image @tap="picking" class="menu-item {{showCats ? 'selected' : ''}}" src="/img/ico/park.png"></cover-image>
-      </cover-view>
-
-
-      <cover-view class="pan {{active ? 'active' : ''}}" style="{{toggleRoutes ? 'display: none' : ''}}"></cover-view>
-      <cover-view class="menu-item-wrapper {{active ? 'active' : ''}}" @tap="drawLine" style="{{toggleRoutes ? 'display: none' : ''}}">
         <cover-view class="menu-item first" id="0">中</cover-view>
         <cover-view class="menu-item second" id="1">东</cover-view>
         <cover-view class="menu-item third" id="2">后</cover-view>
         <cover-view class="menu-item four" id="3">西</cover-view>
       </cover-view>
-      <cover-image class="btn-go" @tap="go" src="/img/ico/btn-go.png"  style="{{toggleRoutes ? 'display: none' : ''}}"/>
 
-        <cover-view @tap="locate" class="location {{active ? 'active' : ''}}"  style="{{toggleRoutes ? 'display: none' : ''}}">
-          <cover-image class="img" src="/img/ico/target.png"/>
+      <cover-image
+        wx:if="{{!toggleRoutes}}"
+        class="btn-go"
+        @tap="you"
+        src="/img/ico/btn-go.png"
+      ></cover-image>
+
+        <cover-view
+          wx:if="{{!toggleRoutes}}"
+          @tap="locate"
+          class="location {{showDeck ? 'active' : ''}}"
+        >
+          <cover-image class="img" src="/img/ico/target.png"></cover-image>
         </cover-view>
-        <cover-view @tap="navigateSearch" style="{{toggleRoutes ? 'display: none' : ''}}" class="search {{active ? 'active' : ''}}">
-          <cover-image class="img" src="/img/ico/search.png"/>
+        <cover-view
+          wx:if="{{!toggleRoutes}}"
+          @tap="navigateSearch"
+          class="search {{showDeck ? 'active' : ''}}"
+        >
+          <cover-image class="img" src="/img/ico/search.png"></cover-image>
         </cover-view>
-        <cover-view @tap="locate" class="location" style="display:none;{{toggleRoutes ? 'display:block;left:20rpx;bottom:30rpx;' : ''}}">
-          <cover-image class="img" src="/img/ico/target.png"/>
+        <cover-view
+          @tap="locate"
+          class="location"
+          style="display:none;{{toggleRoutes ? 'display:block;left:20rpx;bottom:30rpx;' : ''}}"
+        >
+          <cover-image class="img" src="/img/ico/target.png"></cover-image>
         </cover-view>
     </map>
 
@@ -392,7 +417,8 @@
         latitude: 23.632674,
         longitude: 113.679404
       },
-      showCats: true
+      showCats: true,
+      showDeck: false,
       // ___________________________________
       // comments: null,
       // danmuCounter: 0,
@@ -413,6 +439,13 @@
       // circles: [Object.assign({}, config.circlesStyle)]
     }
 
+    watch = {
+      showDeck(newValue, oldValue) {
+        this.showCats = !newValue
+        this.$apply()
+      }
+    }
+
     methods = {
       selectCat(e) {
         const targetId = e.target.dataset.id
@@ -422,7 +455,6 @@
           this.includePoints(100)
         }
       },
-
       locate() {
         // 定位当前位置
         // 使用MapContext而非wx.getLocation
@@ -432,6 +464,13 @@
         wx.navigateTo({
           url: `./detail?index=${this.catIndex}&id=${e.markerId}`
         })
+      },
+      toggleCats() {
+        this.showCats = !this.showCats
+      },
+      you() {
+        this.showDeck = !this.showDeck
+        console.log(this.showDeck)
       }
     }
 

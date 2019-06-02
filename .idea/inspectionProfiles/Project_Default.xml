@@ -5,9 +5,21 @@
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="2">
+          <list size="14">
             <item index="0" class="java.lang.String" itemvalue="class" />
             <item index="1" class="java.lang.String" itemvalue="src" />
+            <item index="2" class="java.lang.String" itemvalue="longitude" />
+            <item index="3" class="java.lang.String" itemvalue="latitude" />
+            <item index="4" class="java.lang.String" itemvalue="scale" />
+            <item index="5" class="java.lang.String" itemvalue="markers" />
+            <item index="6" class="java.lang.String" itemvalue="polyline" />
+            <item index="7" class="java.lang.String" itemvalue="polygons" />
+            <item index="8" class="java.lang.String" itemvalue="circles" />
+            <item index="9" class="java.lang.String" itemvalue="include-points" />
+            <item index="10" class="java.lang.String" itemvalue="show-location" />
+            <item index="11" class="java.lang.String" itemvalue="enable-rotate" />
+            <item index="12" class="java.lang.String" itemvalue="enable-overlooking" />
+            <item index="13" class="java.lang.String" itemvalue="enable-3d" />
           </list>
         </value>
       </option>
@@ -16,7 +28,7 @@
     <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="15">
+          <list size="16">
             <item index="0" class="java.lang.String" itemvalue="nobr" />
             <item index="1" class="java.lang.String" itemvalue="noembed" />
             <item index="2" class="java.lang.String" itemvalue="comment" />
@@ -32,6 +44,7 @@
             <item index="12" class="java.lang.String" itemvalue="image" />
             <item index="13" class="java.lang.String" itemvalue="web-view" />
             <item index="14" class="java.lang.String" itemvalue="cover-image" />
+            <item index="15" class="java.lang.String" itemvalue="map" />
           </list>
         </value>
       </option>
