@@ -4,6 +4,7 @@
     <list default="true" id="39c9c543-f936-4baf-b43a-b539e641e289" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/markerStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/markerStyle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.wpy" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -17,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1170">
-              <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+            <state relative-caret-position="227">
+              <caret line="43" column="31" lean-forward="true" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
               <folding>
                 <element signature="e#112#135#0" expanded="true" />
               </folding>
@@ -29,24 +30,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mock/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+            <state relative-caret-position="210">
+              <caret line="7" column="55" lean-forward="true" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
               <folding>
-                <element signature="n#style#0;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#cover-view#0;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#cover-view#1;n#map#0;n#view#0;n#template#0;n#!!top" />
-                <element signature="n#style#0;n#cover-view#1;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" />
-                <element signature="n#style#0;n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#cover-view#7;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#view#0;n#view#0;n#template#0;n#!!top" />
-                <element signature="e#10951#11187#0" />
-                <element signature="e#11205#11313#0" />
-                <element signature="e#11334#11444#0" />
-                <element signature="e#11465#11513#0" />
+                <element signature="e#409#550#0" />
+                <element signature="e#616#802#0" />
               </folding>
             </state>
           </provider>
@@ -55,7 +46,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/detail.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4140">
+            <state relative-caret-position="437">
               <caret line="138" column="13" selection-start-line="138" selection-start-column="13" selection-end-line="138" selection-end-column="13" />
             </state>
           </provider>
@@ -82,11 +73,58 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/config/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+            <state>
+              <caret column="11" selection-start-column="11" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="453">
+              <caret line="479" column="19" lean-forward="true" selection-start-line="479" selection-start-column="19" selection-end-line="479" selection-end-column="19" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#162#445#0" />
+                <element signature="e#491#1160#0" />
+                <element signature="e#1173#1765#0" />
+                <element signature="e#2045#2097#0" />
+                <element signature="e#2823#3174#0" />
+                <element signature="e#2907#3618#0" />
+                <element signature="e#3892#4214#0" />
+                <element signature="n#style#0;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#cover-view#0;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#cover-view#1;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" />
+                <element signature="n#style#0;n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#cover-view#3;n#map#0;n#view#0;n#template#0;n#!!top" />
+                <element signature="n#style#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#view#0;n#scroll-view#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#view#1;n#scroll-view#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#9791#9814#0" expanded="true" />
+                <element signature="e#10806#10914#0" />
+                <element signature="e#10951#11187#0" />
+                <element signature="e#11205#11313#0" />
+                <element signature="e#11334#11444#0" />
+                <element signature="e#12161#12179#0" />
+                <element signature="e#11548#11687#0" />
+                <element signature="e#12063#12494#0" />
+                <element signature="e#12104#12463#0" />
+                <element signature="e#12218#12433#0" />
+                <element signature="e#13047#13841#0" />
+                <element signature="e#12142#12200#0" />
+                <element signature="e#12218#13863#0" />
+                <element signature="e#15150#15667#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config/markerStyle.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -94,8 +132,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/style/base.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+            <state relative-caret-position="150">
+              <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -117,7 +155,6 @@
       <list>
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/config/markerStyle.js" />
         <option value="$PROJECT_DIR$/src/config/cloud.js" />
         <option value="$PROJECT_DIR$/src/style/base.less" />
         <option value="$PROJECT_DIR$/src/pages/web-view.wpy" />
@@ -125,7 +162,9 @@
         <option value="$PROJECT_DIR$/src/config/panorama.js" />
         <option value="$PROJECT_DIR$/src/pages/detail.wpy" />
         <option value="$PROJECT_DIR$/src/app.wpy" />
+        <option value="$PROJECT_DIR$/src/config/markerStyle.js" />
         <option value="$PROJECT_DIR$/src/pages/index.wpy" />
+        <option value="$PROJECT_DIR$/src/mock/routes.js" />
       </list>
     </option>
   </component>
@@ -227,12 +266,12 @@
       <workItem from="1559361168881" duration="3132000" />
       <workItem from="1559364626890" duration="5329000" />
       <workItem from="1559385568110" duration="11125000" />
-      <workItem from="1559441842405" duration="652000" />
+      <workItem from="1559441842405" duration="12732000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20315000" />
+    <option name="totallyTimeSpent" value="32395000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
@@ -251,7 +290,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" x="-3289" y="-42" width="1155" height="507" id="Terminal" order="10" type="FLOATING" visible="true" weight="0.29577464" />
+      <window_info active="true" anchor="bottom" x="-3385" y="-39" width="1155" height="507" id="Terminal" order="10" type="FLOATING" visible="true" weight="0.29577464" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -294,13 +333,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/markerStyle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/web-view.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -312,23 +344,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3278">
           <caret line="114" column="27" selection-start-line="114" selection-start-column="11" selection-end-line="114" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
-          <folding>
-            <element signature="e#112#135#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/detail.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4140">
-          <caret line="138" column="13" selection-start-line="138" selection-start-column="13" selection-end-line="138" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -346,40 +361,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/index.js">
+    <entry file="file://$PROJECT_DIR$/src/pages/detail.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="437">
+          <caret line="138" column="13" selection-start-line="138" selection-start-column="13" selection-end-line="138" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/style/base.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+        <state relative-caret-position="150">
+          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" selection-start-column="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/markerStyle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+        <state relative-caret-position="453">
+          <caret line="479" column="19" lean-forward="true" selection-start-line="479" selection-start-column="19" selection-end-line="479" selection-end-column="19" />
           <folding>
+            <element signature="e#162#445#0" />
+            <element signature="e#491#1160#0" />
+            <element signature="e#1173#1765#0" />
+            <element signature="e#2045#2097#0" />
+            <element signature="e#2823#3174#0" />
+            <element signature="e#2907#3618#0" />
+            <element signature="e#3892#4214#0" />
             <element signature="n#style#0;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#cover-view#0;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#cover-view#1;n#map#0;n#view#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#cover-view#1;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#cover-view#7;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#view#0;n#view#0;n#template#0;n#!!top" />
+            <element signature="n#cover-view#3;n#map#0;n#view#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#view#0;n#scroll-view#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#view#1;n#scroll-view#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#9791#9814#0" expanded="true" />
+            <element signature="e#10806#10914#0" />
             <element signature="e#10951#11187#0" />
             <element signature="e#11205#11313#0" />
             <element signature="e#11334#11444#0" />
-            <element signature="e#11465#11513#0" />
+            <element signature="e#12161#12179#0" />
+            <element signature="e#11548#11687#0" />
+            <element signature="e#12063#12494#0" />
+            <element signature="e#12104#12463#0" />
+            <element signature="e#12218#12433#0" />
+            <element signature="e#13047#13841#0" />
+            <element signature="e#12142#12200#0" />
+            <element signature="e#12218#13863#0" />
+            <element signature="e#15150#15667#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mock/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="7" column="55" lean-forward="true" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
+          <folding>
+            <element signature="e#409#550#0" />
+            <element signature="e#616#802#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="43" column="31" lean-forward="true" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+          <folding>
+            <element signature="e#112#135#0" expanded="true" />
           </folding>
         </state>
       </provider>

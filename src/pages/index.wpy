@@ -53,6 +53,7 @@
     }
   }
 
+  /* DANMAKU */
   .danmaku {
     overflow:hidden;
     position:absolute;
@@ -82,121 +83,122 @@
     }
   }
 
-
+  /* FAB */
+  @FABsize: 200rpx;
   .pan {
-    width:400rpx;
-    height:400rpx;
-    background:rgba(0,0,0,.1);
-    border-radius:50%;
-    position:absolute;
-    left:50%;
-    bottom:20rpx;
-    margin-left:-200rpx;
+    position: absolute;
+    width: @FABsize * 2;
+    height: @FABsize * 2;
+    left: 50%;
+    margin-left: -@FABsize;
+    background: rgba(0,0,0,.1);
+    border-radius: 50%;
     transform: scale(0);
     opacity: 0;
     transition: @toggle;
-    z-index: 90;
-
     &.active {
       transform: scale(1);
       opacity: 1;
     }
   }
 
-  .search, .location {
-    position: absolute;
-    z-index: 100;
-    transition: @toggle;
-  }
-  .search {
-    right: 180rpx;
-    bottom: 180rpx;
-    &.active {
-      transform:translateX(120rpx);
-    }
-  }
-  .location {
-    left: 180rpx;
-    bottom: 180rpx;
-    &.active {
-      transform:translateX(-120rpx);
-    }
-  }
-
-  .img {
-    width: 42px;
-    height: 42px;
+  .pan, .menu-item-wrapper {
+    bottom: 0;
   }
 
   .btn-go {
-    width: 200rpx;
-    height: 200rpx;
     position:absolute;
-    left:50%;
-    bottom:120rpx;
-    margin-left:-100rpx;
+    width: @FABsize;
+    height: @FABsize;
     z-index:100;
-  }
-  .menu-item-wrapper {
-    position: absolute;
-    width:400rpx;
-    height:400rpx;
-    border-radius:50%;
-    bottom:20rpx;
     left: 50%;
-    margin-left: -200rpx;
+    bottom: @FABsize / 2;
+    margin-left: -@FABsize / 2;
+  }
+
+  .menu-item-wrapper {
+    position:absolute;
+    width: @FABsize * 2;
+    height: @FABsize * 2;
+    border-radius:50%;
+    left: 50%;
+    margin-left: -@FABsize;
     z-index: 100;
     &.active {
       .menu-item {
         transform: scale(1);
         opacity: 1;
         &.first {
-          transform: translateY(0rpx);
+          transform: translate(-50%, 0);
         }
         &.second {
-          transform: translateX(0rpx);
+          transform: translate(0, -50%);
         }
         &.third {
-          transform: translateY(0rpx);
+          transform: translate(-50%, 0);
         }
         &.four {
-          transform: translateX(0rpx);
+          transform: translate(0, -50%);
         }
       }
     }
 
     .menu-item {
-      width:80rpx;
-      height:80rpx;
+      position:absolute;
+      width: @FABsize / 2.5;
+      height: @FABsize / 2.5;
       border-radius:50%;
       text-align:center;
-      line-height:80rpx;
-      position:absolute;
+      line-height: @FABsize / 2.5;
       transform: scale(0);
       opacity: 0;
       transition: @toggle;
       z-index: 100;
       background:#fff;
       &.first {
-        top:30rpx;
-        left:160rpx;
-        transform: translateY(50rpx);
+        top: @FABsize / 10;
+        left: 50%;
+        transform: translate(-50%, @FABsize/2);
       }
       &.second {
-        top:160rpx;
-        right: 30rpx;
-        transform: translateX(-50rpx);
+        top: 50%;
+        right: @FABsize / 10;
+        transform: translate(-@FABsize/2, -50%);
       }
       &.third {
-        bottom:30rpx;
-        left:160rpx;
-        transform: translateY(-50rpx);
+        bottom:@FABsize / 10;
+        left: 50%;
+        transform: translate(-50%, -@FABsize/2);
       }
       &.four {
-        top:160rpx;
-        left: 30rpx;
-        transform: translateX(50rpx);
+        top: 50%;
+        left: @FABsize / 10;
+        transform: translate(@FABsize/2, -50%);
       }
+    }
+  }
+
+  /* SIDE BTN */
+  .search, .location {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    transition: @toggle;
+    bottom: @FABsize * .8;
+  }
+  .search {
+    right: @FABsize * .8;
+    &.active {
+      transform:translateX(@FABsize/2);
+    }
+  }
+  .location {
+    left: @FABsize * .8;
+    &.active {
+      transform:translateX(-@FABsize/2);
+    }
+    &.corner {
+      transform: translate(-120rpx, 120rpx);
     }
   }
 
@@ -248,22 +250,17 @@
     }
     .point {
       width: 160rpx;
-      display:inline-block;
+      display:inline-flex;
+      flex-direction: column;
       box-sizing:border-box;
-      .info {
-        display: flex;
-        flex-direction: column;
-        align-items:center;
-        font-size: 12px;
-        text {
-          padding-top:10rpx;
-        }
+      font-size: 12px;
+      align-items:center;
+      text {
+        padding-top:10rpx;
       }
       image {
         width: 64rpx;
         height: 64rpx;
-        background:#fff;
-        border-radius:50%;
       }
     }
   }
@@ -273,13 +270,15 @@
   <view>
     <map
         id="map"
-        longitude="{{map.longitude}}"
-         latitude="{{map.latitude}}"
-         scale="{{map.scale}}"
+        longitude="{{longitude}}"
+         latitude="{{latitude}}"
+         scale="{{scale}}"
+        skew="{{skew}}"
+        rotate="{{rotate}}"
          markers="{{routeData || _markers}}"
-         polyline="{{polyline[0].points ? polyline : ''}}"
+         polyline="{{toggleRoutes ? route : ''}}"
          polygons="{{polygons[0].points ? polygons : ''}}"
-         circles="{{circles[0].longitude ? circles : ''}}"
+         circles="{{toggleRoutes ? circles : ''}}"
          @markertap="markerTap"
          show-location="{{true}}"
           enable-rotate="{{true}}"
@@ -330,12 +329,12 @@
       <cover-view
         wx:if="{{!toggleRoutes}}"
         class="menu-item-wrapper {{showDeck ? 'active' : ''}}"
-        @tap="drawLine"
+        @tap="selectRoute"
       >
-        <cover-view class="menu-item first" id="0">中</cover-view>
-        <cover-view class="menu-item second" id="1">东</cover-view>
-        <cover-view class="menu-item third" id="2">后</cover-view>
-        <cover-view class="menu-item four" id="3">西</cover-view>
+        <cover-view class="menu-item first" data-id="m">中</cover-view>
+        <cover-view class="menu-item second" data-id="e">东</cover-view>
+        <cover-view class="menu-item third" data-id="s">南</cover-view>
+        <cover-view class="menu-item four" data-id="w">西</cover-view>
       </cover-view>
 
       <cover-image
@@ -345,50 +344,47 @@
         src="/img/ico/btn-go.png"
       ></cover-image>
 
-        <cover-view
-          wx:if="{{!toggleRoutes}}"
+        <cover-image
+          class="location {{showDeck ? 'active' : ''}} {{toggleRoutes ? 'corner' : ''}}"
           @tap="locate"
-          class="location {{showDeck ? 'active' : ''}}"
-        >
-          <cover-image class="img" src="/img/ico/target.png"></cover-image>
-        </cover-view>
-        <cover-view
+          src="/img/ico/target.png"
+        ></cover-image>
+
+        <cover-image
           wx:if="{{!toggleRoutes}}"
-          @tap="navigateSearch"
           class="search {{showDeck ? 'active' : ''}}"
-        >
-          <cover-image class="img" src="/img/ico/search.png"></cover-image>
-        </cover-view>
-        <cover-view
-          @tap="locate"
-          class="location"
-          style="display:none;{{toggleRoutes ? 'display:block;left:20rpx;bottom:30rpx;' : ''}}"
-        >
-          <cover-image class="img" src="/img/ico/target.png"></cover-image>
-        </cover-view>
+          @tap="navigateSearch"
+          src="/img/ico/search.png"
+        ></cover-image>
     </map>
 
-    <view class="route-wrapper" style="height: 25vh;width:100%;" wx:if="{{toggleRoutes}}">
-      <view class="title">{{routes[polyline[0].id].name}}</view>
-      <view class="desc">共有{{polyline[0].num}}个景点</view>
+    <!-- ROUTES -->
+    <view
+      class="route-wrapper"
+      style="height: 25vh;width:100%;"
+      wx:if="{{toggleRoutes}}"
+    >
+      <view class="title">{{routes[route[0].id].name}}</view>
+      <view class="desc">共有{{routes[route[0].id].count}}个景点</view>
       <i class="icon-close iconfont btn-close" @tap="closeRoutes"></i>
       <scroll-view class="route {{showPicker ? 'show' : ''}}" scroll-x>
-        <view class="points" style="width:{{routeData.length * 160 < windowWidth ? windowWidth : routeData.length * 160}}rpx;">
+        <view
+          class="points"
+          style="width:{{_markers.length * 160 < windowWidth ? windowWidth : _markers.length * 160}}rpx;"
+        >
           <view
-            wx:for="{{polyline[0].points}}"
+            wx:for="{{_markers}}"
             wx:key="{{index}}"
-            id="{{index}}"
+            data-id="{{index}}"
             class="point {{item.selected ? 'selected' : ''}}"
             @tap="focusPoint"
             wx:if="{{item.name}}"
           >
-            <view class="info">
-              <image src="{{item.iconPath}}" wx:if="{{item.iconPath}}" />
-              <text>{{item.name}}</text>
-            </view>
+            <image src="{{item.iconPath}}" wx:if="{{item.iconPath}}"></image>
+            <text>{{item.name}}</text>
           </view>
         </view>
-        <view class="line" style="width:{{routeData.length * 140}}rpx"></view>
+        <view class="line" style="width:{{_markers.length * 140}}rpx"></view>
       </scroll-view>
     </view>
 
@@ -397,6 +393,8 @@
 
 <script>
   import wepy from 'wepy'
+  import routes from '../mock/routes'
+  import config from '../config'
 
   export default class Index extends wepy.page {
     config = {
@@ -409,40 +407,38 @@
       _markers: null,
       __markers: null,
       catIndex: 0,
-      map: {
-        maoContext: null,
-        scale: 16,
-        skew: 0,
-        rotate: 0,
-        latitude: 23.632674,
-        longitude: 113.679404
-      },
+      // ————————— Map —————————————
+      mapContext: null,
+      scale: 16,
+      skew: 0,
+      rotate: 0,
+      latitude: 23.632674,
+      longitude: 113.679404,
+      // ——————————————————————————
       showCats: true,
       showDeck: false,
-      // ___________________________________
-      // comments: null,
-      // danmuCounter: 0,
-      // buildData: null,
-      // rid: 0,
-      // toggleRoutes: false,
-      // routeScale: 0,
-      // routeData: null,
-      // routes: null,
-      // isSelectedBuild: 0,
-      // isSelectedBuildType: 0,
-      // cloundURL: config.cloundURL,
-      // danmuShow: false,
-      // active: false,
-      // showPicker: false,
-      // polyline: [Object.assign({}, config.polylineStyle)],
-      // polygons: [Object.assign({points: []}, config.polylineStyle)],
-      // circles: [Object.assign({}, config.circlesStyle)]
+      toggleRoutes: false,
+      routes: routes,
+      route: [{
+        points: [],
+        ...config.markerStyle.polylineStyle
+      }],
+      circles: [{
+        radius: 10,
+        ...config.markerStyle.circleStyle
+      }]
     }
 
     watch = {
       showDeck(newValue, oldValue) {
         this.showCats = !newValue
         this.$apply()
+      }
+    }
+
+    computed = {
+      windowWidth() {
+        return wx.getSystemInfoSync().screenWidth
       }
     }
 
@@ -456,8 +452,6 @@
         }
       },
       locate() {
-        // 定位当前位置
-        // 使用MapContext而非wx.getLocation
         this.mapContext.moveToLocation()
       },
       markerTap(e) {
@@ -470,7 +464,63 @@
       },
       you() {
         this.showDeck = !this.showDeck
-        console.log(this.showDeck)
+      },
+      selectRoute(e) {
+        if (!e.target.dataset.id) return
+        this.toggleRoutes = true
+        let rid
+        switch (e.target.dataset.id) {
+          case 'm':
+            rid = 0
+            this.rotate = -140
+            this.scale = 16
+            this.skew = 40
+            break
+          case 'w':
+            rid = 1
+            this.rotate = -70
+            this.scale = 16
+            this.skew = 40
+            break
+          case 'e':
+            rid = 2
+            this.rotate = 90
+            this.scale = 16
+            this.skew = 40
+            break
+          case 's':
+            rid = 3
+            this.rotate = 0
+            this.scale = 17
+            this.skew = 40
+            break
+        }
+        const route = this.routes[rid].data
+        const circles = this.routes[rid].circles
+        this.route[0].points = route
+        this.route[0].id = rid
+        this._markers = route.filter(m => m.name)
+        this.latitude = this._markers[0].latitude
+        this.longitude = this._markers[0].longitude
+        if (circles) {
+          for (const c of circles) {
+            this.circles.push({
+              ...c,
+              ...config.markerStyle.circleStyle
+            })
+          }
+        }
+      },
+      closeRoutes() {
+        this.toggleRoutes = false
+        this._markers = this.__markers[this.catIndex].data
+        this.resetMapAngle()
+      },
+      focusPoint (e) {
+        const targetMarker = this._markers[e.currentTarget.dataset.id]
+        this.scale = 18
+        this.latitude = targetMarker.latitude
+        this.longitude = targetMarker.longitude
       }
     }
 
@@ -481,11 +531,68 @@
       })
     }
 
+    loadRoutes() {
+      for (const route of this.routes) {
+        let count = 0
+        for (let point of route.data) {
+          if (point.name) {
+            count += 1
+            for (const i of this.__markers) {
+              for (const j of i.data) {
+                if (j.name === point.name || j.short_name === point.name) {
+                  point = Object.assign(point, j)
+                }
+              }
+            }
+          }
+        }
+        route.count = count
+      }
+    }
+
+    resetMapAngle() {
+      const self = this
+      const ctx = this.mapContext
+      // this.mapCenter = [this.school.latitude, this.school.longitude]
+      // this.map.latitude =
+      ctx.getScale({
+        success(e) {
+          self.scale = e.scale
+          self.$apply()
+        },
+        complete() {
+          self.scale = 15
+          self.$apply()
+        }
+      })
+      ctx.getSkew({
+        success(e) {
+          self.skew = e.skew
+          self.$apply()
+        },
+        complete() {
+          self.skew = 0
+          self.$apply()
+        }
+      })
+      ctx.getRotate({
+        success(e) {
+          self.rotate = e.rotate
+          self.$apply()
+        },
+        complete() {
+          self.rotate = 0
+          self.$apply()
+        }
+      })
+    }
+
     onLoad() {
       this.$parent.loadMarkers().then(res => {
         this.$parent.clearMarkers(res).then(res => {
           this._markers = res[this.catIndex].data
           this.__markers = this.$parent.globalData.markers
+          this.loadRoutes()
           this.$apply()
         })
       })
@@ -551,50 +658,6 @@
         this.circles[0].radius = route.circle[0].radius
       }
     }
-    focusPoint (e) {
-      if (!e.currentTarget.id) return
-      for (const point of this.polyline[0].points) {
-        if (point.callout) point.callout.display = 'BYCLICK'
-      }
-      const point = this.polyline[0].points[e.currentTarget.id]
-      point.callout.display = 'ALWAYS'
-      this.routeScale = 18
-      this.latitude = point.latitude
-      this.longitude = point.longitude
-    }
-    closeRoutes () {
-      this.toggleRoutes = false
-      this.routeData = null
-      this.routeScale = 0
-      this.latitude = 23.632674
-      this.longitude = 113.679404
-      this.circles[0].longitude = ''
-      this.polygons[0].points = null
-      this.polyline[0].points = null
-    }
-    go() {
-      this.showPicker = false
-      this.active = !this.active
-    }
-    hideMenu () {
-      this.active = false
-    }
-    picking () {
-      this.active = false
-      this.showPicker = !this.showPicker
-    }
-    markertap(e) {
-      console.log('e.markerId', e.markerId)
-      if (typeof e.markerId === 'string') {
-        wepy.navigateTo({
-          url: 'about?rid=' + this.rid + '&bid=' + e.markerId
-        })
-      } else {
-        wepy.navigateTo({
-          url: 'about?bid=' + (Number(e.markerId) - 1) + '&tid=' + this.isSelectedBuildType
-        })
-      }
-    }
     loadComments() {
       const self = this
       wx.cloud.callFunction({
@@ -611,27 +674,6 @@
           }, 1000)
           self.$apply()
         }
-      })
-    }
-    navigateSearch() {
-      wx.navigateTo({
-        url: 'search'
-      })
-    }
-    navigateAbout () {
-      wx.navigateTo({
-        url: 'about'
-      })
-    }
-    navigateComment() {
-      wx.navigateTo({
-        url: 'comment'
-      })
-    }
-    navigatePanorama () {
-      wepy.navigateTo({
-        url: 'web-view?url=https://720yun.com/t/67e22mf5jts'
-        // url: 'web-view'
       })
     }
   }
