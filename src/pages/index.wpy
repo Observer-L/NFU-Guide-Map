@@ -30,12 +30,15 @@
     overflow-y: scroll;
     width: @catSize + @padding;
     right: @padding / 2;
-    margin-top: @catSize * 4 + @menuButtonMarginTop * 4;
+    margin-top: (@catSize + @menuButtonMarginTop) * 4;
     transform: translateX(@catSize + @padding);
     opacity: 0;
     background:rgba(255,255,255,.6);
     border-radius: 4px;
     transition: @toggle;
+    &.cut {
+      margin-top: (@catSize + @menuButtonMarginTop) * 3;
+    }
     &.show {
       transform: translateX(0px);
       opacity: 1;
@@ -202,16 +205,39 @@
     }
   }
 
+  /* MAP */
+  @mapHeight: 75vh;
+  map {
+    width: 100vw;
+    height: 100vh;
+    &.shrink {
+      height: @mapHeight;
+    }
+    .compass {
+      /*background: #8BCEFF50;*/
+      width: 140rpx;
+      height: 140rpx;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
 
+  /* ROUTE PANEL */
+  @routeHeight: 100vh - @mapHeight;
+  @pointSize: 160rpx;
   .route-wrapper {
     position: relative;
-    padding: 20rpx;
+    height: @routeHeight;
+    width: 100vw;
+    padding: @padding;
     box-sizing: border-box;
     .btn-close {
-      font-size:18px;
       position: absolute;
-      right: 20rpx;
-      top: 20rpx;
+      font-size:18px;
+      padding: @padding;
+      right: 0;
+      top: 0;
     }
     .title {
       margin-bottom:10rpx;
@@ -219,15 +245,15 @@
     }
     .desc {
       font-size:14px;
-      color:rgba(0,0,0,.5);
+      color: rgba(0,0,0,.5);
     }
   }
   .route {
     margin:40rpx 0;
     .points {
+      position: relative;
       overflow-x:scroll;
       align-items:center;
-      position: relative;
       z-index: 100;
       .end {
         width:2px;
@@ -238,29 +264,27 @@
       }
     }
     .line {
+      position:absolute;
       width:100%;
       height:2px;
-      background:#aaa;
-      position:absolute;
+      background: #eee;
       top:30rpx;
       z-index:99;
-      border-left:50rpx solid #0091ff;
-      border-right:50rpx solid #CB4042;
-
+      border-left: @pointSize / 2 solid #0091ff50;
+      border-right: @pointSize / 2 solid #CB404250;
     }
     .point {
-      width: 160rpx;
+      width: @pointSize;
       display:inline-flex;
       flex-direction: column;
-      box-sizing:border-box;
       font-size: 12px;
       align-items:center;
       text {
-        padding-top:10rpx;
+        padding-top: 10rpx;
       }
       image {
-        width: 64rpx;
-        height: 64rpx;
+        width: 58rpx;
+        height: 68rpx;
       }
     }
   }
@@ -269,22 +293,22 @@
 <template>
   <view>
     <map
-        id="map"
-        longitude="{{longitude}}"
-         latitude="{{latitude}}"
-         scale="{{scale}}"
-        skew="{{skew}}"
-        rotate="{{rotate}}"
-         markers="{{routeData || _markers}}"
-         polyline="{{toggleRoutes ? route : ''}}"
-         polygons="{{polygons[0].points ? polygons : ''}}"
-         circles="{{toggleRoutes ? circles : ''}}"
-         @markertap="markerTap"
-         show-location="{{true}}"
-          enable-rotate="{{true}}"
-         enable-overlooking="{{ true }}"
-         enable-3D="{{ true }}"
-         style="width: 100%; height:{{toggleRoutes ? '75vh' : '100vh'}};}}"
+      id="map"
+      class="{{toggleRoutes ? 'shrink' : ''}}"
+      longitude="{{longitude}}"
+      latitude="{{latitude}}"
+      scale="{{scale}}"
+      skew="{{skew}}"
+      rotate="{{rotate}}"
+      markers="{{routeData || _markers}}"
+      polyline="{{toggleRoutes ? route : ''}}"
+      circles="{{toggleRoutes ? circles : ''}}"
+      @markertap="markerTap"
+      show-location="{{true}}"
+      enable-rotate="{{true}}"
+      enable-overlooking="{{ true }}"
+      enable-3D="{{ true }}"
+      show-compass="{{true}}"
     >
 
       <!-- DANMAKU -->
@@ -298,20 +322,44 @@
         wx:if="{{!toggleRoutes}}"
         style="top: {{menuButtonBounding.height + menuButtonBounding.top}}px"
       >
-        <cover-image @tap="navigateComment" class="menu-item" src="/img/ico/comment.png"></cover-image>
-        <cover-image @tap="navigateAbout" class="menu-item" src="/img/ico/nfsysu.png"></cover-image>
-        <cover-image @tap="navigatePanorama" class="menu-item" src="/img/ico/panorama.png"></cover-image>
-        <cover-image @tap="toggleCats" class="menu-item {{showCats ? 'selected' : ''}}" src="/img/ico/park.png"></cover-image>
+        <cover-image
+          @tap="jumpTo"
+          id="comment"
+          class="menu-item"
+          src="/img/ico/comment.png"
+        ></cover-image>
+
+        <cover-image
+          @tap="jumpTo"
+          id="school"
+          class="menu-item"
+          src="/img/ico/nfsysu.png"
+        ></cover-image>
+
+        <cover-image
+          wx:if="{{config.panorama.active}}"
+          @tap="jumpTo"
+          id="panorama"
+          class="menu-item"
+          src="/img/ico/panorama.png"
+        ></cover-image>
+
+        <cover-image
+          @tap="toggleCats"
+          class="menu-item {{showCats ? 'selected' : ''}}"
+          src="/img/ico/park.png"
+        ></cover-image>
       </cover-view>
 
       <!-- Cats Picker -->
       <cover-view
-        class="picker {{showCats ? 'show' : ''}}"
+        class="picker {{showCats ? 'show' : ''}} {{!config.panorama.active ? 'cut' : ''}}"
         style="top: {{menuButtonBounding.height + menuButtonBounding.top}}px"
         @tap="selectCat"
       >
         <cover-view
           wx:for="{{__markers}}"
+          wx:if="{{item.type !== '校区'}}"
           wx:key="{{index}}"
           data-id="{{index}}"
           class="option {{catIndex === index ? 'selected' : ''}}"
@@ -344,18 +392,23 @@
         src="/img/ico/btn-go.png"
       ></cover-image>
 
-        <cover-image
-          class="location {{showDeck ? 'active' : ''}} {{toggleRoutes ? 'corner' : ''}}"
-          @tap="locate"
-          src="/img/ico/target.png"
-        ></cover-image>
+      <!-- LOCATION -->
+      <cover-image
+        class="location {{showDeck ? 'active' : ''}} {{toggleRoutes ? 'corner' : ''}}"
+        @tap="locate"
+        src="/img/ico/target.png"
+      ></cover-image>
+      <!-- SEARCH -->
+      <cover-image
+        wx:if="{{!toggleRoutes}}"
+        class="search {{showDeck ? 'active' : ''}}"
+        @tap="jumpTo"
+        id="search"
+        src="/img/ico/search.png"
+      ></cover-image>
 
-        <cover-image
-          wx:if="{{!toggleRoutes}}"
-          class="search {{showDeck ? 'active' : ''}}"
-          @tap="navigateSearch"
-          src="/img/ico/search.png"
-        ></cover-image>
+      <!-- COMPASS PLACEHOLDER -->
+      <cover-view class="compass" @tap="resetMapAngle"></cover-view>
     </map>
 
     <!-- ROUTES -->
@@ -521,6 +574,29 @@
         this.scale = 18
         this.latitude = targetMarker.latitude
         this.longitude = targetMarker.longitude
+      },
+      jumpTo(e) {
+        console.log(e)
+        let targetPage
+        switch (e.target.id) {
+          case 'comment':
+            targetPage = 'comment'
+            break
+          case 'school':
+            targetPage = 'detail'
+            break
+          case 'panorama':
+            targetPage = 'web-view?scene_id=' + this.__markers.forEach(m => {
+              if (m.type === '校区') return m.data[0].panorama
+            })
+            break
+          case 'search':
+            targetPage = 'search'
+            break
+        }
+        wx.navigateTo({
+          url: './' + targetPage
+        })
       }
     }
 
@@ -554,7 +630,6 @@
       const self = this
       const ctx = this.mapContext
       // this.mapCenter = [this.school.latitude, this.school.longitude]
-      // this.map.latitude =
       ctx.getScale({
         success(e) {
           self.scale = e.scale
@@ -596,7 +671,7 @@
           this.$apply()
         })
       })
-
+      this.config = this.$parent.globalData.config
       this.$parent.globalData.menuButtonBounding = wx.getMenuButtonBoundingClientRect()
       this.menuButtonBounding = this.$parent.globalData.menuButtonBounding
     }

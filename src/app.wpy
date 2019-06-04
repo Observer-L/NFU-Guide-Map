@@ -23,7 +23,10 @@
         'pages/routes'
       ],
       window: {
-        navigationStyle: 'custom'
+        navigationStyle: 'custom',
+        backgroundTextStyle: 'light',
+        navigationBarBackgroundColor: '#8BCEFF',
+        navigationBarTitleText: '南苑寻游'
       },
       plugins: {
         'myPlugin': {
@@ -53,6 +56,10 @@
     }
 
     onLaunch() {
+      // 打开调试
+      wx.setEnableDebug({
+        enableDebug: true
+      })
       wx.cloud.init({
         env: 'enanyuan-6db383',
         traceUser: true

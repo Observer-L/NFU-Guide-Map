@@ -1,11 +1,10 @@
 <template lang="wxml">
-<block>
-    <image src="../img/ico/back_{{color}}.png" class="back {{color}}" @tap="back" wx:if="{{!cover}}"/>
-    <cover-view wx:else class="back {{color}}" @tap="back">
-      <cover-image src="../img/ico/back_{{color}}.png"/>
-    </cover-view>
-</block>
-
+    <image
+      src="../img/ico/back_{{color }}.png"
+      class="back {{color}}"
+      style="top:{{menuButtonBounding.top}}px; width:{{menuButtonBounding.height}}px; height:{{menuButtonBounding.height}}px;"
+      @tap="back"
+    ></image>
 </template>
 
 <script>
@@ -16,14 +15,20 @@
       color: {
         type: String,
         default: 'white'
-      },
-      cover: String
+      }
     }
+
     methods = {
       back() {
         wx.navigateBack({
           delta: 1
         })
+      }
+    }
+
+    computed = {
+      menuButtonBounding() {
+        return wx.getMenuButtonBoundingClientRect()
       }
     }
   }
@@ -32,14 +37,14 @@
   .back {
     position: absolute;
     z-index: 100;
-    width: 60rpx;
-    height: 60rpx;
     left: 20rpx;
-    top: 70rpx;
-    background:rgba(0,0,0,.2);
-    border-radius:50%;
-    padding:6rpx;
-    box-shadow:0 0 2px rgba(255,255,255,.2);
+    width: 64rpx;
+    height: 64rpx;
+    background: rgba(0,0,0,.2);
+    padding: 6px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(255,255,255,.2);
     &.black {
       background:rgba(255,255,255,.5);
       box-shadow:0 0 2px rgba(0,0,0,.6);

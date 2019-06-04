@@ -1,31 +1,27 @@
 <style lang="less">
-  navbar .van-nav-bar{
-    height: 140rpx;
-  }
-
-  .top-switch {
+  .cats-wrapper {
     background-color: #fff;
-    height: 6vh;
+    height: 76rpx;
     display: flex;
     justify-content: space-around;
     align-items:center;
-    .top-switch-btn {
+    .cat {
+      padding: 0 20rpx;
       letter-spacing: 3rpx;
       height: 65rpx;
       line-height: 65rpx;
-      color: #000;
       font-size: 14px;
       transition: all .3s ease;
       border-bottom: solid white 0;
-      &.active {
-        border-bottom: solid tomato 1px;
+      &.selected {
+        border-bottom: solid #8BCEFF 1.5px;
         display: inline-block;
       }
     }
   }
 
   .cell-icon {
-    width: 25px;
+    width: 22px;
     height: 25px;
     margin-right:4px;
   }
@@ -33,30 +29,45 @@
 
 <template>
   <view>
-    <navbar
-      left-text="玩转南苑"
-      left-arrow
-      bind:click-left="back"
-    />
-    <search value="{{ value }}" placeholder="请输入搜索关键词" bind:change="search"/>
-    <view  wx:if="{{!isSearch}}">
-      <scroll-view scroll-x style="width: 100%" scroll-into-view="{{targetType}}">
-        <view class="top-switch" style="width:{{buildData.length * 120 < windowWidth ? windowWidth: buildData.length * 120}}rpx;">
-          <label wx:for="{{buildData}}" wx:key="id" id="{{'t' + index}}" @tap="changeType"
-                 class="top-switch-btn {{isSelectedBuildType == index ? 'active' : ''}}">
-            {{item.name}}
+
+    <search
+      value="{{ keywords }}"
+      placeholder="请输入搜索关键词"
+      @change="search" />
+
+    <view wx:if="{{!results.length}}">
+      <scroll-view
+        scroll-x
+        scroll-into-view="{{'cat' + catIndex}}"
+        style="width: 100%"
+      >
+        <view
+          class="cats-wrapper"
+          style="width:{{catsWrapperWidth}}rpx"
+        >
+          <label
+            wx:for="{{markers}}"
+            wx:key="{{index}}"
+            data-id="{{index}}"
+            id="{{'cat' + index}}"
+            @tap="switchCat"
+            class="cat {{catIndex === index ? 'selected' : ''}}"
+          >
+            {{item.type}}
           </label>
         </view>
       </scroll-view>
+
       <view class="search-placeholder">
         <cell-group>
           <cell
-            wx:for="{{buildData[isSelectedBuildType].data}}"
+            wx:for="{{markers[catIndex].data}}"
             wx:key="{{item.id}}"
             title="{{item.name}}"
             clickable="{{true}}"
-            url='about?tid={{isSelectedBuildType}}&bid={{index}}'
-            border="{{true}}" >
+            url='detail?index={{catIndex}}&id={{item.id}}'
+            border="{{true}}"
+          >
             <image slot="icon" class="cell-icon" src="..{{item.iconPath}}"/>
           </cell>
         </cell-group>
@@ -66,13 +77,13 @@
       <view class="search-results">
         <cell-group>
           <cell
-            wx:for="{{searchResults}}"
-            wx:key="{{item.id}}"
+            wx:for="{{results}}"
+            wx:key="{{index}}"
             title="{{item.name}}"
             clickable="{{true}}"
-            url='about?tid={{item.tid}}&bid={{item.id - 1}}'
+            url='detail?type={{item.type}}&id={{item.id}}'
             border="{{true}}" >
-            <image slot="icon" wx:if="{{item.iconPath}}" class="cell-icon" src="{{item.iconPath}}"/>
+            <image slot="icon" wx:if="{{item.iconPath}}" class="cell-icon" src="{{item.iconPath}}"></image>
           </cell>
         </cell-group>
       </view>
@@ -86,73 +97,54 @@
 
   export default class Search extends wepy.page {
     config = {
+      navigationStyle: 'default',
+      disableScroll: true,
       usingComponents: {
-        'navbar': '../components/vant/nav-bar/index',
         'search': '../components/vant/search/index',
         'cell': '../components/vant/cell/index',
         'cell-group': '../components/vant/cell-group/index'
       }
     }
+
+    computed = {
+      catsWrapperWidth() {
+        return this.markers.length * 120 < this.systemInfo.screenWidth ? this.systemInfo.screenWidth : this.markers.length * 120
+      }
+    }
+
     data = {
-      value: '',
-      isSelectedBuild: 0,
-      isSelectedBuildType: 0,
-      buildData: null,
-      windowWidth: '',
-      targetType: 't1',
-      isSearch: false,
-      searchResults: []
+      results: [],
+      systemInfo: {},
+      markers: [],
+      catIndex: 0
+    }
+
+    methods = {
+      switchCat(e) {
+        if (this.catIndex === e.target.dataset.id) return
+        this.catIndex = e.target.dataset.id
+      },
+      search(e) {
+        const results = []
+        const keyword = e.detail.replace(/(^\s*)|(\s*$)/g, '')
+        if (keyword) {
+          for (const i of this.markers) {
+            for (const j of i.data) {
+              if (j.name.includes(keyword)) {
+                results.push(j)
+              }
+            }
+          }
+          this.results = results
+        } else {
+          this.results = []
+        }
+      }
     }
 
     onLoad() {
-      this.buildData = this.$parent.globalData.schoolData.points
-      const self = this
-      wx.getSystemInfo({
-        success: function(res) {
-          // 获取当前设备宽度与高度，用于定位控键的位置
-          self.windowHeight = res.windowHeight
-          self.windowWidth = res.windowWidth
-          self.$apply()
-        }
-      })
-    }
-    changeType(e) {
-      this.targetType = e.target.id
-      this.isSelectedBuildType = Number(e.target.id.replace('t', ''))
-      this.isSelectedBuild = 0
-    }
-    navigateSearch() {
-      wx.navigateTo({
-        url: 'search'
-      })
-    }
-    back () {
-      wx.navigateBack({
-        delta: 1
-      })
-    }
-    search (e) {
-      const results = []
-      const buildData = this.buildData
-      const keyword = e.detail.replace(/(^\s*)|(\s*$)/g, '')
-      if (keyword) {
-        this.isSearch = true
-        for (const i in buildData) {
-          for (const data of buildData[i]['data']) {
-            if (data.name.includes(keyword)) {
-              let result = {}
-              result = data
-              result.tid = i
-              results.push(result)
-            }
-          }
-        }
-        this.searchResults = results
-        console.log(results)
-      } else {
-        this.isSearch = false
-        this.searchResults = []
-      }
+      this.markers = this.$parent.globalData.markers
+      this.systemInfo = wx.getSystemInfoSync()
     }
   }
 </script>
