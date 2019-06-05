@@ -1,70 +1,59 @@
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-var queue = [];
-
-var Dialog = function Dialog(options) {
-  return new Promise(function (resolve, reject) {
-    var pages = getCurrentPages();
-    var ctx = pages[pages.length - 1];
-    var dialog = ctx.selectComponent(options.selector);
-    delete options.selector;
-
-    if (dialog) {
-      dialog.setData(_extends({
-        onCancel: reject,
-        onConfirm: resolve
-      }, options));
-      queue.push(dialog);
-    }
-  });
+let queue = [];
+function getContext() {
+    const pages = getCurrentPages();
+    return pages[pages.length - 1];
+}
+const Dialog = options => {
+    options = Object.assign({}, Dialog.currentOptions, options);
+    return new Promise((resolve, reject) => {
+        const context = options.context || getContext();
+        const dialog = context.selectComponent(options.selector);
+        delete options.selector;
+        if (dialog) {
+            dialog.set(Object.assign({ onCancel: reject, onConfirm: resolve }, options));
+            queue.push(dialog);
+        }
+        else {
+            console.warn('未找到 van-dialog 节点，请确认 selector 及 context 是否正确');
+        }
+    });
 };
-
 Dialog.defaultOptions = {
-  show: true,
-  title: '',
-  message: '',
-  zIndex: 100,
-  overlay: true,
-  asyncClose: false,
-  selector: '#van-dialog',
-  confirmButtonText: '确认',
-  cancelButtonText: '取消',
-  showConfirmButton: true,
-  showCancelButton: false,
-  closeOnClickOverlay: false,
-  confirmButtonOpenType: ''
+    show: true,
+    title: '',
+    message: '',
+    zIndex: 100,
+    overlay: true,
+    className: '',
+    asyncClose: false,
+    messageAlign: '',
+    transition: 'scale',
+    selector: '#van-dialog',
+    confirmButtonText: '确认',
+    cancelButtonText: '取消',
+    showConfirmButton: true,
+    showCancelButton: false,
+    closeOnClickOverlay: false,
+    confirmButtonOpenType: ''
 };
-
-Dialog.alert = function (options) {
-  return Dialog(_extends({}, Dialog.currentOptions, options));
+Dialog.alert = Dialog;
+Dialog.confirm = options => Dialog(Object.assign({ showCancelButton: true }, options));
+Dialog.close = () => {
+    queue.forEach(dialog => {
+        dialog.close();
+    });
+    queue = [];
 };
-
-Dialog.confirm = function (options) {
-  return Dialog(_extends({}, Dialog.currentOptions, {
-    showCancelButton: true
-  }, options));
+Dialog.stopLoading = () => {
+    queue.forEach(dialog => {
+        dialog.stopLoading();
+    });
 };
-
-Dialog.close = function () {
-  queue.forEach(function (dialog) {
-    dialog.close();
-  });
-  queue = [];
+Dialog.setDefaultOptions = options => {
+    Object.assign(Dialog.currentOptions, options);
 };
-
-Dialog.stopLoading = function () {
-  queue.forEach(function (dialog) {
-    dialog.stopLoading();
-  });
+Dialog.resetDefaultOptions = () => {
+    Dialog.currentOptions = Object.assign({}, Dialog.defaultOptions);
 };
-
-Dialog.setDefaultOptions = function (options) {
-  Object.assign(Dialog.currentOptions, options);
-};
-
-Dialog.resetDefaultOptions = function () {
-  Dialog.currentOptions = _extends({}, Dialog.defaultOptions);
-};
-
 Dialog.resetDefaultOptions();
 export default Dialog;

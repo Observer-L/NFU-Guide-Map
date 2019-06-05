@@ -160,7 +160,6 @@
 
 <script>
   import wepy from 'wepy'
-  import Music from 'components/music-player'
   import BackBtn from 'components/back-btn'
   import config from '../config'
 
@@ -170,7 +169,6 @@
     }
 
     components = {
-      music: Music,
       back: BackBtn
     }
 
@@ -218,7 +216,7 @@
       if (options.type) {
         for (const i of this.$parent.globalData.markers) {
           if (i.type === options.type) {
-            this.marker = i.data.filter(m => m.id == options.id)[0]
+            this.marker = i.data.filter(m => m.id === Number(options.id))[0]
           }
         }
       } else if (options.id) {
@@ -236,7 +234,6 @@
 
     loadImages() {
       const imgArr = []
-      console.log(this.marker)
       for (let i = 0; i < this.marker.images; i++) {
         imgArr.push(config.cloud.cloudUrl + 'images/' + (this.marker.short_name || this.marker.name) + '/' + i + '.jpg')
       }

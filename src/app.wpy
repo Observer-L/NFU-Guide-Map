@@ -8,8 +8,6 @@
 <script>
   import wepy from 'wepy'
   import 'wepy-async-function'
-  import db from 'utils/db'
-  import { calloutStyle } from './__config.js'
   import config from './config'
 
   export default class extends wepy.app {
@@ -18,7 +16,7 @@
         'pages/index',
         'pages/search',
         'pages/detail',
-        'pages/comment',
+        'pages/board',
         'pages/web-view',
         'pages/routes'
       ],
@@ -42,7 +40,6 @@
     }
 
     globalData = {
-      school_data: null,
       currentPosition: null,
       menuButtonBounding: null,
       config: config,
@@ -67,7 +64,6 @@
     }
 
     loadMarkers() {
-      const self = this
       let markers = wx.getStorageSync('markers')
       return new Promise(resolve => {
         const db = wx.cloud.database()
@@ -103,28 +99,6 @@
           }
         }
         resolve(markers)
-      })
-    }
-
-    loadSchoolData() {
-      const db = wx.cloud.database()
-      return new Promise(function(resolve, reject) {
-        db.collection('school_data').get().then(res => {
-          const schoolData = res.data[0]
-          for (let i = 0; i < schoolData.points.length; i++) {
-            for (let b = 0; b < schoolData.points[i].data.length; b++) {
-              const data = schoolData.points[i].data[b]
-              data.id = b + 1
-              data.width = 30
-              data.height = 30
-              data.callout = {content: data.name}
-              Object.assign(data.callout, calloutStyle)
-              data.callout.display = 'ALWAYS'
-            }
-          }
-          schoolData.points[0].selected = true
-          resolve(schoolData)
-        })
       })
     }
   }

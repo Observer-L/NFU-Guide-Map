@@ -324,9 +324,9 @@
       >
         <cover-image
           @tap="jumpTo"
-          id="comment"
+          id="board"
           class="menu-item"
-          src="/img/ico/comment.png"
+          src="/img/icons/board.png"
         ></cover-image>
 
         <cover-image
@@ -341,13 +341,13 @@
           @tap="jumpTo"
           id="panorama"
           class="menu-item"
-          src="/img/ico/panorama.png"
+          src="/img/icons/panorama.png"
         ></cover-image>
 
         <cover-image
           @tap="toggleCats"
           class="menu-item {{showCats ? 'selected' : ''}}"
-          src="/img/ico/park.png"
+          src="/img/icons/park.png"
         ></cover-image>
       </cover-view>
 
@@ -396,7 +396,7 @@
       <cover-image
         class="location {{showDeck ? 'active' : ''}} {{toggleRoutes ? 'corner' : ''}}"
         @tap="locate"
-        src="/img/ico/target.png"
+        src="/img/icons/target.png"
       ></cover-image>
       <!-- SEARCH -->
       <cover-image
@@ -404,7 +404,7 @@
         class="search {{showDeck ? 'active' : ''}}"
         @tap="jumpTo"
         id="search"
-        src="/img/ico/search.png"
+        src="/img/icons/search.png"
       ></cover-image>
 
       <!-- COMPASS PLACEHOLDER -->
@@ -576,11 +576,10 @@
         this.longitude = targetMarker.longitude
       },
       jumpTo(e) {
-        console.log(e)
         let targetPage
         switch (e.target.id) {
-          case 'comment':
-            targetPage = 'comment'
+          case 'board':
+            targetPage = 'board'
             break
           case 'school':
             targetPage = 'detail'
@@ -629,7 +628,6 @@
     resetMapAngle() {
       const self = this
       const ctx = this.mapContext
-      // this.mapCenter = [this.school.latitude, this.school.longitude]
       ctx.getScale({
         success(e) {
           self.scale = e.scale

@@ -1,0 +1,339 @@
+<style lang="less">
+  @import "../style/base";
+
+  /* COMMENT */
+  @commentBoardSize: 88vw;
+
+  .comment-board {
+      /*position:absolute;*/
+      /*top: 20rpx;*/
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      width: @commentBoardSize;
+      height: 1000rpx;
+      overflow: scroll;
+      background: #f8f8f8;
+      box-sizing: border-box;
+      padding: 40rpx;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      .msg {
+        margin-bottom: 60rpx;
+      }
+      .fixed-message {
+        position:relative;
+        display:flex;
+        flex-direction:row;
+        justify-content:flex-end;
+        align-items:center;
+        .user-info {
+          &:after {
+            content: '';
+            position: absolute;
+            left: -32rpx;
+            top: 34rpx;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 12px 12px 0 0;
+            border-color: @blue transparent transparent transparent;
+          }
+        }
+        .content {
+          background: @blue;
+          color: #fff;
+          max-width: 420rpx;
+          position: relative;
+          margin-right: 32rpx;
+          font-size:16px;
+          padding:10rpx 20rpx;
+          word-wrap:break-word;
+          border-radius:4px;
+        }
+      }
+      .user-message {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content:flex-start;
+        align-items:center;
+        .user-info {
+          &:after {
+            content: '';
+            position: absolute;
+            right: -32rpx;
+            top: 40rpx;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 12px 12px 0px ;
+            border-color: transparent @green transparent transparent;
+          }
+        }
+        .content {
+          background: @green;
+          max-width: 420rpx;
+          margin-left: 32rpx;
+          position: relative;
+          font-size:12px;
+          padding:10rpx 20rpx;
+          word-wrap:break-word;
+          border-radius:4px;
+          .time {
+            position: absolute;
+            height: 30rpx;
+            font-size: 9px;
+            bottom: -30rpx;
+            min-width:160rpx;
+            left:0;
+            text-align:center;
+            line-height:36rpx;
+          }
+        }
+
+      }
+      .user-info {
+        position: relative;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        .avatar {
+          image {
+            border-radius: 50%;
+            width: 60rpx;
+            height: 60rpx;
+            box-shadow:0 0 6px #aaa;
+          }
+        }
+        .nickname {
+          max-width: 140rpx;
+          font-size: 10px;
+          max-height:68rpx;
+          overflow:hidden;
+        }
+      }
+    }
+  .btn-comment {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: @commentBoardSize;
+    height: 96rpx;
+    .van-field__body--textarea {
+      min-height: 60rpx;
+    }
+  }
+
+  .board {
+    position: relative;
+    top: 20rpx;
+    width: 86vw;
+    margin: 0 auto;
+    background: #fcfcfc;
+    padding: 20rpx;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px 1px #ccc;
+    .title {
+      font-size: 2em;
+      text-align: center;
+    }
+  }
+
+  .btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 40rpx;
+  }
+</style>
+<template>
+  <wxs module="moment" src="../utils/time-filter.wxs"></wxs>
+  <view>
+    <van-toast id="van-toast" />
+
+    <view class="board">
+      <!--<view class="title">校园公告</view>-->
+      <view class="container">
+
+        <van-collapse value="{{ activeNum }}" @change="onChange">
+
+          <van-collapse-item
+            wx:for="{{messages}}"
+            wx:key="{{index}}"
+            title="{{item.type}}"
+            name="{{index}}"
+          >
+            <block
+              wx:for="{{item.data}}"
+              wx:key="{{index}}"
+            >
+              <view class="content">{{item.type}}</view>
+              <view>{{item.desc}}</view>
+            </block>
+
+          </van-collapse-item>
+
+        </van-collapse>
+      </view>
+    </view>
+    <button class="btn" @tap="toggleComment" size="mini" plain type="primary">
+      留言板
+    </button>
+    <van-popup show="{{ showComment }}" @close="toggleComment">
+      <view class="comment-board">
+        <view class="fixed-message msg">
+          <view class="content">hi</view>
+          <view class="user-info">
+            <view class="avatar">
+              <image src="../img/nfsysu-logo.jpg"></image>
+            </view>
+            <view class="nickname">南苑</view>
+          </view>
+        </view>
+        <view class="user-message msg"
+              wx:for="{{comments}}"
+              wx:key="{{index}}"
+              wx:if="{{comments.length}}"
+        >
+          <view class="user-info">
+            <view class="avatar">
+              <image src="{{item.avatar}}"></image>
+            </view>
+            <view class="nickname">{{item.username}}</view>
+          </view>
+          <view class="content">{{item.content}}
+            <view class="time">{{ moment.relativeTime(item.created_time) }}</view>
+          </view>
+        </view>
+      </view>
+      <field
+        class="btn-comment"
+        value="{{ comment }}"
+        type="textarea"
+        placeholder="说点什么"
+        autosize
+        maxlength=140
+        border="{{ true }}"
+        use-button-slot
+        @change="change"
+      >
+        <van-button
+          slot="button"
+          size="small"
+          type="primary"
+          open-type="getUserInfo"
+          loading="{{loading ? true : false}}"
+          @getuserinfo="bindGetUserInfo"
+        >
+          留言
+        </van-button>
+      </field>
+    </van-popup>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import Toast from 'components/vant/toast/toast'
+  import board from '../mock/board'
+
+  export default class Board extends wepy.page {
+    config = {
+      navigationStyle: 'default',
+      navigationBarTitleText: '游览助手',
+      usingComponents: {
+        'field': '../components/vant/field/index',
+        'van-button': '../components/vant/button/index',
+        'van-toast': '../components/vant/toast/index',
+        'van-collapse': '../components/vant/collapse/index',
+        'van-collapse-item': '../components/vant/collapse-item/index',
+        'van-popup': '../components/vant/popup/index'
+      }
+    }
+
+    data = {
+      messages: board,
+      activeNum: [0],
+      comment: '',
+      comments: [],
+      loading: false,
+      showComment: false
+    }
+
+    methods = {
+      onChange(e) {
+        this.activeNum = e.detail
+      },
+      change(e) {
+        this.comment = e.detail
+      },
+      bindGetUserInfo(e) {
+        console.log('bindGetUserInfo', e)
+        const self = this
+        if (!e.detail.userInfo) {
+          Toast.fail({
+            message: '未授权无法留言',
+            duration: 1000
+          })
+        } else if (!this.comment) {
+          Toast.fail({
+            message: '请输入内容',
+            duration: 1000
+          })
+        } else {
+          self.saveComment(e.detail.userInfo)
+          self.$apply()
+        }
+      },
+      toggleComment() {
+        this.showComment = !this.showComment
+      }
+    }
+
+    onLoad() {
+      this.loadComments()
+    }
+
+    loadComments() {
+      const self = this
+      wx.cloud.callFunction({
+        name: 'loadComments',
+        success: res => {
+          console.log(res.result.data, res.result.data.length)
+          self.comments = res.result.data.reverse()
+          self.$apply()
+        }
+      })
+    }
+
+    saveComment(userInfo) {
+      this.loading = true
+      const self = this
+      const db = wx.cloud.database()
+      db.collection('comments').add({
+        data: {
+          username: userInfo.nickName,
+          created_time: new Date().getTime(),
+          avatar: userInfo.avatarUrl,
+          content: self.comment
+        }
+      })
+        .then(res => {
+          wx.cloud.callFunction({
+            name: 'loadComments',
+            success: res => {
+              self.comments = res.result.data.reverse()
+              self.loading = false
+              self.comment = ''
+              Toast.success({
+                message: '留言成功',
+                duration: 1000
+              })
+              self.$apply()
+            }
+          })
+        })
+    }
+  }
+</script>

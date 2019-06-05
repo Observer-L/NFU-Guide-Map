@@ -98,7 +98,6 @@
   export default class Search extends wepy.page {
     config = {
       navigationStyle: 'default',
-      disableScroll: true,
       usingComponents: {
         'search': '../components/vant/search/index',
         'cell': '../components/vant/cell/index',

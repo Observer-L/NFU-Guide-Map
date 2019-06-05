@@ -6,22 +6,21 @@
   loading="{{ loading }}"
   disabled="{{ disabled }}"
   open-type="{{ openType }}"
+  business-id="{{ businessId }}"
   custom-class="van-goods-action-icon"
-  app-parameter="{{ appParameter }}"
-  hover-stay-time="{{ hoverStayTime }}"
-  hover-start-time="{{ hoverStartTime }}"
-  hover-stop-propagation="{{ hoverStopPropagation }}"
   session-from="{{ sessionFrom }}"
-  send-message-title="{{ sendMessageTitle }}"
-  send-message-path="{{ sendMessagePath }}"
+  app-parameter="{{ appParameter }}"
   send-message-img="{{ sendMessageImg }}"
+  send-message-path="{{ sendMessagePath }}"
   show-message-card="{{ showMessageCard }}"
+  send-message-title="{{ sendMessageTitle }}"
   bind:click="onClick"
   binderror="bindError"
   bindcontact="bindContact"
   bindopensetting="bindOpenSetting"
   bindgetuserinfo="bindGetUserInfo"
   bindgetphonenumber="bindGetPhoneNumber"
+  bindlaunchapp="bindLaunchApp"
 >
   <view class="van-goods-action-icon__content van-hairline--right">
     <van-icon
@@ -29,7 +28,8 @@
       name="{{ icon }}"
       info="{{ info }}"
       class="van-goods-action-icon__icon"
+      custom-class="icon-class"
     />
-    {{ text }}
+    <text class="text-class">{{ text }}</text>
   </view>
 </van-button>
