@@ -39,11 +39,9 @@
     }
 
     globalData = {
-      currentPosition: null,
-      menuButtonBounding: null,
       config: config,
       markers: null,
-      debug: config.debug
+      menuButtonBounding: null
     }
 
     constructor() {
@@ -66,28 +64,20 @@
     }
 
     loadMarkers() {
-      let markers = wx.getStorageSync('markers')
+      let markers
       return new Promise(resolve => {
         if (config.debug) {
-          const markers = require('./mock/markers').default
+          markers = require('./mock/markers').default
           this.globalData.markers = markers
           resolve(markers)
         } else {
           const db = wx.cloud.database()
-          if (!markers) {
-            db.collection('markers')
-              .get()
-              .then(res => {
-                this.globalData.markers = res.data
-                resolve(res.data)
-              })
-            wx.setStorage({
-              key: 'markers',
-              data: markers
+          db.collection('markers')
+            .get()
+            .then(res => {
+              this.globalData.markers = res.data
+              resolve(res.data)
             })
-          } else {
-            resolve(markers)
-          }
         }
       })
     }

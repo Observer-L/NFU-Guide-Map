@@ -205,6 +205,11 @@
           margin-right: 4px;
         }
       }
+      .btn-feedback {
+        position: absolute;
+        right: 20rpx;
+        bottom: 20rpx;
+      }
     }
 
     .bg {
@@ -271,6 +276,7 @@
     <view class="about-wrapper {{showAbout ? 'show' : ''}}">
         <image src="../images/logo.jpg" class="bg"></image>
         <view class="content">
+          <button class="btn-feedback" size="mini" open-type="contact">意见反馈</button>
           <view class="title doudong">南苑导览</view>
           <view class="desc">{{info.desc}}</view>
           <view class="contact">
@@ -470,6 +476,7 @@
 
     onLoad() {
       this.loadComments()
+      this.loadBoardMessages()
     }
 
     loadComments() {
@@ -480,11 +487,26 @@
         wx.cloud.callFunction({
           name: 'loadComments',
           success: res => {
-            console.log(res.result.data, res.result.data.length)
             self.comments = res.result.data.reverse()
             self.$apply()
           }
         })
+      }
+    }
+
+    loadBoardMessages() {
+      const self = this
+      if (this.$parent.globalData.debug) {
+        this.comments = require('../mock/board').default
+      } else {
+        console.log(123)
+        const db = wx.cloud.database()
+        db.collection('board')
+          .get()
+          .then(res => {
+            self.messages = res.data
+            self.$apply()
+          })
       }
     }
 
