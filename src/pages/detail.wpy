@@ -1,5 +1,5 @@
 <style lang="less">
-  @import '../style/base';
+  @import '../style/index';
 
   @swiperSize: 400rpx;
   @logoSize: 140rpx;
@@ -61,10 +61,9 @@
         font-size: 12px;
         padding: @padding;
         align-items: center;
-        .icon {
-          width: 42rpx;
-          height: 36rpx;
-          margin-right: 8rpx;
+        .iconfont {
+          color: @color-darker;
+          margin-right: 4px;
         }
       }
     }
@@ -75,7 +74,7 @@
         margin-bottom: @padding*2;
         &:before {
           content: '|';
-          color: @themeColor;
+          color: @color-primary;
           margin-right: 8rpx;
         }
       }
@@ -123,17 +122,17 @@
         ></image>
         <view class="title">
           <view class="name">{{marker.name}}</view>
-          <image class="action navigate" src="../img/icons/navigate.png" @tap="navigate"></image>
+          <image class="action navigate" src="../images/icons/navigate.png" @tap="navigate"></image>
         </view>
       </view>
 
       <view class="more">
         <view class="info address" wx:if="{{marker.contact.address}}" @tap="navigate">
-          <image class="icon" src="../img/icons/location_map.png"></image>
+          <i class="iconfont icon-location"></i>
           <view class="content">{{marker.contact.address}}</view>
         </view>
         <view class="info phone" wx:if="{{marker.contact.phone}}" @tap="call">
-          <image class="icon" src="../img/icons/contact.png"></image>
+          <i class="iconfont icon-phone"></i>
           <view class="content">{{marker.contact.phone}}</view>
         </view>
         <view
@@ -141,7 +140,7 @@
           class="info panorama"
           @tap="show360"
         >
-          <image class="icon" src="../img/icons/sidebar/panorama.png"></image>
+          <i class="iconfont icon-quanjing-m"></i>
           <view class="content">全景看景</view>
         </view>
       </view>

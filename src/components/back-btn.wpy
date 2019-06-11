@@ -1,6 +1,6 @@
 <template lang="wxml">
     <image
-      src="../img/ico/back_{{color }}.png"
+      src="../images/back@{{color }}.png"
       class="back {{color}}"
       style="top:{{menuButtonBounding.top}}px; width:{{menuButtonBounding.height}}px; height:{{menuButtonBounding.height}}px;"
       @tap="back"

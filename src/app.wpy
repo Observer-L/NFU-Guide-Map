@@ -17,8 +17,7 @@
         'pages/search',
         'pages/detail',
         'pages/board',
-        'pages/web-view',
-        'pages/routes'
+        'pages/web-view'
       ],
       window: {
         navigationStyle: 'custom',
@@ -43,7 +42,8 @@
       currentPosition: null,
       menuButtonBounding: null,
       config: config,
-      markers: null
+      markers: null,
+      debug: config.debug
     }
 
     constructor() {
@@ -53,12 +53,14 @@
     }
 
     onLaunch() {
-      // 打开调试
-      wx.setEnableDebug({
-        enableDebug: true
-      })
+      if (config.debug) {
+        // 打开调试
+        wx.setEnableDebug({
+          enableDebug: true
+        })
+      }
       wx.cloud.init({
-        env: 'enanyuan-6db383',
+        env: config.cloud.id,
         traceUser: true
       })
     }
@@ -66,20 +68,26 @@
     loadMarkers() {
       let markers = wx.getStorageSync('markers')
       return new Promise(resolve => {
-        const db = wx.cloud.database()
-        if (!markers) {
-          db.collection('markers')
-            .get()
-            .then(res => {
-              this.globalData.markers = res.data
-              resolve(res.data)
-            })
-          wx.setStorage({
-            key: 'markers',
-            data: markers
-          })
-        } else {
+        if (config.debug) {
+          const markers = require('./mock/markers').default
+          this.globalData.markers = markers
           resolve(markers)
+        } else {
+          const db = wx.cloud.database()
+          if (!markers) {
+            db.collection('markers')
+              .get()
+              .then(res => {
+                this.globalData.markers = res.data
+                resolve(res.data)
+              })
+            wx.setStorage({
+              key: 'markers',
+              data: markers
+            })
+          } else {
+            resolve(markers)
+          }
         }
       })
     }
@@ -91,11 +99,10 @@
           for (const j of i.data) {
             j.id = num
             num += 1
-            j.iconPath = `/img/icons/markers/${i.icon}.png`
+            j.iconPath = `/images/markers/${i.icon}.png`
             j.width = config.markerStyle.width
             j.height = config.markerStyle.height
             j.callout = Object.assign({ content: j.short_name ? j.short_name : j.name }, config.markerStyle.calloutStyle)
-            // if (j.time) { j.fullTime = format2FullTime(j.time) }
           }
         }
         resolve(markers)

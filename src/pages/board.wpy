@@ -3,10 +3,10 @@
 
   /* COMMENT */
   @commentBoardSize: 88vw;
+  @blue: #1296DB;
+  @green: greenyellow;
 
   .comment-board {
-      /*position:absolute;*/
-      /*top: 20rpx;*/
       position: relative;
       left: 50%;
       transform: translateX(-50%);
@@ -141,10 +141,126 @@
   }
 
   .btn {
+    margin: 60rpx;
+  }
+
+  .about {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 40rpx;
+    z-index: 99;
+    bottom: 40rpx;
+    font-size: 12px;
+    color: #aaa;
+    width: 100vw;
+    text-align: center;
+    &.light {
+      color: #fff;
+      .hl {
+        color: #fff;
+        padding: 20rpx;
+      }
+    }
+    .hl {
+      color: #8BCEFF;
+    }
+  }
+
+
+  .about-wrapper {
+    position: absolute;
+    transition: .5s ease;
+    opacity: 0;
+
+    .content {
+      position: absolute;
+      z-index: 99;
+      width: 90vw;
+      background: rgba(255, 255, 255, .5);
+      padding: 20rpx;
+      box-sizing: border-box;
+      border-radius: 12px;
+      left: 50vw;
+      top: 20rpx;
+      transform: translateX(-50%);
+      .title {
+        font-size: 1.6rem;
+        text-align: center;
+        color: #fff;
+        margin-bottom: 20rpx;
+      }
+      .desc {
+        margin-top: 560rpx;
+        font-size: 14px;
+        padding: 20rpx;
+        background: rgba(255, 255, 255, .5);
+        box-shadow: 0 0 40px 10px rgba(75, 254, 254, 1);
+        border: 1.5px solid rgba(255, 255, 255, .5);
+        border-radius: 4px;
+      }
+      .contact {
+        margin-top: 40rpx;
+        text {
+          font-size: 12px;
+        }
+        .iconfont {
+          margin-right: 4px;
+        }
+      }
+    }
+
+    .bg {
+      position: absolute;
+      z-index: 98;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    &.show {
+      opacity: 1;
+    }
+  }
+
+  .doudong{
+    animation: uk-text-shadow-glitch .65s cubic-bezier(1,-1.91,0,2.79) 0s infinite normal both running;
+  }
+  @keyframes uk-text-shadow-glitch {
+    0% {
+      text-shadow: none
+    }
+    25% {
+      text-shadow: -2px -2px 0 #fe004e,2px 2px 0 #00f7ef
+    }
+    50% {
+      text-shadow: 2px -2px 0 #fe004e,-2px 2px 0 #00f7ef
+    }
+    75% {
+      text-shadow: -2px 2px 0 #fe004e,2px -2px 0 #00f7ef
+    }
+    100% {
+      text-shadow: 2px 2px 0 #fe004e,-2px -2px 0 #00f7ef
+    }
+  }
+  @keyframes uk-flicker {
+    0% {
+      opacity: 0
+    }
+    10% {
+      opacity: .6;
+      transform: scale(.8)
+    }
+    20% {
+      opacity: 0
+    }
+    40% {
+      opacity: 1
+    }
+    50% {
+      opacity: .2;
+      transform: scale(1.1)
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1)
+    }
   }
 </style>
 <template>
@@ -152,41 +268,70 @@
   <view>
     <van-toast id="van-toast" />
 
-    <view class="board">
-      <!--<view class="title">校园公告</view>-->
-      <view class="container">
-
-        <van-collapse value="{{ activeNum }}" @change="onChange">
-
-          <van-collapse-item
-            wx:for="{{messages}}"
-            wx:key="{{index}}"
-            title="{{item.type}}"
-            name="{{index}}"
-          >
-            <block
-              wx:for="{{item.data}}"
-              wx:key="{{index}}"
-            >
-              <view class="content">{{item.type}}</view>
-              <view>{{item.desc}}</view>
-            </block>
-
-          </van-collapse-item>
-
-        </van-collapse>
+    <view class="about-wrapper {{showAbout ? 'show' : ''}}">
+        <image src="../images/logo.jpg" class="bg"></image>
+        <view class="content">
+          <view class="title doudong">南苑导览</view>
+          <view class="desc">{{info.desc}}</view>
+          <view class="contact">
+            <view id="github" @tap="copy">
+              <i class="iconfont icon-github"></i>
+              <text>{{info.contact.github}}</text>
+            </view>
+            <view id="qq" @tap="copy">
+              <i class="iconfont icon-qq-copy-copy"></i>
+              <text @tap="copy">{{info.contact.qq}}</text>
+            </view>
+          </view>
+        </view>
       </view>
-    </view>
-    <button class="btn" @tap="toggleComment" size="mini" plain type="primary">
-      留言板
-    </button>
+
+    <van-transition show="{{ !showAbout }}" name="slide-down">
+      <view class="board">
+        <view class="container">
+          <van-collapse value="{{ activeNum }}" @change="onChange">
+
+            <van-collapse-item
+              wx:for="{{messages}}"
+              wx:key="{{index}}"
+              title="{{item.type}}"
+              name="{{index}}"
+            >
+              <block
+                wx:for="{{item.data}}"
+                wx:key="{{index}}"
+              >
+                <view class="content">{{item.type}}</view>
+                <view>{{item.desc}}</view>
+              </block>
+
+            </van-collapse-item>
+
+          </van-collapse>
+        </view>
+      </view>
+    </van-transition>
+
+    <!-- COMMENT BOARD -->
+    <van-transition show="{{ !showAbout }}" name="slide-left">
+      <button
+        class="btn"
+        @tap="toggleComment"
+        size="mini"
+        plain
+        type="primary"
+      >
+        留言板
+      </button>
+    </van-transition>
+
     <van-popup show="{{ showComment }}" @close="toggleComment">
       <view class="comment-board">
         <view class="fixed-message msg">
           <view class="content">hi</view>
           <view class="user-info">
             <view class="avatar">
-              <image src="../img/nfsysu-logo.jpg"></image>
+              <image src="../images/nfsysu-logo.jpg"></image>
             </view>
             <view class="nickname">南苑</view>
           </view>
@@ -230,6 +375,17 @@
         </van-button>
       </field>
     </van-popup>
+
+    <!-- TOGGLE -->
+    <view class="about {{showAbout ? 'light' : ''}}">
+      <block wx:if="{{!showAbout}}">
+        ————— 关于<text class="hl" @tap="toggleAbout">「南苑导览」</text> —————
+      </block>
+      <block wx:else>
+        ————— <text class="hl" @tap="toggleAbout"> X </text> —————
+      </block>
+    </view>
+
   </view>
 </template>
 
@@ -237,28 +393,35 @@
   import wepy from 'wepy'
   import Toast from 'components/vant/toast/toast'
   import board from '../mock/board'
+  import info from '../config/info'
 
   export default class Board extends wepy.page {
     config = {
       navigationStyle: 'default',
       navigationBarTitleText: '游览助手',
+      disableScroll: true,
       usingComponents: {
         'field': '../components/vant/field/index',
         'van-button': '../components/vant/button/index',
         'van-toast': '../components/vant/toast/index',
         'van-collapse': '../components/vant/collapse/index',
         'van-collapse-item': '../components/vant/collapse-item/index',
-        'van-popup': '../components/vant/popup/index'
+        'van-popup': '../components/vant/popup/index',
+        'van-cell': '../components/vant/cell/index',
+        'van-cell-group': '../components/vant/cell-group/index',
+        'van-transition': '../components/vant/transition/index'
       }
     }
 
     data = {
       messages: board,
+      info: info,
       activeNum: [0],
       comment: '',
       comments: [],
       loading: false,
-      showComment: false
+      showComment: false,
+      showAbout: false
     }
 
     methods = {
@@ -269,7 +432,6 @@
         this.comment = e.detail
       },
       bindGetUserInfo(e) {
-        console.log('bindGetUserInfo', e)
         const self = this
         if (!e.detail.userInfo) {
           Toast.fail({
@@ -288,6 +450,21 @@
       },
       toggleComment() {
         this.showComment = !this.showComment
+      },
+      toggleAbout() {
+        this.showAbout = !this.showAbout
+      },
+      copy(e) {
+        let data
+        switch (e.currentTarget.id) {
+          case 'github':
+            data = info.contact.github
+            break
+          case 'qq':
+            data = info.contact.qq
+            break
+        }
+        wx.setClipboardData({data})
       }
     }
 
@@ -297,43 +474,65 @@
 
     loadComments() {
       const self = this
-      wx.cloud.callFunction({
-        name: 'loadComments',
-        success: res => {
-          console.log(res.result.data, res.result.data.length)
-          self.comments = res.result.data.reverse()
-          self.$apply()
-        }
-      })
+      if (this.$parent.globalData.debug) {
+        this.comments = require('../mock/comments').default
+      } else {
+        wx.cloud.callFunction({
+          name: 'loadComments',
+          success: res => {
+            console.log(res.result.data, res.result.data.length)
+            self.comments = res.result.data.reverse()
+            self.$apply()
+          }
+        })
+      }
     }
 
     saveComment(userInfo) {
-      this.loading = true
       const self = this
-      const db = wx.cloud.database()
-      db.collection('comments').add({
-        data: {
+      if (this.$parent.globalData.debug) {
+        self.loading = true
+        setTimeout(() => {
+          Toast.success({
+            message: '测试留言成功',
+            duration: 1000
+          })
+          self.comments.unshift({
+            username: userInfo.nickName,
+            created_time: new Date().getTime(),
+            avatar: userInfo.avatarUrl,
+            content: self.comment
+          })
+          self.comment = ''
+          self.loading = false
+          self.$apply()
+        }, 2000)
+      } else {
+        this.loading = true
+        const db = wx.cloud.database()
+        const data = {
           username: userInfo.nickName,
           created_time: new Date().getTime(),
           avatar: userInfo.avatarUrl,
           content: self.comment
         }
-      })
-        .then(res => {
-          wx.cloud.callFunction({
-            name: 'loadComments',
-            success: res => {
-              self.comments = res.result.data.reverse()
-              self.loading = false
-              self.comment = ''
-              Toast.success({
-                message: '留言成功',
-                duration: 1000
-              })
-              self.$apply()
-            }
+        db.collection('comments').add({data})
+          .then(res => {
+            wx.cloud.callFunction({
+              name: 'loadComments',
+              success: res => {
+                self.comments.unshift(data)
+                self.loading = false
+                self.comment = ''
+                Toast.success({
+                  message: '留言成功',
+                  duration: 1000
+                })
+                self.$apply()
+              }
+            })
           })
-        })
+      }
     }
   }
 </script>

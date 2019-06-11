@@ -4,166 +4,90 @@
     <list default="true" id="39c9c543-f936-4baf-b43a-b539e641e289" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/__config.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.wpy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/action-sheet/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/action-sheet/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/action-sheet/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/action-sheet/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/action-sheet/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/action-sheet/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/area/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/area/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/area/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/area/index.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/area/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/area/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/area/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/area/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/badge-group/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/badge-group/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/badge/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/badge/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/badge/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/badge/index.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/badge/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/badge/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/badge/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/badge/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/button/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/button/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/button/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/button/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/button/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/button/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/card/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/card/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/card/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/card/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/card/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/card/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/cell-group/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/cell-group/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/cell-group/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/cell-group/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/cell-group/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/cell-group/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/cell/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/cell/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/cell/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/cell/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/cell/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/cell/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/checkbox-group/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/checkbox-group/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/checkbox-group/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/checkbox-group/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/checkbox/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/checkbox/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/checkbox/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/checkbox/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/checkbox/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/checkbox/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/col/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/col/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/col/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/col/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/common/class-names.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/common/component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/common/component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/common/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/common/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/common/style/clearfix.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/common/style/clearfix.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/common/style/ellipsis.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/common/style/ellipsis.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/common/style/hairline.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/common/style/hairline.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/common/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/common/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/dialog/dialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/dialog/dialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/dialog/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/dialog/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/dialog/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/dialog/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/dialog/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/dialog/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/field/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/field/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/field/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/field/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/field/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/field/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/goods-action-button/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/goods-action-button/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/goods-action-button/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/goods-action-button/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/goods-action-icon/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/goods-action-icon/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/goods-action-icon/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/goods-action-icon/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/goods-action-icon/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/goods-action-icon/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/goods-action/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/goods-action/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/goods-action/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/goods-action/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/goods-action/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/goods-action/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/icon/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/icon/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/icon/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/icon/index.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/icon/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/icon/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/icon/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/icon/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/loading/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/loading/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/loading/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/loading/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/loading/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/loading/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/mixins/basic.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/mixins/basic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/mixins/button.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/mixins/button.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/mixins/link.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/mixins/link.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/mixins/observer/behavior.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/mixins/observer/behavior.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/mixins/observer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/mixins/observer/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/mixins/observer/props.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/mixins/observer/props.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/mixins/open-type.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/mixins/open-type.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/mixins/touch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/mixins/touch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/mixins/transition.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/mixins/transition.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/nav-bar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/nav-bar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/nav-bar/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/nav-bar/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/nav-bar/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/nav-bar/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/notice-bar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/notice-bar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/notice-bar/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/notice-bar/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/notice-bar/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/notice-bar/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/notify/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/notify/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/notify/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/notify/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/notify/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/notify/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/notify/notify.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/notify/notify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/overlay/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/overlay/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/overlay/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/overlay/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/overlay/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/overlay/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/panel/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/panel/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/popup/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/popup/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/popup/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/popup/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/popup/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/popup/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/progress/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/progress/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/radio-group/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/radio-group/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/radio-group/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/radio-group/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/radio/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/radio/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/radio/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/radio/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/radio/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/radio/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/row/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/row/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/row/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/row/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/search/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/search/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/search/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/search/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/search/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/search/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/slider/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/slider/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/slider/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/slider/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/slider/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/slider/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/stepper/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/stepper/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/stepper/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/stepper/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/stepper/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/stepper/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/steps/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/steps/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/steps/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/steps/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/steps/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/steps/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/submit-bar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/submit-bar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/submit-bar/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/submit-bar/index.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/submit-bar/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/submit-bar/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/submit-bar/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/submit-bar/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/swipe-cell/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/swipe-cell/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/swipe-cell/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/swipe-cell/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/switch-cell/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/switch-cell/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/switch-cell/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/switch-cell/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/switch-cell/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/switch-cell/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/switch/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/switch/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/switch/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/switch/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/switch/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/switch/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tab/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tab/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tab/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tab/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tabbar-item/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tabbar-item/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tabbar-item/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tabbar-item/index.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tabbar-item/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tabbar-item/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tabbar-item/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tabbar-item/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tabbar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tabbar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tabbar/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tabbar/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tabbar/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tabbar/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tabs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tabs/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tabs/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tabs/index.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tabs/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tabs/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tabs/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tabs/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tag/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tag/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tag/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tag/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tag/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tag/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/toast/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/toast/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/toast/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/toast/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/toast/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/toast/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/toast/toast.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/toast/toast.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/transition/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/transition/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/transition/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/transition/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/transition/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/transition/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tree-select/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tree-select/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tree-select/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tree-select/index.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tree-select/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tree-select/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vant/tree-select/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/vant/tree-select/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/icons/markers/card@found.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/icons/markers/card@lost.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/icons/markers/digital@found.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/icons/markers/digital@lost.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/icons/xun.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/icons/you.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/comment.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/board.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/back-btn.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/back-btn.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/cloud.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/cloud.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/QRcode.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/back_black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/back_white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/btn-go.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/building_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/building_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/bulding_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/camera.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/canteen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/comment.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/end.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/gate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/location.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/nfsysu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/panorama.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/park.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/people.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/route.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/sport.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/ss_bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/ss_boy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/ss_girl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/start.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/stop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/store.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/target.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/view.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ico/教学楼.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/board.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/camera-fill.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/contact.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/location.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/location2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/location_map.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/markers/dorm_female.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/markers/jd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/markers/jt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/markers/jxl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/markers/shfw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/markers/ss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/markers/st.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/markers/tycs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/markers/xm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/markers/xzl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/navigate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/nfsysu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/panorama.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/park.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/route.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/sidebar/board.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/sidebar/cats.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/sidebar/navigate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/sidebar/panorama.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/sidebar/school.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/icons/target.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/nfsysu-logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/sece-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/wcy-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/ycx-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/board.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/board.wpy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/detail.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/detail.wpy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.wpy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/search.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/search.wpy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/amap-wx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/format-timestamp.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/qqmap-wx-jssdk.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/time-filter.wxs" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/time-filter.wxs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/routes.wpy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/base.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/base.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/icon.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/index.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/db.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -174,40 +98,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="nfsysu-map" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app.wpy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="48" column="19" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
-              <folding>
-                <element signature="e#112#135#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/config/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/detail.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1883">
-              <caret line="220" column="9" selection-start-line="220" selection-start-column="9" selection-end-line="220" selection-end-column="9" />
-              <folding>
-                <element signature="e#3660#3683#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1207">
+              <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -215,21 +115,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="610" column="21" selection-start-line="610" selection-start-column="21" selection-end-line="610" selection-end-column="21" />
+            <state relative-caret-position="312">
+              <caret line="418" column="57" selection-start-line="418" selection-start-column="57" selection-end-line="418" selection-end-column="57" />
               <folding>
-                <element signature="e#162#445#0" />
-                <element signature="e#3816#3932#0" />
-                <element signature="e#3943#4035#0" />
-                <element signature="e#4048#4206#0" />
                 <element signature="n#style#0;n#cover-view#0;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#cover-view#1;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" />
                 <element signature="n#style#0;n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#cover-view#3;n#map#0;n#view#0;n#template#0;n#!!top" />
-                <element signature="n#cover-view#4;n#map#0;n#view#0;n#template#0;n#!!top" />
-                <element signature="n#cover-image#0;n#map#0;n#view#0;n#template#0;n#!!top" />
-                <element signature="n#view#0;n#view#0;n#template#0;n#!!top" />
                 <element signature="n#style#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#view#0;n#scroll-view#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#view#1;n#scroll-view#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
@@ -239,14 +131,66 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/search.wpy">
+        <entry file="file://$PROJECT_DIR$/src/style/iconfont.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1095">
-              <caret line="102" column="48" lean-forward="true" selection-start-line="102" selection-start-column="48" selection-end-line="102" selection-end-column="48" />
+            <state relative-caret-position="461">
+              <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
               <folding>
-                <element signature="n#style#0;n#view#0;n#scroll-view#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#view#0;n#view#1;n#view#0;n#template#0;n#!!top" />
+                <element signature="e#251#2541#1" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app.wpy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="60" column="7" lean-forward="true" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
+              <folding>
+                <element signature="e#112#135#0" expanded="true" />
+                <element signature="e#1426#1508#0" />
+                <element signature="e#1629#1910#0" />
+                <element signature="e#1783#2294#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mock/comments.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mock/markers.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="14" selection-start-column="14" selection-end-column="14" />
+              <folding>
+                <element signature="e#4272#7014#0" />
+                <element signature="e#7017#7779#0" />
+                <element signature="e#7782#10797#0" />
+                <element signature="e#10800#12178#0" />
+                <element signature="e#12181#18994#0" />
+                <element signature="e#18997#20091#0" />
+                <element signature="e#20094#35128#0" />
+                <element signature="e#35131#35937#0" />
+                <element signature="e#35940#36504#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config/cloud.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="1" column="33" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -254,49 +198,35 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/board.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="146" column="10" selection-start-line="146" selection-start-column="10" selection-end-line="146" selection-end-column="10" />
+            <state relative-caret-position="202">
+              <caret line="190" column="27" lean-forward="true" selection-start-line="190" selection-start-column="27" selection-end-line="190" selection-end-column="27" />
               <folding>
-                <element signature="e#408#447#0" />
-                <element signature="e#469#1264#0" />
-                <element signature="e#1285#2325#0" />
-                <element signature="e#2343#2782#0" />
-                <element signature="n#view#0;n#view#0;n#template#0;n#!!top" />
-                <element signature="n#van-collapse#0;n#view#0;n#view#0;n#view#0;n#template#0;n#!!top" />
-                <element signature="n#van-collapse-item#0;n#van-collapse#0;n#view#0;n#view#0;n#view#0;n#template#0;n#!!top" />
+                <element signature="n#van-transition#0;n#view#0;n#template#0;n#!!top" />
                 <element signature="n#van-popup#0;n#view#0;n#template#0;n#!!top" />
                 <element signature="n#view#0;n#view#0;n#van-popup#0;n#view#0;n#template#0;n#!!top" />
-                <element signature="n#view#0;n#view#0;n#view#0;n#van-popup#0;n#view#0;n#template#0;n#!!top" />
                 <element signature="n#view#1;n#view#0;n#view#0;n#van-popup#0;n#view#0;n#template#0;n#!!top" />
-                <element signature="e#5703#5726#0" expanded="true" />
-                <element signature="e#6257#6986#0" />
-                <element signature="e#8690#8704#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mock/board.js">
+        <entry file="file://$PROJECT_DIR$/src/config/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="38" column="7" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
+            <state relative-caret-position="150">
+              <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
               <folding>
-                <element signature="e#55#345#0" />
-                <element signature="e#141#206#0" />
-                <element signature="e#218#254#0" />
-                <element signature="e#353#561#0" />
-                <element signature="e#475#514#0" />
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/config/markerStyle.js">
+        <entry file="file://$PROJECT_DIR$/src/style/base.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state relative-caret-position="180">
+              <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -306,6 +236,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Less File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -315,7 +246,19 @@
       <find>Boun</find>
       <find>comment</find>
       <find>comments</find>
+      <find>icon</find>
+      <find>about</find>
+      <find>img</find>
+      <find>themeColor</find>
+      <find>proma</find>
+      <find>color-promary</find>
     </findStrings>
+    <replaceStrings>
+      <replace>images</replace>
+      <replace>color-promary</replace>
+      <replace>@color-primary</replace>
+      <replace>color-primary</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -325,29 +268,34 @@
       <list>
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/config/cloud.js" />
-        <option value="$PROJECT_DIR$/src/style/base.less" />
         <option value="$PROJECT_DIR$/src/pages/web-view.wpy" />
-        <option value="$PROJECT_DIR$/src/config/index.js" />
         <option value="$PROJECT_DIR$/src/config/markerStyle.js" />
         <option value="$PROJECT_DIR$/src/mock/routes.js" />
         <option value="$PROJECT_DIR$/src/config/panorama.js" />
-        <option value="$PROJECT_DIR$/src/components/back-btn.wpy" />
-        <option value="$PROJECT_DIR$/src/pages/index.wpy" />
-        <option value="$PROJECT_DIR$/src/app.wpy" />
-        <option value="$PROJECT_DIR$/src/pages/detail.wpy" />
         <option value="$PROJECT_DIR$/src/pages/search.wpy" />
         <option value="$PROJECT_DIR$/src/mock/board.js" />
         <option value="$PROJECT_DIR$/src/utils/time-filter.wxs" />
+        <option value="$PROJECT_DIR$/src/components/back-btn.wpy" />
+        <option value="$PROJECT_DIR$/src/style/index.less" />
+        <option value="$PROJECT_DIR$/src/config/info.js" />
+        <option value="$PROJECT_DIR$/src/config/cloud.js" />
+        <option value="$PROJECT_DIR$/src/style/base.less" />
+        <option value="$PROJECT_DIR$/src/pages/detail.wpy" />
+        <option value="$PROJECT_DIR$/src/style/iconfont.less" />
+        <option value="$PROJECT_DIR$/src/pages/index.wpy" />
+        <option value="$PROJECT_DIR$/src/mock/markers.js" />
+        <option value="$PROJECT_DIR$/src/app.wpy" />
+        <option value="$PROJECT_DIR$/src/mock/comments.js" />
+        <option value="$PROJECT_DIR$/src/config/index.js" />
         <option value="$PROJECT_DIR$/src/pages/board.wpy" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1060" />
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -357,6 +305,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -409,13 +358,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -457,20 +406,23 @@
       <workItem from="1559460735717" duration="2361000" />
       <workItem from="1559535275330" duration="5000" />
       <workItem from="1559642780682" duration="12341000" />
-      <workItem from="1559700354502" duration="12983000" />
+      <workItem from="1559700354502" duration="15743000" />
+      <workItem from="1559810013841" duration="1700000" />
+      <workItem from="1560218781538" duration="11802000" />
+      <workItem from="1560236967361" duration="4464000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63795000" />
+    <option name="totallyTimeSpent" value="84521000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="npm" order="1" side_tool="true" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" weight="0.32995737" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32957748" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -481,21 +433,18 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" x="-3328" y="-43" width="1339" height="531" id="Terminal" order="10" type="FLOATING" visible="true" weight="0.21830986" />
+      <window_info anchor="bottom" x="2463" y="468" width="830" height="531" id="Terminal" order="10" visible="true" weight="0.2656904" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Key Promoter X" order="3" />
-      <window_info anchor="right" content_ui="combo" id="Project" order="4" visible="true" weight="0.1930295" />
+      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="4" visible="true" weight="0.15938166" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/utils/db.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -510,31 +459,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/__config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/pages/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3278">
           <caret line="114" column="27" selection-start-line="114" selection-start-column="11" selection-end-line="114" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mock/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/cloud.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="1" column="10" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -548,25 +476,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/web-view.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/routes.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1800" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/style/base.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_PLUGINS_DIR$/weapp-support-plugin.jar!/lib/weixin-app/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="82">
@@ -574,98 +483,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/back-btn.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/markerStyle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="48" column="19" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
-          <folding>
-            <element signature="e#112#135#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mock/board.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="38" column="7" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
-          <folding>
-            <element signature="e#55#345#0" />
-            <element signature="e#141#206#0" />
-            <element signature="e#218#254#0" />
-            <element signature="e#353#561#0" />
-            <element signature="e#475#514#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="610" column="21" selection-start-line="610" selection-start-column="21" selection-end-line="610" selection-end-column="21" />
-          <folding>
-            <element signature="e#162#445#0" />
-            <element signature="e#3816#3932#0" />
-            <element signature="e#3943#4035#0" />
-            <element signature="e#4048#4206#0" />
-            <element signature="n#style#0;n#cover-view#0;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#cover-view#1;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#cover-view#3;n#map#0;n#view#0;n#template#0;n#!!top" />
-            <element signature="n#cover-view#4;n#map#0;n#view#0;n#template#0;n#!!top" />
-            <element signature="n#cover-image#0;n#map#0;n#view#0;n#template#0;n#!!top" />
-            <element signature="n#view#0;n#view#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#view#0;n#scroll-view#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#view#1;n#scroll-view#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/detail.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1883">
-          <caret line="220" column="9" selection-start-line="220" selection-start-column="9" selection-end-line="220" selection-end-column="9" />
-          <folding>
-            <element signature="e#3660#3683#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/amap-wx.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/format-timestamp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="49" lean-forward="true" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/amap-wx.js" />
+    <entry file="file://$PROJECT_DIR$/src/utils/format-timestamp.js" />
     <entry file="file://$PROJECT_DIR$/src/utils/time-filter.wxs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -676,10 +495,84 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/markerStyle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/routes.wpy" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wepy.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2087" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.config.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/__config.js" />
+    <entry file="file://$PROJECT_DIR$/src/utils/db.js" />
+    <entry file="file://$PROJECT_DIR$/src/components/back-btn.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/style/icon.less" />
+    <entry file="file://$PROJECT_DIR$/src/mock/board.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+          <folding>
+            <element signature="e#55#345#0" />
+            <element signature="e#173#337#0" />
+            <element signature="e#353#561#0" />
+            <element signature="e#569#697#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/info.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/web-view.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mock/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+          <folding>
+            <element signature="e#48#359#0" />
+            <element signature="e#396#537#0" />
+            <element signature="e#574#760#0" />
+            <element signature="e#797#893#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/search.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1095">
-          <caret line="102" column="48" lean-forward="true" selection-start-line="102" selection-start-column="48" selection-end-line="102" selection-end-column="48" />
+        <state relative-caret-position="2850">
+          <caret line="107" column="16" selection-start-line="107" selection-start-column="16" selection-end-line="107" selection-end-column="16" />
           <folding>
             <element signature="n#style#0;n#view#0;n#scroll-view#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#view#0;n#view#1;n#view#0;n#template#0;n#!!top" />
@@ -687,25 +580,117 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/style/index.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/style/base.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/detail.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1207">
+          <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/style/iconfont.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+          <folding>
+            <element signature="e#251#2541#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="418" column="57" selection-start-line="418" selection-start-column="57" selection-end-line="418" selection-end-column="57" />
+          <folding>
+            <element signature="n#style#0;n#cover-view#0;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#cover-view#1;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#view#0;n#scroll-view#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#view#1;n#scroll-view#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/cloud.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="1" column="33" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mock/markers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="14" selection-start-column="14" selection-end-column="14" />
+          <folding>
+            <element signature="e#4272#7014#0" />
+            <element signature="e#7017#7779#0" />
+            <element signature="e#7782#10797#0" />
+            <element signature="e#10800#12178#0" />
+            <element signature="e#12181#18994#0" />
+            <element signature="e#18997#20091#0" />
+            <element signature="e#20094#35128#0" />
+            <element signature="e#35131#35937#0" />
+            <element signature="e#35940#36504#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mock/comments.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="60" column="7" lean-forward="true" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
+          <folding>
+            <element signature="e#112#135#0" expanded="true" />
+            <element signature="e#1426#1508#0" />
+            <element signature="e#1629#1910#0" />
+            <element signature="e#1783#2294#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/board.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="146" column="10" selection-start-line="146" selection-start-column="10" selection-end-line="146" selection-end-column="10" />
+        <state relative-caret-position="202">
+          <caret line="190" column="27" lean-forward="true" selection-start-line="190" selection-start-column="27" selection-end-line="190" selection-end-column="27" />
           <folding>
-            <element signature="e#408#447#0" />
-            <element signature="e#469#1264#0" />
-            <element signature="e#1285#2325#0" />
-            <element signature="e#2343#2782#0" />
-            <element signature="n#view#0;n#view#0;n#template#0;n#!!top" />
-            <element signature="n#van-collapse#0;n#view#0;n#view#0;n#view#0;n#template#0;n#!!top" />
-            <element signature="n#van-collapse-item#0;n#van-collapse#0;n#view#0;n#view#0;n#view#0;n#template#0;n#!!top" />
+            <element signature="n#van-transition#0;n#view#0;n#template#0;n#!!top" />
             <element signature="n#van-popup#0;n#view#0;n#template#0;n#!!top" />
             <element signature="n#view#0;n#view#0;n#van-popup#0;n#view#0;n#template#0;n#!!top" />
-            <element signature="n#view#0;n#view#0;n#view#0;n#van-popup#0;n#view#0;n#template#0;n#!!top" />
             <element signature="n#view#1;n#view#0;n#view#0;n#van-popup#0;n#view#0;n#template#0;n#!!top" />
-            <element signature="e#5703#5726#0" expanded="true" />
-            <element signature="e#6257#6986#0" />
-            <element signature="e#8690#8704#0" />
           </folding>
         </state>
       </provider>

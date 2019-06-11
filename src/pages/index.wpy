@@ -1,11 +1,10 @@
 <style lang="less">
   @import "../style/base.less";
 
-  @padding: 20rpx;
-
   /* SIDE MENU */
   @menuButtonSize: 80rpx;
   @menuButtonMarginTop: 12rpx;
+  @catSize: 80rpx;
 
   .side-menu {
     position:absolute;
@@ -21,9 +20,7 @@
       }
     }
   }
-
   /* PICKER */
-  @catSize: 80rpx;
   .picker {
     position:absolute;
     max-height: @catSize * 6 - (@catSize/2);
@@ -33,7 +30,7 @@
     margin-top: (@catSize + @menuButtonMarginTop) * 4;
     transform: translateX(@catSize + @padding);
     opacity: 0;
-    background:rgba(255,255,255,.6);
+    background: rgba(255,255,255,.6);
     border-radius: 4px;
     transition: @toggle;
     &.cut {
@@ -50,7 +47,7 @@
       text-align:center;
       transition:background .3s ease;
       &.selected {
-        background: @themeColor;
+        background: @color-primary;
         color: #fff;
       }
     }
@@ -64,7 +61,7 @@
     top:160rpx;
     height:82rpx;
     width:95%;
-    background:rgba(0,0,0,.1);
+    background: rgba(0,0,0,.1);
     border-radius:26px;
     box-sizing:border-box;
     line-height:80rpx;
@@ -270,8 +267,8 @@
       background: #eee;
       top:30rpx;
       z-index:99;
-      border-left: @pointSize / 2 solid #0091ff50;
-      border-right: @pointSize / 2 solid #CB404250;
+      border-left: @pointSize / 2 solid @color-primary;
+      border-right: @pointSize / 2 solid @color-contrast;
     }
     .point {
       width: @pointSize;
@@ -326,14 +323,14 @@
           @tap="jumpTo"
           id="board"
           class="menu-item"
-          src="/img/icons/board.png"
+          src="/images/icons/board.png"
         ></cover-image>
 
         <cover-image
           @tap="jumpTo"
           id="school"
           class="menu-item"
-          src="/img/ico/nfsysu.png"
+          src="/images/icons/nfsysu.png"
         ></cover-image>
 
         <cover-image
@@ -341,13 +338,13 @@
           @tap="jumpTo"
           id="panorama"
           class="menu-item"
-          src="/img/icons/panorama.png"
+          src="/images/icons/panorama.png"
         ></cover-image>
 
         <cover-image
           @tap="toggleCats"
           class="menu-item {{showCats ? 'selected' : ''}}"
-          src="/img/icons/park.png"
+          src="/images/icons/park.png"
         ></cover-image>
       </cover-view>
 
@@ -389,14 +386,14 @@
         wx:if="{{!toggleRoutes}}"
         class="btn-go"
         @tap="you"
-        src="/img/ico/btn-go.png"
+        src="/images/btn-go.png"
       ></cover-image>
 
       <!-- LOCATION -->
       <cover-image
         class="location {{showDeck ? 'active' : ''}} {{toggleRoutes ? 'corner' : ''}}"
         @tap="locate"
-        src="/img/icons/target.png"
+        src="/images/icons/target.png"
       ></cover-image>
       <!-- SEARCH -->
       <cover-image
@@ -404,7 +401,7 @@
         class="search {{showDeck ? 'active' : ''}}"
         @tap="jumpTo"
         id="search"
-        src="/img/icons/search.png"
+        src="/images/icons/search.png"
       ></cover-image>
 
       <!-- COMPASS PLACEHOLDER -->
@@ -419,7 +416,7 @@
     >
       <view class="title">{{routes[route[0].id].name}}</view>
       <view class="desc">共有{{routes[route[0].id].count}}个景点</view>
-      <i class="icon-close iconfont btn-close" @tap="closeRoutes"></i>
+      <i class="iconfont icon-baseline-close-px btn-close" @tap="closeRoutes"></i>
       <scroll-view class="route {{showPicker ? 'show' : ''}}" scroll-x>
         <view
           class="points"
@@ -698,7 +695,7 @@
         const point = points[i]
         if (point.name) {
           index += 1
-          point.iconPath = '/img/ico/' + index + '.png'
+          point.iconPath = '/images/ico/' + index + '.png'
           point.width = 22
           point.height = 22
           point.id = String(i)
