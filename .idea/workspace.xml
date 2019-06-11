@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39c9c543-f936-4baf-b43a-b539e641e289" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.wpy" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -44,8 +43,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="186" column="25" selection-start-line="186" selection-start-column="25" selection-end-line="186" selection-end-column="25" />
+            <state relative-caret-position="232">
+              <caret line="200" column="43" lean-forward="true" selection-start-line="200" selection-start-column="43" selection-end-line="200" selection-end-column="43" />
               <folding>
                 <element signature="n#style#0;n#cover-view#1;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" />
@@ -342,12 +341,12 @@
       <workItem from="1559700354502" duration="15743000" />
       <workItem from="1559810013841" duration="1700000" />
       <workItem from="1560218781538" duration="11802000" />
-      <workItem from="1560236967361" duration="10156000" />
+      <workItem from="1560236967361" duration="10327000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90213000" />
+    <option name="totallyTimeSpent" value="90384000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
@@ -625,8 +624,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="186" column="25" selection-start-line="186" selection-start-column="25" selection-end-line="186" selection-end-column="25" />
+        <state relative-caret-position="232">
+          <caret line="200" column="43" lean-forward="true" selection-start-line="200" selection-start-column="43" selection-end-line="200" selection-end-column="43" />
           <folding>
             <element signature="n#style#0;n#cover-view#1;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" />

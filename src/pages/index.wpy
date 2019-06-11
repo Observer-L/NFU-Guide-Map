@@ -198,7 +198,7 @@
       transform:translateX(-@FABsize/3);
     }
     &.corner {
-      transform: translate(-120rpx, 120rpx);
+      transform: translate(-60rpx, 120rpx);
     }
   }
 
