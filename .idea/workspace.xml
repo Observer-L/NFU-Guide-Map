@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="39c9c543-f936-4baf-b43a-b539e641e289" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloudfunctions/login/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloudfunctions/sum/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloudfunctions/sum/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloudfunctions/sum/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.wpy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/board.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/board.wpy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.wpy" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -46,13 +41,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="434" column="17" lean-forward="true" selection-start-line="434" selection-start-column="17" selection-end-line="434" selection-end-column="17" />
+            <state relative-caret-position="322">
+              <caret line="186" column="25" selection-start-line="186" selection-start-column="25" selection-end-line="186" selection-end-column="25" />
               <folding>
-                <element signature="n#style#0;n#cover-view#0;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#cover-view#1;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" />
                 <element signature="n#style#0;n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
@@ -64,10 +58,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
+            <state relative-caret-position="159">
               <caret line="58" column="7" lean-forward="true" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="7" />
               <folding>
                 <element signature="e#112#135#0" expanded="true" />
@@ -209,13 +203,13 @@
         <option value="$PROJECT_DIR$/src/style/base.less" />
         <option value="$PROJECT_DIR$/src/pages/detail.wpy" />
         <option value="$PROJECT_DIR$/src/style/iconfont.less" />
-        <option value="$PROJECT_DIR$/src/pages/index.wpy" />
         <option value="$PROJECT_DIR$/src/mock/markers.js" />
         <option value="$PROJECT_DIR$/src/mock/comments.js" />
         <option value="$PROJECT_DIR$/src/config/index.js" />
         <option value="$PROJECT_DIR$/cloudfunctions/loadBoardMessages/index.js" />
         <option value="$PROJECT_DIR$/src/pages/board.wpy" />
         <option value="$PROJECT_DIR$/src/app.wpy" />
+        <option value="$PROJECT_DIR$/src/pages/index.wpy" />
       </list>
     </option>
   </component>
@@ -348,12 +342,12 @@
       <workItem from="1559700354502" duration="15743000" />
       <workItem from="1559810013841" duration="1700000" />
       <workItem from="1560218781538" duration="11802000" />
-      <workItem from="1560236967361" duration="9318000" />
+      <workItem from="1560236967361" duration="10156000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89375000" />
+    <option name="totallyTimeSpent" value="90213000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
@@ -372,12 +366,12 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" x="2463" y="468" width="830" height="531" id="Terminal" order="10" visible="true" weight="0.2656904" />
+      <window_info active="true" anchor="bottom" x="2463" y="468" width="830" height="531" id="Terminal" order="10" visible="true" weight="0.2656904" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Key Promoter X" order="3" />
-      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="4" visible="true" weight="0.15938166" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="4" visible="true" weight="0.15938166" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,22 +580,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="434" column="17" lean-forward="true" selection-start-line="434" selection-start-column="17" selection-end-line="434" selection-end-column="17" />
-          <folding>
-            <element signature="n#style#0;n#cover-view#0;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#cover-view#1;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#view#0;n#scroll-view#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#view#1;n#scroll-view#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/board.wpy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -637,10 +615,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
+        <state relative-caret-position="159">
           <caret line="58" column="7" lean-forward="true" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="7" />
           <folding>
             <element signature="e#112#135#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="186" column="25" selection-start-line="186" selection-start-column="25" selection-end-line="186" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#cover-view#1;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#cover-view#2;n#map#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#view#0;n#scroll-view#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#view#1;n#scroll-view#0;n#view#0;n#view#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -103,7 +103,7 @@
   }
 
   .pan, .menu-item-wrapper {
-    bottom: 0;
+    bottom: 20rpx;
   }
 
   .btn-go {
@@ -112,7 +112,7 @@
     height: @FABsize;
     z-index:100;
     left: 50%;
-    bottom: @FABsize / 2;
+    bottom: @FABsize / 2 + 20rpx;
     margin-left: -@FABsize / 2;
   }
 
@@ -122,7 +122,7 @@
     height: @FABsize * 2;
     border-radius:50%;
     left: 50%;
-    margin-left: -@FABsize;
+    transform: translateX(-50%);
     z-index: 100;
     &.active {
       .menu-item {
@@ -184,18 +184,18 @@
     width: 42px;
     height: 42px;
     transition: @toggle;
-    bottom: @FABsize * .8;
+    bottom: @FABsize * .9;
   }
   .search {
-    right: @FABsize * .8;
+    right: @FABsize * .5;
     &.active {
-      transform:translateX(@FABsize/2);
+      transform:translateX(@FABsize/3);
     }
   }
   .location {
-    left: @FABsize * .8;
+    left: @FABsize * .5;
     &.active {
-      transform:translateX(-@FABsize/2);
+      transform:translateX(-@FABsize/3);
     }
     &.corner {
       transform: translate(-120rpx, 120rpx);
@@ -309,9 +309,9 @@
     >
 
       <!-- DANMAKU -->
-      <cover-view class="danmaku {{danmuShow ? 'show' : ''}}"  style="{{toggleRoutes ? 'display: none' : ''}}">
-        <cover-view class="dm">{{comments[danmuCounter].content}}</cover-view>
-      </cover-view>
+      <!--<cover-view class="danmaku {{danmuShow ? 'show' : ''}}"  style="{{toggleRoutes ? 'display: none' : ''}}">-->
+        <!--<cover-view class="dm">{{comments[danmuCounter].content}}</cover-view>-->
+      <!--</cover-view>-->
 
       <!-- SIDE MENU -->
       <cover-view
@@ -706,8 +706,6 @@
             borderWidth: 1
           }
           Object.assign(point.callout, config.calloutStyle)
-          // point.label = {content: String(index)}
-          // Object.assign(point.label, config.labelStyle)
           routeData.push(point)
         }
       }
@@ -728,23 +726,23 @@
         this.circles[0].radius = route.circle[0].radius
       }
     }
-    loadComments() {
-      const self = this
-      wx.cloud.callFunction({
-        name: 'loadComments',
-        success: res => {
-          self.comments = res.result.data.reverse()
-          setTimeout(() => {
-            self.danmuShow = true
-            timer = setInterval(() => {
-              self.danmuCounter = self.danmuCounter < self.comments.length - 1 ? self.danmuCounter += 1 : 0
-              self.$apply()
-            }, 2000)
-            self.$apply()
-          }, 1000)
-          self.$apply()
-        }
-      })
-    }
+    // loadComments() {
+    //   const self = this
+    //   wx.cloud.callFunction({
+    //     name: 'loadComments',
+    //     success: res => {
+    //       self.comments = res.result.data.reverse()
+    //       setTimeout(() => {
+    //         self.danmuShow = true
+    //         timer = setInterval(() => {
+    //           self.danmuCounter = self.danmuCounter < self.comments.length - 1 ? self.danmuCounter += 1 : 0
+    //           self.$apply()
+    //         }, 2000)
+    //         self.$apply()
+    //       }, 1000)
+    //       self.$apply()
+    //     }
+    //   })
+    // }
   }
 </script>
