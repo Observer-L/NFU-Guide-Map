@@ -1,12 +1,10 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/logs/logs"
-  ],
+  "pages": ["pages/index/index", "pages/logs/logs"],
   "window": {
+    "navigationStyle": "custom",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarBackgroundColor": "#8BCEFF",
+    "navigationBarTitleText": "南苑导览",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"

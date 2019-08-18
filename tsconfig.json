@@ -3,7 +3,7 @@
     "strictNullChecks": true,
     "noImplicitAny": true,
     "module": "CommonJS",
-    "target": "ES5",
+    "target": "es2015",
     "allowJs": false,
     "experimentalDecorators": true,
     "noImplicitThis": true,
@@ -18,16 +18,8 @@
     "removeComments": true,
     "pretty": true,
     "strictPropertyInitialization": true,
-    "typeRoots": [
-      "./typings"
-    ]
+    "typeRoots": ["./typings"]
   },
-  "include": [
-    "./miniprogram/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "miniprogram_dist",
-    "**/*.spec.ts"
-  ]
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules", "miniprogram_dist", "dist", "**/*.spec.ts"]
 }

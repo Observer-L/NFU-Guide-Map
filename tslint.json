@@ -1,0 +1,6 @@
+{
+  "extends": ["tslint:latest", "tslint-config-alloy"],
+  "linterOptions": {
+    "exclude": ["**/node_modules/**"]
+  }
+}

@@ -1,13 +1,127 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view>
+  <map 
+    name="map" 
+    id="map"
+    longitude="{{longitude}}"
+    latitude="{{latitude}}"
+    scale="{{scale}}"
+
+    markers="{{markers}}"
+    polyline="{{toggleRoutes ? route : ''}}"
+
+    show-location="{{true}}"
+    enable-rotate="{{true}}"
+    enable-overlooking="{{ true }}"
+    enable-3D="{{ true }}"
+    show-compass="{{true}}"
+    style="height:{{toggleRoutes ? '80vh': ''}}"
+  >
+  </map>
+  <!-- SIDE MENU -->
+  <view
+    class="sidebar"
+    hidden="{{toggleRoutes}}"
+    style="top:{{bounding.height + bounding.top}}px"
+  >
+    <image
+      id="board"
+      class="item"
+      src="../../assets/images/board.png"
+    ></image>
+
+    <image
+      id="school"
+      class="item"
+      src="../../assets/images/nfsysu.png"
+    ></image>
+
+    <image
+      id="panorama"
+      class="item"
+      src="../../assets/images/panorama.png"
+    ></image>
+
+    <image
+      class="item cats"
+      src="../../assets/images/park.png"
+      bindtap="toggleCats"
+    >
+      <!-- Cats Picker -->
+      <view
+        class="picker {{showCats ? '' : 'hide'}}"
+        catchtap="selectCat"
+      >
+        <view
+          wx:for="{{allMarkers}}"
+          wx:key="{{index}}"
+          data-id="{{index}}"
+          class="option {{catIndex === index ? 'selected' : ''}}"
+        >
+          {{item.type}}
+        </view>
+      </view>
+    </image>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+  <!-- LOCATION -->
+  <image
+    class="side location {{showDeck ? 'toggle' : ''}} {{toggleRoutes ? 'corner' : ''}}"
+    bindtap="locate"
+    src="../../assets/images/target.png"
+  ></image>
+  <!-- SEARCH -->
+  <image
+    hidden="{{toggleRoutes}}"
+    wx:if="{{!toggleRoutes}}"
+    class="side search {{showDeck ? 'toggle' : ''}}"
+    bindtap="goTo"
+    id="search"
+    src="../../assets/images/search.png"
+  ></image>
+
+  <view class="FAB-wrapper"
+  hidden="{{toggleRoutes}}">
+    <view class="FAB" bindtap="toggleFAB">
+      {{showDeck ? '×' : '游'}}
+    </view>
+    <view class="pan {{showDeck ? 'active' : ''}}" bindtap="selectRoute">
+      <view class="item" data-id="0">中</view>
+      <view class="item" data-id="2">东</view>
+      <view class="item" data-id="3">南</view>
+      <view class="item" data-id="1">西</view>
+    </view> 
+  </view>
+
+  <!-- ROUTES -->
+  <view
+    class="route-wrapper {{toggleRoutes ? 'active' : ''}}"
+  >
+      <view class="head-wrapper">
+        <view class="head">
+          <view class="title">{{routes[routeIndex].name}}</view>
+          <view class="desc">共有{{routes[routeIndex].count}}个景点</view>
+        </view>
+        <i class="btn-close iconfont icon-close-circle" bindtap="closeRoutes"></i>
+      </view>
+      <scroll-view class="route {{showPicker ? 'show' : ''}}" scroll-x scroll-into-view="{{focusPointId}}">
+        <view
+          class="points"
+          style="width:{{routes[routeIndex].count * 140 < windowWidth ? windowWidth : routes[routeIndex].count * 140}}rpx;"
+        >
+          <view
+            wx:for="{{markers}}"
+            wx:key="{{index}}"
+            id="r{{index}}"
+            class="point {{item.selected ? 'selected' : ''}}"
+            bindtap="focusPoint"
+            wx:if="{{item.name}}"
+          >
+            <image src="{{item.iconPath}}" wx:if="{{item.iconPath}}"></image>
+            <text>{{item.name}}</text>
+          </view>
+        </view>
+        <view class="line" style="width:{{routes[routeIndex].count * 140 < windowWidth ? windowWidth : routes[routeIndex].count * 140}}rpx;"></view>
+      </scroll-view>
   </view>
 </view>

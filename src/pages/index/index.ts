@@ -1,57 +1,163 @@
 //index.js
 //获取应用实例
-import { IMyApp } from '../../app'
+import { IMyApp } from "../../app";
+import mockMarkers from "../../mock/markers";
+import routes from "../../mock/routes";
 
-const app = getApp<IMyApp>()
+const app = getApp<IMyApp>();
+
+let markers: any = [];
 
 Page({
   data: {
-    motto: '点击 “编译” 以构建',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-  },
-  //事件处理函数
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad() {
-    if (app.globalData.userInfo) {
-      this.setData!({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true,
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = (res) => {
-        this.setData!({
-          userInfo: res,
-          hasUserInfo: true
-        })
+    mapContext: {} as wx.MapContext,
+    bounding: wx.getMenuButtonBoundingClientRect(),
+    windowWidth: wx.getSystemInfoSync().screenWidth,
+    markers,
+    allMarkers: markers,
+    latitude: 23.632674,
+    longitude: 113.679404,
+    scale: 16,
+    catIndex: 0,
+    showDeck: false,
+    showCats: true,
+    toggleRoutes: false,
+    routeIndex: 0,
+    routes: routes,
+    route: [
+      {
+        points: [],
+        ...app.globalData.config.markerStyle.polylineStyle
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData!({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
+    ],
+    focusPointId: ""
+  },
+  closeRoutes() {
+    this.setData!({
+      markers: this.data.allMarkers[this.data.catIndex].data,
+      toggleRoutes: false
+    });
+    this.includePoints(100);
+  },
+  locate() {
+    this.data.mapContext.moveToLocation();
+  },
+  selectRoute(e: any) {
+    if (!e.target.dataset.id) return;
+    this.setData!({
+      routeIndex: e.target.dataset.id,
+      markers: this.data.routes[e.target.dataset.id].data,
+      "route[0].points": this.data.routes[e.target.dataset.id].data,
+      toggleRoutes: true
+    });
+    this.includePoints(100);
+  },
+  focusPoint(e: any) {
+    console.log(e);
+
+    this.setData!({
+      scale: 18,
+      latitude: this.data.markers[e.currentTarget.id[1]].latitude,
+      longitude: this.data.markers[e.currentTarget.id[1]].longitude,
+      focusPointId: e.currentTarget.id
+    });
+  },
+  // TODO:
+  loadRoutes() {
+    let route: any;
+    for (route of this.data.routes) {
+      let count = 0;
+      for (let point of route.data) {
+        if (point.name) {
+          count += 1;
+          for (const i of this.data.allMarkers) {
+            for (const j of i.data) {
+              if (j.name === point.name || j.short_name === point.name) {
+                point = Object.assign(point, j);
+                break;
+              }
+            }
+          }
+        } else {
+          point.width = 0.1;
+          point.height = 0.1;
         }
-      })
+      }
+      route.count = count;
     }
   },
-
-  getUserInfo(e: any) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+  toggleCats() {
     this.setData!({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+      showCats: !this.data.showCats
+    });
+  },
+  toggleFAB() {
+    this.setData!({
+      showDeck: !this.data.showDeck,
+      showCats: this.data.showDeck
+    });
+  },
+  selectCat(e: any) {
+    this.setData!({
+      markers: this.data.allMarkers[e.target.dataset.id].data,
+      catIndex: e.target.dataset.id
+    });
+    this.includePoints(100);
+  },
+  includePoints(padding: number) {
+    this.data.mapContext.includePoints({
+      padding: [padding, padding, padding, padding],
+      points: this.data.markers
+    });
+  },
+  clearMarkers(markers: any[]) {
+    let num = 0;
+    for (const i of markers) {
+      for (const j of i.data) {
+        j.id = num;
+        num += 1;
+        j.iconPath = `../../assets/images/markers/${i.icon}.png`;
+        j.width = 35;
+        j.height = 35;
+        j.width = app.globalData.config.markerStyle.width;
+        j.height = app.globalData.config.markerStyle.height;
+        j.callout = Object.assign(
+          { content: j.short_name ? j.short_name : j.name },
+          app.globalData.config.markerStyle.calloutStyle
+        );
+      }
+    }
+    return markers;
+  },
+  async loadMarkers() {
+    let markers: any[] = [];
+    if (app.globalData.config.debug) {
+      // 本地
+      markers = mockMarkers;
+    } else {
+      // 云
+      await wx.cloud
+        .database()
+        .collection("markers")
+        .get()
+        .then((res: { data: any[] }) => {
+          markers = res.data;
+        });
+    }
+    markers = this.clearMarkers(markers);
+    app.globalData.markers = markers;
+    this.setData!({
+      markers: markers[this.data.catIndex].data,
+      allMarkers: markers
+    });
+  },
+  onReady() {
+    this.setData!({
+      mapContext: wx.createMapContext("map")
+    });
+  },
+  onLoad() {
+    this.loadMarkers();
+    this.loadRoutes();
   }
-})
+});
