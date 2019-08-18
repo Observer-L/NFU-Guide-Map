@@ -39,10 +39,14 @@ Page({
       case "school":
         url = `/pages/detail/detail?id=${e.target.id}`;
         break;
+      case "panorama":
+        url = `/pages/web-view/web-view?id=0`;
+        break;
       default:
         url = `/pages/detail/detail?id=${e.markerId}${
           !this.data.toggleRoutes ? "&index=" + this.data.catIndex : ""
         }`;
+        break;
     }
     wx.navigateTo({
       url

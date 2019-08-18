@@ -1,0 +1,2 @@
+<!--web-view.wxml-->
+<web-view src="{{panoramaUrl}}"></web-view>

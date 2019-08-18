@@ -43,6 +43,7 @@
       wx:if="{{enablePanorama}}"
       id="panorama"
       class="item"
+      bindtap="navigateTo"
       src="../../assets/images/panorama.png"
     ></image>
 

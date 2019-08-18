@@ -1,5 +1,10 @@
 {
-  "pages": ["pages/index/index", "pages/detail/detail", "pages/logs/logs"],
+  "pages": [
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/web-view/web-view",
+    "pages/logs/logs"
+  ],
   "window": {
     "navigationStyle": "custom",
     "backgroundTextStyle": "light",
