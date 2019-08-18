@@ -3,7 +3,7 @@ import cloud from "./cloud";
 import panorama from "./panorama";
 
 export const config: any = {
-  debug: true,
+  debug: false,
   version: "1.0.0",
   markerStyle,
   cloud,

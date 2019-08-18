@@ -13,6 +13,7 @@ Page({
     mapContext: {} as wx.MapContext,
     bounding: wx.getMenuButtonBoundingClientRect(),
     windowWidth: wx.getSystemInfoSync().screenWidth,
+    enablePanorama: app.globalData.config.panorama.active,
     markers,
     allMarkers: markers,
     latitude: 23.632674,
@@ -23,7 +24,7 @@ Page({
     showCats: true,
     toggleRoutes: false,
     routeIndex: 0,
-    routes: routes,
+    routes,
     route: [
       {
         points: [],
@@ -31,6 +32,21 @@ Page({
       }
     ],
     focusPointId: ""
+  },
+  navigateTo(e: any) {
+    let url: string = "";
+    switch (e.target.id) {
+      case "school":
+        url = `/pages/detail/detail?id=${e.target.id}`;
+        break;
+      default:
+        url = `/pages/detail/detail?id=${e.markerId}${
+          !this.data.toggleRoutes ? "&index=" + this.data.catIndex : ""
+        }`;
+    }
+    wx.navigateTo({
+      url
+    });
   },
   closeRoutes() {
     this.setData!({
@@ -72,6 +88,7 @@ Page({
           count += 1;
           for (const i of this.data.allMarkers) {
             for (const j of i.data) {
+              // console.count(1)
               if (j.name === point.name || j.short_name === point.name) {
                 point = Object.assign(point, j);
                 break;
@@ -156,8 +173,8 @@ Page({
       mapContext: wx.createMapContext("map")
     });
   },
-  onLoad() {
-    this.loadMarkers();
+  async onLoad() {
+    await this.loadMarkers();
     this.loadRoutes();
   }
 });

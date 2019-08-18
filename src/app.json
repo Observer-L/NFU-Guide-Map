@@ -1,5 +1,5 @@
 {
-  "pages": ["pages/index/index", "pages/logs/logs"],
+  "pages": ["pages/index/index", "pages/detail/detail", "pages/logs/logs"],
   "window": {
     "navigationStyle": "custom",
     "backgroundTextStyle": "light",
