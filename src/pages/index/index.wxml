@@ -80,8 +80,8 @@
     hidden="{{toggleRoutes}}"
     wx:if="{{!toggleRoutes}}"
     class="side search {{showDeck ? 'toggle' : ''}}"
-    bindtap="goTo"
     id="search"
+    bindtap="navigateTo"
     src="../../assets/images/search.png"
   ></image>
 

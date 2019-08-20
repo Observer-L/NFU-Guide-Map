@@ -1,0 +1,23 @@
+<!--search.wxml-->
+<view style="height:100vh" bindtap="initResults">
+  <view class="header">
+    <input class="search" maxlength="10" placeholder="请输入地点关键词" value="{{keyword}}" bindinput="search" />
+    <scroll-view scroll-x scroll-into-view="c{{catIndex}}">
+      <view class="cats"
+        style="width:{{allMarkers.length * 100 < windowWidth ? windowWidth : allMarkers.length * 100}}rpx;"
+        bindtap="selectCat">
+        <view wx:for="{{allMarkers}}" wx:key="{{index}}" class="{{catIndex == index && !keyword ? 'active' : ''}}"
+          id="c{{index}}">
+          {{item.type}}
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="results" bindtap="navigateTo">
+    <view wx:for="{{markers}}" wx:key="{{index}}" data-id="{{item.id}}" class="item">
+      <image class="icon" src="{{item.iconPath}}"></image>
+      <view class="content">{{item.name}}</view>
+    </view>
+  </view>
+</view>

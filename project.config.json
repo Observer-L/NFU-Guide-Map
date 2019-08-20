@@ -13,13 +13,14 @@
     "beforeUpload": "npm run tsc"
   },
   "setting": {
-    "urlCheck": false,
-    "es6": false,
+    "urlCheck": true,
+    "es6": true,
     "enhance": true,
     "postcss": true,
     "minified": true,
     "newFeature": true,
     "coverView": true,
+    "nodeModules": false,
     "autoAudits": false,
     "checkInvalidKey": true,
     "checkSiteMap": true,

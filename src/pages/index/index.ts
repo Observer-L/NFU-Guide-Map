@@ -6,16 +6,14 @@ import routes from "../../mock/routes";
 
 const app = getApp<IMyApp>();
 
-let markers: any = [];
-
 Page({
   data: {
     mapContext: {} as wx.MapContext,
     bounding: wx.getMenuButtonBoundingClientRect(),
     windowWidth: wx.getSystemInfoSync().screenWidth,
     enablePanorama: app.globalData.config.panorama.active,
-    markers,
-    allMarkers: markers,
+    markers: [] as any,
+    allMarkers: [] as any,
     latitude: 23.632674,
     longitude: 113.679404,
     scale: 16,
@@ -41,6 +39,9 @@ Page({
         break;
       case "panorama":
         url = `/pages/web-view/web-view?id=0`;
+        break;
+      case "search":
+        url = `/pages/search/search`;
         break;
       default:
         url = `/pages/detail/detail?id=${e.markerId}${

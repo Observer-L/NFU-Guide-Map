@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/detail/detail",
     "pages/web-view/web-view",
+    "pages/search/search",
     "pages/logs/logs"
   ],
   "window": {
