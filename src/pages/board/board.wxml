@@ -1,5 +1,6 @@
 <!--board.wxml-->
 <view>
+  <wxs module="moment" src="../../wxs/moment.wxs"></wxs>
   <Back color="{{showAbout ? 'black' : 'white'}}" />
   <van-toast id="van-toast" />
   <view class="first-wrapper" style="top:{{bounding.height + bounding.top}}px">
@@ -46,7 +47,7 @@
             <view class="nickname">{{item.username}}</view>
           </view>
           <view class="content">{{item.content}}
-            <view class="time">{{ moment.relativeTime(item.created_time) }}</view>
+            <view class="time">{{ moment(item.created_time) }}</view>
           </view>
         </view>
       </view>
