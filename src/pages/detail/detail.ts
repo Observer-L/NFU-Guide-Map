@@ -22,6 +22,26 @@ Page({
       urls: this.data.imgUrls
     });
   },
+  navigate() {
+    // https://mp.weixin.qq.com/wxopen/pluginbasicprofile?action=intro&appid=wx5bc2ac602a747594&token=&lang=zh_CN
+    let plugin = requirePlugin("routePlan");
+    let key = app.globalData.config.key;
+    let referer = "";
+    let endPoint = JSON.stringify({
+      name: this.data.marker.name,
+      latitude: this.data.marker.latitude,
+      longitude: this.data.marker.longitude
+    });
+    wx.navigateTo({
+      url:
+        "plugin://routePlan/index?key=" +
+        key +
+        "&referer=" +
+        referer +
+        "&endPoint=" +
+        endPoint
+    });
+  },
   navigateTo(e: any) {
     switch (e.target.id) {
       case "address":

@@ -4,3 +4,5 @@ package-lock.json
 yarn.lock
 .vscode/
 dist/
+
+src/config/secret.ts
