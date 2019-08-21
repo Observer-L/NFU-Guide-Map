@@ -11,7 +11,7 @@
   "dependencies": {
     "miniprogram-computed": "0.0.6",
     "miniprogram-watch": "0.0.2",
-    "moment": "^2.23.0",
+    "vant-weapp": "^0.5.19",
     "wxapp-session-request": "^1.1.0"
   },
   "devDependencies": {

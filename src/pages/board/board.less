@@ -1,0 +1,232 @@
+@import "../../assets/styles/_animation.less";
+@import "../../assets/styles/iconfont.less";
+
+.first-wrapper {
+  position: absolute;
+  z-index: 101;
+  padding: 50rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* COMMENT */
+@blue: #1296db;
+@green: greenyellow;
+
+.comment-board {
+  width: 85vw;
+  height: 66vh;
+  overflow: scroll;
+  box-sizing: border-box;
+  padding: 40rpx;
+  background: #f8f8f8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+  .msg {
+    margin-bottom: 60rpx;
+  }
+
+  .fixed-message {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    .user-info {
+      &:after {
+        content: "";
+        position: absolute;
+        left: -32rpx;
+        top: 34rpx;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 12px 12px 0 0;
+        border-color: @blue transparent transparent transparent;
+      }
+    }
+
+    .content {
+      background: @blue;
+      color: #fff;
+      max-width: 420rpx;
+      position: relative;
+      margin-right: 32rpx;
+      font-size: 16px;
+      padding: 10rpx 20rpx;
+      word-wrap: break-word;
+      border-radius: 4px;
+    }
+  }
+
+  .user-message {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    .user-info {
+      &:after {
+        content: "";
+        position: absolute;
+        right: -32rpx;
+        top: 40rpx;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 12px 12px 0px;
+        border-color: transparent @green transparent transparent;
+      }
+    }
+
+    .content {
+      background: @green;
+      max-width: 420rpx;
+      margin-left: 32rpx;
+      position: relative;
+      font-size: 12px;
+      padding: 10rpx 20rpx;
+      word-wrap: break-word;
+      border-radius: 4px;
+
+      .time {
+        position: absolute;
+        height: 30rpx;
+        font-size: 9px;
+        bottom: -30rpx;
+        min-width: 160rpx;
+        left: 0;
+        text-align: center;
+        line-height: 36rpx;
+      }
+    }
+  }
+
+  .user-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .avatar {
+      image {
+        border-radius: 50%;
+        width: 60rpx;
+        height: 60rpx;
+        box-shadow: 0 0 6px #aaa;
+      }
+    }
+
+    .nickname {
+      max-width: 140rpx;
+      font-size: 10px;
+      max-height: 68rpx;
+      overflow: hidden;
+    }
+  }
+}
+
+.about {
+  position: absolute;
+  z-index: 99;
+  bottom: 40rpx;
+  font-size: 12px;
+  color: #aaa;
+  width: 100vw;
+  text-align: center;
+
+  &.light {
+    color: #fff;
+
+    .hl {
+      color: #fff;
+      padding: 20rpx;
+    }
+  }
+
+  .hl {
+    color: #8bceff;
+  }
+}
+
+.about-wrapper {
+  position: absolute;
+  transition: 0.5s ease;
+  opacity: 0;
+
+  .content {
+    position: absolute;
+    z-index: 99;
+    width: 90vw;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 20rpx;
+    box-sizing: border-box;
+    border-radius: 12px;
+    left: 50vw;
+    top: 20rpx;
+    margin-top: 30rpx;
+    transform: translateX(-50%);
+    animation: shining 16s ease-out infinite normal both running;
+
+    .title {
+      font-size: 1.3rem;
+      text-align: center;
+      color: #fff;
+    }
+
+    .desc {
+      margin-top: 560rpx;
+      font-size: 14px;
+      padding: 20rpx;
+      background: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 40px 10px rgba(75, 254, 254, 1);
+      border: 1.5px solid rgba(255, 255, 255, 0.5);
+      border-radius: 4px;
+      animation: shining 8s ease-in-out 0s infinite normal both running;
+    }
+
+    .contact {
+      margin-top: 40rpx;
+
+      > view {
+        display: flex;
+        align-items: center;
+      }
+
+      text {
+        font-size: 12px;
+      }
+
+      .iconfont {
+        margin-right: 4px;
+      }
+    }
+
+    .btn-feedback {
+      position: absolute;
+      right: 20rpx;
+      bottom: 20rpx;
+    }
+  }
+
+  .bg {
+    position: absolute;
+    z-index: 98;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  &.show {
+    opacity: 1;
+  }
+}
+
+.doudong {
+  // animation: uk-text-shadow-glitch .65s cubic-bezier(1, -1.91, 0, 2.79) 0s infinite normal both running;
+}
+
+.btn-cmoment_entry {
+  margin-top: 30rpx;
+}

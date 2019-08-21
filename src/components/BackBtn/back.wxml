@@ -1,5 +1,5 @@
 <i 
-  class="btn-back iconfont icon-arrowleft"
+  class="btn-back iconfont icon-arrowleft {{color}}"
   bindtap="onButtonTap"
   style="top:{{bounding.top}}px;height:{{bounding.height}}px;line-height:{{bounding.height}}px;width:{{bounding.height}}px;"
 ></i>

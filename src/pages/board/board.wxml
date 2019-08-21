@@ -1,0 +1,93 @@
+<!--board.wxml-->
+<view>
+  <Back color="{{showAbout ? 'black' : 'white'}}" />
+  <van-toast id="van-toast" />
+  <view class="first-wrapper" style="top:{{bounding.height + bounding.top}}px">
+    <!-- BOARD -->
+    <van-transition show="{{ !showAbout }}" name="fade-down">
+      <view class="board">
+        <view class="container">
+          <van-collapse value="{{ activeNum }}" bindchange="toggleBoard">
+
+            <van-collapse-item wx:for="{{messages}}" wx:key="{{index}}" title="{{item.type}}" name="{{index}}">
+              <block wx:for="{{item.data}}" wx:key="{{index}}">
+                <view class="content">{{item.type}}</view>
+                <view>{{item.desc}}</view>
+              </block>
+
+            </van-collapse-item>
+
+          </van-collapse>
+        </view>
+      </view>
+    </van-transition>
+    <!-- COMMENT ENTRY -->
+    <van-transition show="{{ !showAbout }}" name="fade-left">
+      <van-button plain type="primary" custom-class="btn-cmoment_entry" bindtap="toggleComments">留言板</van-button>
+    </van-transition>
+
+    <!-- COMMENT BOARD -->
+    <van-popup show="{{ showComment }}" bindclose="toggleComments">
+      <view class="comment-board" style="top:{{bounding.height + bounding.top}}px">
+        <view class="fixed-message msg">
+          <view class="content">hi</view>
+          <view class="user-info">
+            <view class="avatar">
+              <image src="../../assets/images/nfsysu-logo.jpg"></image>
+            </view>
+            <view class="nickname">南苑</view>
+          </view>
+        </view>
+        <view class="user-message msg" wx:for="{{comments}}" wx:key="{{index}}" wx:if="{{comments.length}}">
+          <view class="user-info">
+            <view class="avatar">
+              <image src="{{item.avatar}}"></image>
+            </view>
+            <view class="nickname">{{item.username}}</view>
+          </view>
+          <view class="content">{{item.content}}
+            <view class="time">{{ moment.relativeTime(item.created_time) }}</view>
+          </view>
+        </view>
+      </view>
+      <field value="{{ comment }}" type="textarea" placeholder="说点什么" maxlength="140" border="{{ true }}" autosize
+        use-button-slot bindchange="inputComment">
+        <van-button slot="button" size="small" type="primary" open-type="getUserInfo"
+          loading="{{loading ? true : false}}" bindgetuserinfo="send">
+          留言
+        </van-button>
+      </field>
+    </van-popup>
+  </view>
+
+  <!-- ABOUT -->
+  <view class="about-wrapper {{showAbout ? 'show' : ''}}">
+    <image src="../../assets/images/bg.jpg" class="bg"></image>
+    <view class="content" style="top:{{bounding.height + bounding.top}}px">
+      <button class="btn-feedback" size="mini" open-type="contact">意见反馈</button>
+      <!-- <view class="title doudong">南苑导览</view> -->
+      <view class="desc">{{info.desc}}</view>
+      <view class="contact">
+        <view id="github" bindtap="copy">
+          <i class="iconfont icon-github-fill"></i>
+          <text>{{info.contact.github}}</text>
+        </view>
+        <view id="qq" bindtap="copy">
+          <i class="iconfont icon-QQ-circle-fill"></i>
+          <text bindtap="copy">{{info.contact.qq}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- TOGGLE -->
+  <view class="about {{showAbout ? 'light' : ''}}">
+    <block wx:if="{{!showAbout}}">
+      ————— 关于<text class="hl" bindtap="toggleAbout">「南苑导览」</text> —————
+    </block>
+    <block wx:else>
+      ————— <text class="hl" bindtap="toggleAbout"> X </text> —————
+    </block>
+  </view>
+
+</view>

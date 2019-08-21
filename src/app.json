@@ -4,14 +4,14 @@
     "pages/detail/detail",
     "pages/web-view/web-view",
     "pages/search/search",
-    "pages/logs/logs"
+    "pages/board/board"
   ],
   "window": {
     "navigationStyle": "custom",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#8BCEFF",
     "navigationBarTitleText": "南苑导览",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json"
 }

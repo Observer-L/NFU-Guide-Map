@@ -1,0 +1,60 @@
+@keyframes uk-text-shadow-glitch {
+  0% {
+    text-shadow: none;
+  }
+  25% {
+    text-shadow: -2px -2px 0 #fe004e, 2px 2px 0 #00f7ef;
+  }
+  50% {
+    text-shadow: 2px -2px 0 #fe004e, -2px 2px 0 #00f7ef;
+  }
+  75% {
+    text-shadow: -2px 2px 0 #fe004e, 2px -2px 0 #00f7ef;
+  }
+  100% {
+    text-shadow: 2px 2px 0 #fe004e, -2px -2px 0 #00f7ef;
+  }
+}
+
+@keyframes uk-flicker {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+    transform: scale(0.8);
+  }
+  20% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shining {
+  0% {
+    box-shadow: 0 0 20px 20px rgba(75, 254, 254, 0.1);
+  }
+  10% {
+    box-shadow: 0 0 40px 10px rgba(75, 254, 254, 1);
+  }
+  40% {
+    box-shadow: 0 0 60px 10px rgba(75, 254, 254, 1);
+  }
+  50% {
+    opacity: 0.9;
+    box-shadow: 0 0 40px 10px rgba(75, 254, 254, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 20px 10px rgba(75, 254, 254, 0.4);
+  }
+}

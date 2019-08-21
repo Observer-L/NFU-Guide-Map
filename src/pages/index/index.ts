@@ -40,6 +40,9 @@ Page({
       case "panorama":
         url = `/pages/web-view/web-view?id=0`;
         break;
+      case "board":
+        url = "/pages/board/board";
+        break;
       case "search":
         url = `/pages/search/search`;
         break;

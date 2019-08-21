@@ -29,6 +29,7 @@
     <image
       id="board"
       class="item"
+      bindtap="navigateTo"
       src="../../assets/images/board.png"
     ></image>
 

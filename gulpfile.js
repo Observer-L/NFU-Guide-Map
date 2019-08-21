@@ -69,12 +69,12 @@ var copyNodeModuleOption = {
   allowEmpty: true
 };
 
-// //复制依赖的node_modules文件
-// gulp.task('copyNodeModules', () => {
-//   return gulp
-//     .src(nodeModulesCopyPath, copyNodeModuleOption)
-//     .pipe(gulp.dest(dist));
-// });
+//复制依赖的node_modules文件
+gulp.task("copyNodeModules", () => {
+  return gulp
+    .src(nodeModulesCopyPath, copyNodeModuleOption)
+    .pipe(gulp.dest(dist));
+});
 // //复制依赖的node_modules文件(只改动有变动的文件）
 // gulp.task('copyNodeModulesChange', () => {
 //   return gulp
@@ -82,19 +82,19 @@ var copyNodeModuleOption = {
 //     .pipe(changed(dist))
 //     .pipe(gulp.dest(dist));
 // });
-// // 根据denpende生成package.json
-// gulp.task('generatePackageJson', () => {
-//   return gulp
-//     .src('./package.json')
-//     .pipe(
-//       jsonTransform(function(data, file) {
-//         return {
-//           dependencies: dependencies
-//         };
-//       })
-//     )
-//     .pipe(gulp.dest('dist'));
-// });
+// 根据denpende生成package.json
+gulp.task("generatePackageJson", () => {
+  return gulp
+    .src("./package.json")
+    .pipe(
+      jsonTransform(function(data, file) {
+        return {
+          dependencies: dependencies
+        };
+      })
+    )
+    .pipe(gulp.dest("dist"));
+});
 
 gulp.task("npm", () => {
   return gulp
@@ -177,12 +177,12 @@ gulp.task(
     // sync
     gulp.parallel(
       "copy",
-      // 'copyNodeModules',
-      // 'generatePackageJson',
+      "copyNodeModules",
+      "generatePackageJson",
       "less",
       "tsCompile"
     ),
-    "npm",
+    // "npm",
     "watch"
   )
 );
@@ -196,12 +196,12 @@ gulp.task(
     gulp.parallel(
       // async
       "copy",
-      // 'copyNodeModules',
-      // 'generatePackageJson',
+      "copyNodeModules",
+      "generatePackageJson",
       "less",
       "tsCompile"
-    ),
-    "npm"
+    )
+    // "npm"
   )
 );
 
