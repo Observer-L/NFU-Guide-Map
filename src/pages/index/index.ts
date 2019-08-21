@@ -29,6 +29,7 @@ Page({
         ...app.globalData.config.markerStyle.polylineStyle
       }
     ],
+    circles: [],
     focusPointId: ""
   },
   navigateTo(e: any) {
@@ -68,11 +69,23 @@ Page({
   },
   selectRoute(e: any) {
     if (!e.target.dataset.id) return;
+
+    let circles = this.data.routes[e.target.dataset.id].circles;
+    let _circles = [];
+    if (circles) {
+      for (const c of circles) {
+        _circles.push({
+          ...c,
+          ...app.globalData.config.markerStyle.circleStyle
+        });
+      }
+    }
     this.setData!({
       routeIndex: e.target.dataset.id,
       markers: this.data.routes[e.target.dataset.id].data,
       "route[0].points": this.data.routes[e.target.dataset.id].data,
-      toggleRoutes: true
+      toggleRoutes: true,
+      circles: _circles
     });
     this.includePoints(100);
   },

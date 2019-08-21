@@ -9,6 +9,7 @@
 
     markers="{{markers}}"
     polyline="{{toggleRoutes ? route : ''}}"
+    circles="{{toggleRoutes && circles ? circles : ''}}"
 
     show-location="{{true}}"
     enable-rotate="{{true}}"
