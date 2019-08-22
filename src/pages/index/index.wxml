@@ -25,7 +25,7 @@
   <view
     class="sidebar"
     hidden="{{toggleRoutes}}"
-    style="top:{{bounding.height + bounding.top}}px"
+    style="top:{{bounding.height + bounding.top + 10}}px"
   >
     <image
       id="board"
