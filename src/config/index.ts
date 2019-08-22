@@ -4,7 +4,7 @@ import panorama from "./panorama";
 import { key } from "./secret";
 
 export const config: any = {
-  debug: false,
+  debug: true,
   version: "1.0.0",
   markerStyle,
   cloud,

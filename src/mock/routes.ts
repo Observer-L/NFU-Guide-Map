@@ -5,10 +5,10 @@ export default [
     data: [
       { name: "铜像" },
       { name: "校训石" },
-      { latitude: "23.633890", longitude: "113.677559" },
-      { latitude: "23.633737", longitude: "113.677420" },
+      // { latitude: "23.633890", longitude: "113.677559" },
+      // { latitude: "23.633737", longitude: "113.677420" },
       { name: "图书馆" },
-      { latitude: "23.631914", longitude: "113.679115" },
+      // { latitude: "23.631914", longitude: "113.679115" },
       { name: "大礼堂" },
       { name: "壁画墙" },
       { name: "南芳湖" }
