@@ -1,12 +1,12 @@
 export default {
-  width: 28,
-  height: 36,
+  width: 26,
+  height: 34,
   calloutStyle: {
     display: "ALWAYS",
     bgColor: "#ffffff",
     borderRadius: 3,
     fontSize: 9,
-    padding: 3
+    padding: 6
   },
   polylineStyle: {
     color: "#FFFFFF",

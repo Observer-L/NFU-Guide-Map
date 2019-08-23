@@ -4,6 +4,7 @@
     "ignore": []
   },
   "miniprogramRoot": "dist/",
+  "cloudfunctionRoot": "cloudfunctions",
   "compileType": "miniprogram",
   "libVersion": "2.8.0",
   "projectname": "ts_NFU-Guide-Map",

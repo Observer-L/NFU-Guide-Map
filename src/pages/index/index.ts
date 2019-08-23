@@ -154,11 +154,18 @@ Page({
       for (const j of i.data) {
         j.id = num;
         num += 1;
-        j.iconPath = `../../assets/images/markers/${i.icon}.png`;
-        j.width = 35;
-        j.height = 35;
-        j.width = app.globalData.config.markerStyle.width;
-        j.height = app.globalData.config.markerStyle.height;
+        j.iconPath = `/assets/images/markers/${j.icon ? j.icon : i.icon}.png`;
+        if (j.icon) {
+          let scale =
+            j.icon.indexOf("@") !== -1
+              ? j.icon.slice(j.icon.indexOf("@") + 1)
+              : 1;
+          j.width = app.globalData.config.markerStyle.width * scale;
+          j.height = app.globalData.config.markerStyle.height * scale;
+        } else {
+          j.width = app.globalData.config.markerStyle.width;
+          j.height = app.globalData.config.markerStyle.height;
+        }
         j.callout = Object.assign(
           { content: j.short_name ? j.short_name : j.name },
           app.globalData.config.markerStyle.calloutStyle
@@ -175,19 +182,36 @@ Page({
     } else {
       // 云
       await wx.cloud
-        .database()
-        .collection("markers")
-        .get()
-        .then((res: { data: any[] }) => {
-          markers = res.data;
+        .callFunction({
+          name: "loadMarkers"
+        })
+        .then((res: any) => {
+          markers = res.result.data;
         });
     }
-    markers = this.clearMarkers(markers);
+    markers = this.clearMarkers(this.sortMarkers(markers));
     app.globalData.markers = markers;
     this.setData!({
       markers: markers[this.data.catIndex].data,
       allMarkers: markers
     });
+  },
+  sortMarkers(markers: any) {
+    if (markers.length <= 1) {
+      return markers;
+    }
+    var pivotIndex = Math.floor(markers.length / 2);
+    var pivot = markers.splice(pivotIndex, 1)[0];
+    var left = [];
+    var right = [];
+    for (var i = 0; i < markers.length; i++) {
+      if (markers[i].position < pivot.position) {
+        left.push(markers[i]);
+      } else {
+        right.push(markers[i]);
+      }
+    }
+    return this.sortMarkers(left).concat([pivot], this.sortMarkers(right));
   },
   onReady() {
     this.setData!({

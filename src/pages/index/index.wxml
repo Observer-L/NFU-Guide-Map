@@ -61,6 +61,7 @@
       >
         <view
           wx:for="{{allMarkers}}"
+          wx:if="{{item.type !== '校区'}}"
           wx:key="{{index}}"
           data-id="{{index}}"
           class="option {{catIndex === index ? 'selected' : ''}}"
