@@ -14,7 +14,7 @@
 
 原生小程序 + TypeScript + gulp + vantUI + 云开发能力
 
-项目开源，持续维护，欢迎[反馈](issues)、 [PR](pulls) 和 Star⭐️！
+项目开源，持续维护，欢迎[反馈](https://github.com/Observer-L/NFU-Guide-Map/issues)、 [PR](https://github.com/Observer-L/NFU-Guide-Map/pulls) 和 Star⭐️！
 
 </div>
 
@@ -56,7 +56,7 @@
 ————— routes.ts // 路线推荐
 ```
 
-1. 本项目使用 excel 管理数据，使用 python pandas 来清洗数据，数据格式及使用说明详[见此](example)。
+1. 本项目使用 excel 管理数据，使用 python pandas 来清洗数据，数据格式及使用说明详[见此](https://github.com/Observer-L/NFU-Guide-Map/tree/master/example)。
 
 2. 通过 npm 使用第三方 UI 组件库[VantUI](https://youzan.github.io/vant-weapp/#/intro)，因此需要在开发工具中进行 npm 构建，详细操作见[小程序文档 - npm 支持](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)。
 
@@ -78,7 +78,7 @@ NFU-Guide-Map
 
 ## 📄 版本日志
 
-每个版本详细的迭代记录在[release notes](releases)。
+每个版本详细的迭代记录在[release notes](https://github.com/Observer-L/NFU-Guide-Map/releases)。
 
 ## 📷 影像资源版权说明
 
