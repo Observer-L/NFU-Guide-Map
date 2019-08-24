@@ -1,9 +1,7 @@
 //board.js
 import { IMyApp } from "../../app";
-import mockComments from "../../mock/comments";
-import mockBoard from "../../mock/board";
 import info from "../../config/info";
-import Toast from "../../miniprogram_npm/vant-weapp/toast/toast";
+import { mockBoard, mockComments } from "../../mock/index";
 
 const app = getApp<IMyApp>();
 
@@ -18,10 +16,6 @@ Page({
     showAbout: false,
     loading: false,
     bounding: wx.getMenuButtonBoundingClientRect()
-  },
-  onLoad() {
-    this.loadBoardMessages();
-    this.loadComments();
   },
   copy(e: any) {
     let data: string = "";
@@ -62,8 +56,9 @@ Page({
     let userInfo: any = e.detail.userInfo;
     // TODO: validate
     if (!self.data.comment.trim()) {
-      Toast.fail({
-        message: "请检查输入内容",
+      wx.showToast({
+        title: "请检查输入内容",
+        icon: "none",
         duration: 1000
       });
       return;
@@ -80,8 +75,9 @@ Page({
     self.data.comments.unshift(data);
     if (app.globalData.config.debug) {
       setTimeout(() => {
-        Toast.success({
-          message: "测试留言成功",
+        wx.showToast({
+          title: "测试留言成功",
+          icon: "success",
           duration: 1000
         });
         this.setData!({
@@ -92,7 +88,6 @@ Page({
       }, 2000);
     } else {
       const db = wx.cloud.database();
-
       db.collection("comments")
         .add({ data })
         .then(() => {
@@ -106,8 +101,9 @@ Page({
                 comment: "",
                 loading: false
               });
-              Toast.success({
-                message: "留言成功",
+              wx.showToast({
+                title: "留言成功",
+                icon: "success",
                 duration: 1000
               });
             });
@@ -141,12 +137,14 @@ Page({
       db.collection("board")
         .get()
         .then((res: any) => {
-          console.log(res);
-
           this.setData!({
             messages: res.data
           });
         });
     }
+  },
+  onLoad() {
+    this.loadBoardMessages();
+    this.loadComments();
   }
 });

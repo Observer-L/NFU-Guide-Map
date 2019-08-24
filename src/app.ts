@@ -4,6 +4,7 @@ export interface IMyApp {
     userInfo?: wx.UserInfo;
     markers: any[];
     config: any;
+    cloudRoot: string;
   };
 }
 
@@ -26,6 +27,8 @@ App<IMyApp>({
     });
     console.log("* 当前环境：", env);
     this.globalData.config = config;
+    this.globalData.cloudRoot =
+      config.cloud[config.debug ? "dev" : "prod"].cloudRoot;
 
     // 展示本地存储能力
     // var logs: number[] = wx.getStorageSync('logs') || []
@@ -33,7 +36,8 @@ App<IMyApp>({
     // wx.setStorageSync('logs', logs)
   },
   globalData: {
+    config,
     markers: [],
-    config
+    cloudRoot: ""
   }
 });

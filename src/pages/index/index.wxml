@@ -6,18 +6,15 @@
     longitude="{{longitude}}"
     latitude="{{latitude}}"
     scale="{{scale}}"
-
     markers="{{markers}}"
     polyline="{{toggleRoutes ? route : ''}}"
     circles="{{toggleRoutes && circles ? circles : ''}}"
-
     show-location="{{true}}"
     enable-rotate="{{true}}"
     enable-overlooking="{{ true }}"
     enable-3D="{{ true }}"
     show-compass="{{true}}"
     style="height:{{toggleRoutes ? '80vh': ''}}"
-
     bindmarkertap="navigateTo"
   >
   </map>

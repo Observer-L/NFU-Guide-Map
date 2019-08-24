@@ -1,45 +1,20 @@
 //detail.js
-//获取应用实例
 import { IMyApp } from "../../app";
 
 const app = getApp<IMyApp>();
 
 Page({
   data: {
-    cloudRoot:
-      app.globalData.config.cloud[app.globalData.config.debug ? "dev" : "prod"]
-        .cloudRoot,
     marker: {} as any,
-    imgUrls: [
-      "cloud://enanyuan-6db383.656e-enanyuan-6db383-1257936504/images/南苑/0.jpg"
-    ],
     logoUrl: "",
-    enablePanorama: app.globalData.config.panorama.active
+    cloudRoot: app.globalData.cloudRoot,
+    enablePanorama: app.globalData.config.panorama.active,
+    imgUrls: [app.globalData.cloudRoot + "images/placeholder.jpg"]
   },
   previewImage(e: any) {
     wx.previewImage({
       current: this.data.imgUrls[e.target.dataset.id],
       urls: this.data.imgUrls
-    });
-  },
-  navigate() {
-    // https://mp.weixin.qq.com/wxopen/pluginbasicprofile?action=intro&appid=wx5bc2ac602a747594&token=&lang=zh_CN
-    let plugin = requirePlugin("routePlan");
-    let key = app.globalData.config.key;
-    let referer = "";
-    let endPoint = JSON.stringify({
-      name: this.data.marker.name,
-      latitude: this.data.marker.latitude,
-      longitude: this.data.marker.longitude
-    });
-    wx.navigateTo({
-      url:
-        "plugin://routePlan/index?key=" +
-        key +
-        "&referer=" +
-        referer +
-        "&endPoint=" +
-        endPoint
     });
   },
   navigateTo(e: any) {
@@ -111,4 +86,24 @@ Page({
         : ""
     });
   }
+  // navigate() {
+  //   // https://mp.weixin.qq.com/wxopen/pluginbasicprofile?action=intro&appid=wx5bc2ac602a747594&token=&lang=zh_CN
+  //   let plugin = requirePlugin("routePlan");
+  //   let key = app.globalData.config.key;
+  //   let referer = "";
+  //   let endPoint = JSON.stringify({
+  //     name: this.data.marker.name,
+  //     latitude: this.data.marker.latitude,
+  //     longitude: this.data.marker.longitude
+  //   });
+  //   wx.navigateTo({
+  //     url:
+  //       "plugin://routePlan/index?key=" +
+  //       key +
+  //       "&referer=" +
+  //       referer +
+  //       "&endPoint=" +
+  //       endPoint
+  //   });
+  // }
 });

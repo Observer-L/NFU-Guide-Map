@@ -6,7 +6,7 @@ export default {
     bgColor: "#ffffff",
     borderRadius: 3,
     fontSize: 9,
-    padding: 6
+    padding: 4
   },
   polylineStyle: {
     color: "#FFFFFF",

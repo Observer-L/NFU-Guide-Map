@@ -9,9 +9,9 @@ Page({
     allMarkers: [] as any,
     markers: [],
     isInputFocus: false,
-    windowWidth: wx.getSystemInfoSync().screenWidth,
     catIndex: 0,
-    keyword: ""
+    keyword: "",
+    windowWidth: wx.getSystemInfoSync().screenWidth
   },
   selectCat(e: any) {
     let catIndex: number = e.target.id[1];
@@ -31,13 +31,6 @@ Page({
   toggleResults() {
     this.setData!({
       isInputFocus: !this.data.isInputFocus
-    });
-  },
-  onLoad() {
-    this.setData!({
-      search: this.search.bind(this),
-      allMarkers: app.globalData.markers,
-      markers: app.globalData.markers[this.data.catIndex].data
     });
   },
   search(e: any) {
@@ -61,5 +54,12 @@ Page({
         url: `/pages/detail/detail?id=${e.target.dataset.id}&index=${this.data.catIndex}`
       });
     }
+  },
+  onLoad() {
+    this.setData!({
+      search: this.search.bind(this),
+      allMarkers: app.globalData.markers,
+      markers: app.globalData.markers[this.data.catIndex].data
+    });
   }
 });

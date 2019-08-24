@@ -1,36 +1,34 @@
 //index.js
-//获取应用实例
 import { IMyApp } from "../../app";
-import mockMarkers from "../../mock/markers";
-import routes from "../../mock/routes";
+import { mockMarkers, mockRoutes } from "../../mock/index";
 
 const app = getApp<IMyApp>();
 
 Page({
   data: {
-    mapContext: {} as wx.MapContext,
-    bounding: wx.getMenuButtonBoundingClientRect(),
-    windowWidth: wx.getSystemInfoSync().screenWidth,
-    enablePanorama: app.globalData.config.panorama.active,
     markers: [] as any,
     allMarkers: [] as any,
+    circles: [],
     latitude: 23.632674,
     longitude: 113.679404,
     scale: 16,
     catIndex: 0,
+    routeIndex: 0,
     showDeck: false,
     showCats: true,
     toggleRoutes: false,
-    routeIndex: 0,
-    routes,
+    focusPointId: "",
+    routes: mockRoutes,
     route: [
       {
         points: [],
         ...app.globalData.config.markerStyle.polylineStyle
       }
     ],
-    circles: [],
-    focusPointId: ""
+    mapContext: {} as wx.MapContext,
+    bounding: wx.getMenuButtonBoundingClientRect(),
+    windowWidth: wx.getSystemInfoSync().screenWidth,
+    enablePanorama: app.globalData.config.panorama.active
   },
   navigateTo(e: any) {
     let url: string = "";
@@ -69,7 +67,6 @@ Page({
   },
   selectRoute(e: any) {
     if (!e.target.dataset.id) return;
-
     let circles = this.data.routes[e.target.dataset.id].circles;
     let _circles = [];
     if (circles) {
@@ -89,41 +86,6 @@ Page({
     });
     this.includePoints(100);
   },
-  focusPoint(e: any) {
-    console.log(e);
-
-    this.setData!({
-      scale: 18,
-      latitude: this.data.markers[e.currentTarget.id[1]].latitude,
-      longitude: this.data.markers[e.currentTarget.id[1]].longitude,
-      focusPointId: e.currentTarget.id
-    });
-  },
-  // TODO:
-  loadRoutes() {
-    let route: any;
-    for (route of this.data.routes) {
-      let count = 0;
-      for (let point of route.data) {
-        if (point.name) {
-          count += 1;
-          for (const i of this.data.allMarkers) {
-            for (const j of i.data) {
-              // console.count(1)
-              if (j.name === point.name || j.short_name === point.name) {
-                point = Object.assign(point, j);
-                break;
-              }
-            }
-          }
-        } else {
-          point.width = 0.1;
-          point.height = 0.1;
-        }
-      }
-      route.count = count;
-    }
-  },
   toggleCats() {
     this.setData!({
       showCats: !this.data.showCats
@@ -142,10 +104,62 @@ Page({
     });
     this.includePoints(100);
   },
+  focusPoint(e: any) {
+    this.setData!({
+      scale: 18,
+      latitude: this.data.markers[e.currentTarget.id[1]].latitude,
+      longitude: this.data.markers[e.currentTarget.id[1]].longitude,
+      focusPointId: e.currentTarget.id
+    });
+  },
   includePoints(padding: number) {
     this.data.mapContext.includePoints({
       padding: [padding, padding, padding, padding],
       points: this.data.markers
+    });
+  },
+  sortMarkers(markers: any): any {
+    if (markers.length <= 1) return markers;
+    let left = [];
+    let right = [];
+    let pivotIndex = Math.floor(markers.length / 2);
+    let pivot = markers.splice(pivotIndex, 1)[0];
+    for (const i of markers) {
+      if (i.position < pivot.position) {
+        left.push(i);
+      } else {
+        right.push(i);
+      }
+    }
+    return this.sortMarkers(left).concat([pivot], this.sortMarkers(right));
+  },
+  // TODO:
+  loadRoutes() {
+    let route: any;
+    for (route of this.data.routes) {
+      let count = 0;
+      for (let point of route.data) {
+        if (point.name) {
+          count += 1;
+          for (const i of this.data.allMarkers) {
+            for (const j of i.data) {
+              if (j.name === point.name || j.short_name === point.name) {
+                point = Object.assign(point, j);
+                break;
+              }
+            }
+          }
+        } else {
+          // 隐藏节点
+          point.iconPath = `/assets/images/markers/jd.png`;
+          point.width = 1;
+          point.height = 1;
+        }
+      }
+      route.count = count;
+    }
+    this.setData!({
+      routes: this.data.routes
     });
   },
   clearMarkers(markers: any[]) {
@@ -196,30 +210,13 @@ Page({
       allMarkers: markers
     });
   },
-  sortMarkers(markers: any) {
-    if (markers.length <= 1) {
-      return markers;
-    }
-    var pivotIndex = Math.floor(markers.length / 2);
-    var pivot = markers.splice(pivotIndex, 1)[0];
-    var left = [];
-    var right = [];
-    for (var i = 0; i < markers.length; i++) {
-      if (markers[i].position < pivot.position) {
-        left.push(markers[i]);
-      } else {
-        right.push(markers[i]);
-      }
-    }
-    return this.sortMarkers(left).concat([pivot], this.sortMarkers(right));
+  async onLoad() {
+    await this.loadMarkers();
+    this.loadRoutes();
   },
   onReady() {
     this.setData!({
       mapContext: wx.createMapContext("map")
     });
-  },
-  async onLoad() {
-    await this.loadMarkers();
-    this.loadRoutes();
   }
 });
