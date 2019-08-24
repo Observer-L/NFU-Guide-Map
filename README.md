@@ -56,13 +56,14 @@
 ————— routes.ts // 路线推荐
 ```
 
-3. 本项目使用 excel 管理数据，使用 python pandas 来清洗数据，数据格式及使用说明详[见此]('./example')。
+1. 本项目使用 excel 管理数据，使用 python pandas 来清洗数据，数据格式及使用说明详[见此](example)。
 
-4. 通过 npm 使用第三方 UI 组件库[VantUI](https://youzan.github.io/vant-weapp/#/intro)，因此需要在开发工具中进行 npm 构建，详细操作见[小程序文档 - npm 支持](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)。
+2. 通过 npm 使用第三方 UI 组件库[VantUI](https://youzan.github.io/vant-weapp/#/intro)，因此需要在开发工具中进行 npm 构建，详细操作见[小程序文档 - npm 支持](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)。
 
-5. 起飞：
+3. 起飞：
 
 ```
+npm install
 npm run dev
 ```
 
@@ -75,3 +76,11 @@ npm run dev
 - [莞香广科 · 校园导览](https://github.com/gxgk/school-map)
 
 - [wxapp-typescript-demo](https://github.com/godbasin/wxapp-typescript-demo)
+
+## 📒 影像资源版权说明
+
+本项目所用影像收集自校园官网、社团、师生。版权所有，未经允许，禁止盗用。
+
+## LICENSE
+
+「南苑导览」使用[MIT license](LICENSE)
