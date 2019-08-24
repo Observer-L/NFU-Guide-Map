@@ -14,7 +14,7 @@
 
 原生小程序 + TypeScript + gulp + vantUI + 云开发能力
 
-项目开源，持续维护，欢迎反馈和 PR。
+项目开源，持续维护，欢迎[反馈](issues)、 [PR](pulls) 和 Star⭐️！
 
 </div>
 
@@ -29,7 +29,7 @@
 ✅ 全景看景（功能已实现，个人类小程序受限，暂未开放）  
 🔲 社团、商铺信息互联互通
 
-## 📝 使用指南
+## 📋 使用指南
 
 1. 在根目录 config 中，根据自身需求修改应用配置
 
@@ -67,6 +67,23 @@ npm install
 npm run dev
 ```
 
+## 🔩 分支管理
+
+```
+NFU-Guide-Map
+  ├─ master       // 默认分支
+  ├─ wepy@1.7.2       // 使用wepy框架开发的初始版本，在wepy2和框架踩坑的权衡之后停止维护，用原生重写
+  └─ [other]      // 其他开发分支（只允许该项目Collaborators创建及push分支）
+```
+
+## 📄 版本日志
+
+每个版本详细的迭代记录在[release notes](releases)。
+
+## 📷 影像资源版权说明
+
+本项目所用影像收集自校园官网、在校师生，社团组织。版权所有，未经允许，禁止盗用。
+
 ## 参考资料
 
 - [小程序 API 文档](https://tencent.github.io/wepy/)
@@ -76,10 +93,6 @@ npm run dev
 - [莞香广科 · 校园导览](https://github.com/gxgk/school-map)
 
 - [wxapp-typescript-demo](https://github.com/godbasin/wxapp-typescript-demo)
-
-## 📒 影像资源版权说明
-
-本项目所用影像收集自校园官网、社团、师生。版权所有，未经允许，禁止盗用。
 
 ## LICENSE
 
