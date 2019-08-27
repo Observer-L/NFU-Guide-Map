@@ -5,4 +5,4 @@ yarn.lock
 .vscode/
 dist/
 
-src/config/secret.ts
+# src/config/secret.ts

@@ -34,33 +34,33 @@
 1. 在根目录 config 中，根据自身需求修改应用配置
 
 ```javascript
-—— src
-——— config
-————— index.ts // 入口
-————— cloud.ts // 云开发相关配置
-————— info.ts // 应用介绍信息
-————— markerStyle.ts // 地图marker样式
-————— panorama.ts // 第三方全景地图配置（个人类型无webview权限，默认关闭）
-————— secret.ts // 腾讯地图key等敏感信息（可选）
+├─ src
+├─── config
+├───── index.ts // 入口
+├───── cloud.ts // 云开发相关配置
+├───── info.ts // 应用介绍信息
+├───── markerStyle.ts // 地图marker样式
+├───── panorama.ts // 第三方全景地图配置（个人类型无webview权限，默认关闭）
+└───── secret.ts // 腾讯地图key等敏感信息（可选）
 ```
 
 2. 在开发环境中，如不使用云开发能力，可以使用本地 mock 数据
 
 ```javascript
-—— src
-——— mock
-————— index.ts // 入口
-————— board.ts // 公告
-————— comments.ts // 留言
-————— markers.ts // 地点
-————— routes.ts // 路线推荐
+├─ src
+├─── mock
+├──── index.ts // 入口
+├──── board.ts // 公告
+├──── comments.ts // 留言
+├──── markers.ts // 地点
+└──── routes.ts // 路线推荐
 ```
 
-1. 本项目使用 excel 管理数据，使用 python pandas 来清洗数据，数据格式及使用说明详[见此](https://github.com/Observer-L/NFU-Guide-Map/tree/master/example)。
+3. 本项目使用 excel 管理数据，使用 python pandas 来清洗数据，数据格式及使用说明详[见此](https://github.com/Observer-L/NFU-Guide-Map/tree/master/example)。
 
-2. 通过 npm 使用第三方 UI 组件库[VantUI](https://youzan.github.io/vant-weapp/#/intro)，因此需要在开发工具中进行 npm 构建，详细操作见[小程序文档 - npm 支持](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)。
+4. 通过 npm 使用第三方 UI 组件库[VantUI](https://youzan.github.io/vant-weapp/#/intro)，因此需要在开发工具中进行 npm 构建，详细操作见[小程序文档 - npm 支持](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)。
 
-3. 起飞：
+5. 起飞：
 
 ```
 npm install

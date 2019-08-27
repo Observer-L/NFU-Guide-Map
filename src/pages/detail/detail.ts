@@ -9,7 +9,7 @@ Page({
     logoUrl: "",
     cloudRoot: app.globalData.cloudRoot,
     enablePanorama: app.globalData.config.panorama.active,
-    imgUrls: [app.globalData.cloudRoot + "images/placeholder.jpg"]
+    imgUrls: []
   },
   previewImage(e: any) {
     wx.previewImage({
@@ -24,8 +24,8 @@ Page({
         wx.openLocation({
           latitude: Number(this.data.marker.latitude),
           longitude: Number(this.data.marker.longitude),
-          name: this.data.marker.name
-          // scale: 15
+          name: this.data.marker.name,
+          scale: 15
         });
         break;
       case "phone":
@@ -46,6 +46,7 @@ Page({
     console.log(options);
     let marker: any;
     let imgUrls: any = [];
+    let debug: boolean = app.globalData.config.debug;
     switch (options.id) {
       case "school":
         marker =
@@ -68,42 +69,25 @@ Page({
         }
         break;
     }
-    for (let i = 0; i < marker.images; i++) {
-      imgUrls.push(
-        this.data.cloudRoot +
-          "images/" +
-          (marker.short_name || marker.name) +
-          "/" +
-          i +
-          ".jpg"
-      );
+    if (!debug) {
+      for (let i = 0; i < marker.images; i++) {
+        imgUrls.push(
+          this.data.cloudRoot +
+            "images/" +
+            (marker.short_name || marker.name) +
+            "/" +
+            i +
+            ".jpg"
+        );
+      }
     }
     this.setData!({
       marker,
       imgUrls,
-      logoUrl: marker.logo
-        ? this.data.cloudRoot + "logo/" + marker.logo + ".jpg"
-        : ""
+      logoUrl:
+        marker.logo && !debug
+          ? this.data.cloudRoot + "logo/" + marker.logo + ".jpg"
+          : ""
     });
   }
-  // navigate() {
-  //   // https://mp.weixin.qq.com/wxopen/pluginbasicprofile?action=intro&appid=wx5bc2ac602a747594&token=&lang=zh_CN
-  //   let plugin = requirePlugin("routePlan");
-  //   let key = app.globalData.config.key;
-  //   let referer = "";
-  //   let endPoint = JSON.stringify({
-  //     name: this.data.marker.name,
-  //     latitude: this.data.marker.latitude,
-  //     longitude: this.data.marker.longitude
-  //   });
-  //   wx.navigateTo({
-  //     url:
-  //       "plugin://routePlan/index?key=" +
-  //       key +
-  //       "&referer=" +
-  //       referer +
-  //       "&endPoint=" +
-  //       endPoint
-  //   });
-  // }
 });

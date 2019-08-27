@@ -13,12 +13,6 @@
     "navigationBarTitleText": "南苑导览",
     "navigationBarTextStyle": "white"
   },
-  "plugins": {
-    "routePlan": {
-      "version": "1.0.1",
-      "provider": "wx50b5593e81dd937a"
-    }
-  },
   "permission": {
     "scope.userLocation": {
       "desc": "您的位置信息将用于小程序位置接口的效果展示"
