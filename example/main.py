@@ -13,7 +13,6 @@ def clearMarkers(df):
     # location
     df['latitude'] = df.apply(lambda x: x.location.split(',')[0], axis=1)
     df['longitude'] = df.apply(lambda x: x.location.split(',')[1], axis=1)
-    df.drop('location', axis=1, inplace=True)
 
     # contact
     df['contact'] = df.apply(lambda x: {
@@ -21,7 +20,13 @@ def clearMarkers(df):
         'address': x.address
     }, axis=1)
 
-    df.drop(['phone', 'address'], axis=1, inplace=True)
+    # video
+    df['video'] = df.apply(lambda x: {
+        'src': x.video,
+        'owner': x.owner
+    }, axis=1)
+
+    df.drop(['phone', 'address', 'location', 'owner'], axis=1, inplace=True)
 
     data = [{'type': t, 'icon': get_pinyin_first_alpha(
         t), 'data': []} for t in set(df.type)]
@@ -66,4 +71,4 @@ if __name__ == "__main__":
     clearMarkers(df)
     clearBoard(df_board)
 
-    print('👌')
+    # print('👌')

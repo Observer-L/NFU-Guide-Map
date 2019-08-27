@@ -1,6 +1,5 @@
 {
   "usingComponents": {
     "Back": "../../components/BackBtn/back"
-  },
-  "disableScroll": true
+  }
 }
