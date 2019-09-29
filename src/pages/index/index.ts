@@ -189,7 +189,7 @@ Page({
     return markers;
   },
   async loadMarkers() {
-    let markers: any[] = [];
+    let markers;
     if (app.globalData.config.debug) {
       // 本地
       markers = mockMarkers;
