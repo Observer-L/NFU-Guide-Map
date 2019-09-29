@@ -22,8 +22,6 @@
 
 </div>
 
-## 南苑导览 · 开发
-
 南苑导览是一款由学生独立开发的以地图为载体，提供**中山大学南方学院**（南苑）具体地点的位置信息、导航、校园历史及文化介绍的小程序。旨在解决校园导航标识不到位、地图形式低效单一、信息设计不够好等问题，为来南苑新人和游客提供更加完美的出行体验。
 
 <div align=center>
@@ -36,7 +34,7 @@
 
 </div>
 
-#### 主要代码展示
+## 南苑导览 · 开发
 
 1. config 配置
 
@@ -249,9 +247,9 @@ windowWidth: wx.getSystemInfoSync().screenWidth;
 ```
 
 3. 更好的视角 - 全景功能  
-   结合 web-view 和全景服务平台，可以为一款导览应用增色不少。
+   结合 web-view 和全景服务平台，可以为一款地图导览应用增色不少。
 
-![](https://656e-enanyuan-6db383-1257936504.tcb.qcloud.la/showcase/index4.gif?sign=0d48b574ea07ebb949d2f2502d37812d&t=1569728351)
+![](https://656e-enanyuan-6db383-1257936504.tcb.qcloud.la/showcase/ezgif-4-e2679b1a3106.gif?sign=6bceb316e44535b7e9bffcca7e234d24&t=1569729322)
 
 ## 总结
 
