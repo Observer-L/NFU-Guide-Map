@@ -8,6 +8,9 @@
 
 南苑导览是一款由学生独立开发的以地图为载体，提供**中山大学南方学院**（南苑）具体地点的位置信息、导航、校园历史及文化介绍的小程序。旨在解决校园导航标识不到位、地图形式低效单一、信息设计不够好等问题，为来南苑新人和游客提供更加完美的出行体验。
 
+2019 高校微信小程序开发大赛 华南赛区二等奖作品  
+[文章](https://mp.weixin.qq.com/s/7VszzcaoFY-WNugMZRFiCA)及代码收录于[腾讯云开发优秀案例](https://github.com/TencentCloudBase/Good-practice-tutorial-recommended)
+
 <div align=center>
 
 **仅需修改地图配置文件，即可适配任意场景（校园、景区）的小程序个性化地图定制。**
@@ -20,14 +23,14 @@
 
 ## ⚡️ 功能
 
-✅ 路线推荐  
-✅ 路线规划  
-✅ 地点搜索  
-✅ 校园留言板  
-✅ 人文地理信息一览  
-✅ 景点分类动态展示  
-✅ 全景看景（功能已实现，个人类小程序受限，暂未开放）  
-🔲 社团、商铺信息互联互通
+- [x] 路线推荐
+- [x] 路线规划
+- [x] 地点搜索
+- [x] 校园留言板
+- [x] 人文地理信息一览
+- [x] 景点分类动态展示
+- [x] 全景看景（功能已实现，个人类小程序受限，暂未开放）
+- [ ] 社团、商铺信息互联互通（运营需求）
 
 ## 📋 使用指南
 
@@ -35,25 +38,25 @@
 
 ```javascript
 ├─ src
-├─── config
-├───── index.ts // 入口
-├───── cloud.ts // 云开发相关配置
-├───── info.ts // 应用介绍信息
-├───── markerStyle.ts // 地图marker样式
-├───── panorama.ts // 第三方全景地图配置（个人类型无webview权限，默认关闭）
-└───── secret.ts // 腾讯地图key等敏感信息（可选）
+├── config
+├─── index.ts // 入口
+├─── cloud.ts // 云开发相关配置
+├─── info.ts // 应用介绍信息
+├─── markerStyle.ts // 地图marker样式
+├─── panorama.ts // 第三方全景地图配置（个人类型无webview权限，默认关闭）
+└─── secret.ts // 腾讯地图key等敏感信息（可选）
 ```
 
 2. 在开发环境中，如不使用云开发能力，可以使用本地 mock 数据
 
 ```javascript
 ├─ src
-├─── mock
-├──── index.ts // 入口
-├──── board.ts // 公告
-├──── comments.ts // 留言
-├──── markers.ts // 地点
-└──── routes.ts // 路线推荐
+├── mock
+├─── index.ts // 入口
+├─── board.ts // 公告
+├─── comments.ts // 留言
+├─── markers.ts // 地点
+└─── routes.ts // 路线推荐
 ```
 
 3. 本项目使用 excel 管理数据，使用 python pandas 来清洗数据，数据格式及使用说明详[见此](https://github.com/Observer-L/NFU-Guide-Map/tree/master/example)。
