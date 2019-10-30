@@ -18,7 +18,7 @@ Page({
     bounding: wx.getMenuButtonBoundingClientRect()
   },
   copy(e: any) {
-    let data: string = "";
+    let data = "";
     switch (e.currentTarget.id) {
       case "github":
         data = info.contact.github;
@@ -53,7 +53,7 @@ Page({
   },
   send(e: any) {
     const self = this;
-    let userInfo: any = e.detail.userInfo;
+    const userInfo: any = e.detail.userInfo;
     // TODO: validate
     if (!self.data.comment.trim()) {
       wx.showToast({

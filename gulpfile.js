@@ -134,6 +134,8 @@ gulp.task("compile-ts", () => {
     )
     .pipe($.plumber())
     .pipe($.if(!isProd, $.sourcemaps.init()))
+    .pipe($.eslint())
+    .pipe($.eslint.format())
     .pipe(tsProject())
     .js.pipe($.if(isProd, minifyJs(options)))
     .pipe($.if(!isProd, $.sourcemaps.write()))

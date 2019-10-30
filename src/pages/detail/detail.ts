@@ -45,8 +45,8 @@ Page({
   onLoad(options: any) {
     console.log(options);
     let marker: any;
-    let imgUrls: any = [];
-    let debug: boolean = app.globalData.config.debug;
+    const debug: boolean = app.globalData.config.debug;
+    const imgUrls: any = [];
     switch (options.id) {
       case "school":
         marker =

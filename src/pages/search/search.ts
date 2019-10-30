@@ -14,7 +14,7 @@ Page({
     windowWidth: wx.getSystemInfoSync().screenWidth
   },
   selectCat(e: any) {
-    let catIndex: number = e.target.id[1];
+    const catIndex: number = e.target.id[1];
     this.setData!({
       catIndex,
       markers: app.globalData.markers[catIndex].data
@@ -34,8 +34,8 @@ Page({
     });
   },
   search(e: any) {
-    let value: string = e.detail.value.trim();
-    let results: any = [];
+    const value: string = e.detail.value.trim();
+    const results: any = [];
     for (const i of this.data.allMarkers) {
       for (const j of i.data) {
         if (j.name.includes(value)) {

@@ -31,7 +31,7 @@ Page({
     enablePanorama: app.globalData.config.panorama.active
   },
   navigateTo(e: any) {
-    let url: string = "";
+    let url: string;
     switch (e.target.id) {
       case "school":
         url = `/pages/detail/detail?id=${e.target.id}`;
@@ -67,8 +67,9 @@ Page({
   },
   selectRoute(e: any) {
     if (!e.target.dataset.id) return;
-    let circles = this.data.routes[e.target.dataset.id].circles;
-    let _circles = [];
+    const route = this.data.routes[e.target.dataset.id];
+    const circles = route.circles;
+    const _circles = [];
     if (circles) {
       for (const c of circles) {
         _circles.push({
@@ -79,8 +80,8 @@ Page({
     }
     this.setData!({
       routeIndex: e.target.dataset.id,
-      markers: this.data.routes[e.target.dataset.id].data,
-      "route[0].points": this.data.routes[e.target.dataset.id].data,
+      markers: route.data,
+      "route[0].points": route.data,
       toggleRoutes: true,
       circles: _circles
     });
@@ -120,10 +121,10 @@ Page({
   },
   sortMarkers(markers: any): any {
     if (markers.length <= 1) return markers;
-    let left = [];
-    let right = [];
-    let pivotIndex = Math.floor(markers.length / 2);
-    let pivot = markers.splice(pivotIndex, 1)[0];
+    const left = [];
+    const right = [];
+    const pivotIndex = Math.floor(markers.length / 2);
+    const pivot = markers.splice(pivotIndex, 1)[0];
     for (const i of markers) {
       if (i.position < pivot.position) {
         left.push(i);
@@ -170,7 +171,7 @@ Page({
         num += 1;
         j.iconPath = `/assets/images/markers/${j.icon ? j.icon : i.icon}.png`;
         if (j.icon) {
-          let scale =
+          const scale =
             j.icon.indexOf("@") !== -1
               ? j.icon.slice(j.icon.indexOf("@") + 1)
               : 1;
