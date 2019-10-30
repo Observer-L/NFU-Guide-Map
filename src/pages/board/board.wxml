@@ -61,6 +61,11 @@
     </van-popup>
   </view>
 
+  <!-- AD -->
+  <view class="adContainer" hidden="{{ showAbout }}">
+    <ad unit-id="adunit-4064d7205f65fefe"></ad>
+  </view>
+
   <!-- ABOUT -->
   <view class="about-wrapper {{showAbout ? 'show' : ''}}">
     <image src="../../assets/images/bg.jpg" class="bg"></image>

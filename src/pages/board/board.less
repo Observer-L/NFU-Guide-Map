@@ -159,10 +159,15 @@
     position: absolute;
     z-index: 99;
     width: 90vw;
-    background: rgba(255, 255, 255, 0.5);
+    background: radial-gradient(
+      rgba(255, 255, 255, 0.5) 60%,
+      rgba(75, 254, 254, 0.5) 120%
+    );
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 40px 10px rgba(75, 254, 254, 1);
     padding: 20rpx;
     box-sizing: border-box;
-    border-radius: 12px;
+    border-radius: 6px;
     left: 50vw;
     top: 20rpx;
     margin-top: 30rpx;
@@ -180,10 +185,8 @@
       font-size: 14px;
       padding: 20rpx;
       background: rgba(255, 255, 255, 0.5);
-      box-shadow: 0 0 40px 10px rgba(75, 254, 254, 1);
-      border: 1.5px solid rgba(255, 255, 255, 0.5);
+      border: 0.5px solid rgba(255, 255, 255, 0.5);
       border-radius: 4px;
-      animation: shining 8s ease-in-out 0s infinite normal both running;
     }
 
     .contact {
@@ -225,4 +228,11 @@
 
 .btn-cmoment_entry {
   margin-top: 30rpx;
+}
+
+.adContainer {
+  position: absolute;
+  width: 90%;
+  margin: 0 5%;
+  bottom: 360rpx;
 }

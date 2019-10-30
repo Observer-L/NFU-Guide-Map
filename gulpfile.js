@@ -42,7 +42,11 @@ var tsPath = ["src/**/*.ts", "src/app.ts", "src/config/**.ts"];
 
 //清空目录
 gulp.task("clear", () => {
-  return gulp.src(dist, { allowEmpty: true }).pipe(clear());
+  return gulp
+    .src(dist, {
+      allowEmpty: true
+    })
+    .pipe(clear());
 });
 
 //复制不包含less和图片的文件
@@ -75,6 +79,7 @@ gulp.task("copyNodeModules", () => {
     .src(nodeModulesCopyPath, copyNodeModuleOption)
     .pipe(gulp.dest(dist));
 });
+
 // //复制依赖的node_modules文件(只改动有变动的文件）
 // gulp.task('copyNodeModulesChange', () => {
 //   return gulp
@@ -125,7 +130,8 @@ gulp.task("less", () => {
     )
     .pipe(gulp.dest(dist));
 });
-//编译less(只改动有变动的文件）
+
+//编译less(只改动有变动的文件）!
 gulp.task("lessChange", () => {
   return gulp
     .src(lessPath, option)

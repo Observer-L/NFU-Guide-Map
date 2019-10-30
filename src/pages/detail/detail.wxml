@@ -69,6 +69,10 @@
         <view class="copyright" wx:if="{{marker.video.owner}}">该视频为<span class="name">「{{marker.video.owner}}」</span>版权所有</view>
       </view>
   </view>
-  <!--  -->
+  
+  <!-- AD -->
+  <view class="adContainer">
+    <ad unit-id="adunit-4064d7205f65fefe"></ad>
+  </view>
 
 </view>
