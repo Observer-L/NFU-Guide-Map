@@ -1,315 +1,234 @@
-var gulp = require("gulp");
-var path = require("path");
-var rename = require("gulp-rename");
-var less = require("gulp-less");
-var postcss = require("gulp-postcss");
-var changed = require("gulp-changed");
-var autoprefixer = require("autoprefixer");
-var clear = require("gulp-clean");
-var del = require("del");
-var ts = require("gulp-typescript");
-var tsProject = ts.createProject("tsconfig.json");
-var sourcemaps = require("gulp-sourcemaps");
-var jsonTransform = require("gulp-json-transform");
-var projectConfig = require("./package.json");
+const gulp = require("gulp");
+const $ = require("gulp-load-plugins")();
+const del = require("del");
+const pngquant = require("imagemin-pngquant");
+const px2rpx = require("postcss-px2rpx");
+const uglifyjs = require("uglify-es");
+const composer = require("gulp-uglify/composer");
+const minifyJs = composer(uglifyjs, console);
+const autoprefixer = require("autoprefixer");
+const jsonTransform = require("gulp-json-transform");
+const tsProject = $.typescript.createProject("tsconfig.json");
+const pkg = require("./package.json");
 
-const through = require("through2");
-const dependency = require("dependency-tree");
-const webpack = require("webpack");
-const readPkg = require("read-pkg-up");
-const matches = require("match-requires");
+/* 文件路径 */
+const distPath = "dist";
+const wxmlFiles = "src/**/*.wxml";
+const lessFiles = ["src/**/!(_)*.less"];
+const imgFiles = "src/assets/images/*.{png,jpg,jpeg,gif,ico,svg}";
+const jsonFiles = "src/**/*.json";
+const tsFiles = ["src/**/*.ts"];
+const copyPath = ["src/**/!(_)*.*", "!src/**/*.less", "!src/**/*.ts"];
 
-function handlerRelivePaht(relative) {
-  if (path.sep === "\\") {
-    relative = relative.split(path.sep).join("/");
-  }
-  return /^\./.test(relative) ? relative : `./${relative}`;
-}
+const isProd = process.env.NODE_ENV === "production";
 
-//项目路径
-var option = {
-  base: "src",
-  allowEmpty: true
-};
-// 此处为输出目录
-var builtPath = "dist";
+/****************************/
+/*****************************
+ ***         TASKS         ***
+ ****************************/
+/****************************/
 
-var dist = __dirname + "/" + builtPath;
-var copyPath = ["src/**/!(_)*.*", "!src/**/*.less", "!src/**/*.ts"];
-var lessPath = ["src/**/*.less", "src/app.less"];
-var watchLessPath = ["src/**/*.less", "src/css/**/*.less", "src/app.less"];
-var tsPath = ["src/**/*.ts", "src/app.ts", "src/config/**.ts"];
+/**
+ * @description 清空非npm构建包dist目录文件
+ */
+gulp.task("clean", () => {
+  return del(["dist/**/*", "!dist/miniprogram_npm/**"]);
+});
 
-//清空目录
-gulp.task("clear", () => {
+/**
+ * @description 压缩wxml，生产环境任务
+ * @options 去空，去注释，补全标签
+ */
+gulp.task("minify-wxml", () => {
+  const options = {
+    collapseWhitespace: true,
+    removeComments: true,
+    keepClosingSlash: true
+  };
   return gulp
-    .src(dist, {
+    .src(wxmlFiles)
+    .pipe($.if(isProd, $.htmlmin(options)))
+    .pipe(gulp.dest(distPath));
+});
+
+/**
+ * @description 压缩json，生产环境任务
+ */
+gulp.task("minify-json", function() {
+  return gulp
+    .src(jsonFiles)
+    .pipe($.jsonminify2())
+    .pipe(gulp.dest(distPath));
+});
+
+/**
+ * @description 压缩图片，生产环境任务
+ */
+gulp.task("minify-image", () => {
+  const options = {
+    progressive: true,
+    svgoPlugins: [
+      {
+        removeViewBox: false
+      }
+    ],
+    use: [pngquant()]
+  };
+  return gulp
+    .src(imgFiles)
+    .pipe($.imagemin(options))
+    .pipe(gulp.dest("src/assets/images/"));
+});
+
+/**
+ * @description 编译less，补全、压缩样式文件
+ */
+gulp.task("compile-less", () => {
+  const postcssOptions = [
+    px2rpx({
+      screenWidth: 750, // 设计稿屏幕, 默认750
+      wxappScreenWidth: 750, // 微信小程序屏幕, 默认750
+      remPrecision: 6 // 小数精度, 默认6
+    }),
+    autoprefixer({
+      overrideBrowserslist: ["ios >= 8", "android >= 4.1"]
+    })
+  ];
+  return gulp
+    .src(lessFiles)
+    .pipe(
+      $.changed(distPath, {
+        extension: ".wxss"
+      })
+    )
+    .pipe($.plumber())
+    .pipe($.if(!isProd, $.sourcemaps.init()))
+    .pipe($.less())
+    .pipe($.if(isProd, $.cssnano()))
+    .pipe($.postcss(postcssOptions))
+    .pipe($.if(!isProd, $.sourcemaps.write()))
+    .pipe(
+      $.rename({
+        extname: ".wxss"
+      })
+    )
+    .pipe(gulp.dest(distPath));
+});
+
+/**
+ * @description 编译、压缩ts
+ */
+gulp.task("compile-ts", () => {
+  const options = {
+    compress: {
+      drop_console: true,
+      drop_debugger: true
+    }
+  };
+  return tsProject
+    .src()
+    .pipe(
+      $.changed(distPath, {
+        extension: ".js"
+      })
+    )
+    .pipe($.plumber())
+    .pipe($.if(!isProd, $.sourcemaps.init()))
+    .pipe(tsProject())
+    .js.pipe($.if(isProd, minifyJs(options)))
+    .pipe($.if(!isProd, $.sourcemaps.write()))
+    .pipe(gulp.dest(distPath));
+});
+
+/**
+ * @description 复制不包含less和图片的文件
+ */
+gulp.task("copy", () => {
+  return gulp.src(copyPath).pipe(gulp.dest(distPath));
+});
+
+/**
+ * @description npm支持1，复制依赖的node_modules文件
+ */
+gulp.task("copyNodeModules", () => {
+  const nodeModulesCopyPath = Object.keys(pkg.dependencies).map(
+    d => "node_modules/" + d + "/**/*"
+  );
+  return gulp
+    .src(nodeModulesCopyPath, {
+      base: ".",
       allowEmpty: true
     })
-    .pipe(clear());
+    .pipe(gulp.dest(distPath));
 });
 
-//复制不包含less和图片的文件
-gulp.task("copy", () => {
-  return gulp.src(copyPath, option).pipe(gulp.dest(dist));
-});
-//复制不包含less和图片的文件(只改动有变动的文件）
-gulp.task("copyChange", () => {
-  return gulp
-    .src(copyPath, option)
-    .pipe(changed(dist))
-    .pipe(gulp.dest(dist));
-});
-
-// 增加dependencies
-var dependencies = projectConfig && projectConfig.dependencies; // dependencies配置
-var nodeModulesCopyPath = [];
-for (let d in dependencies) {
-  nodeModulesCopyPath.push("node_modules/" + d + "/**/*");
-}
-//项目路径
-var copyNodeModuleOption = {
-  base: ".",
-  allowEmpty: true
-};
-
-//复制依赖的node_modules文件
-gulp.task("copyNodeModules", () => {
-  return gulp
-    .src(nodeModulesCopyPath, copyNodeModuleOption)
-    .pipe(gulp.dest(dist));
-});
-
-// //复制依赖的node_modules文件(只改动有变动的文件）
-// gulp.task('copyNodeModulesChange', () => {
-//   return gulp
-//     .src(nodeModulesCopyPath, copyNodeModuleOption)
-//     .pipe(changed(dist))
-//     .pipe(gulp.dest(dist));
-// });
-// 根据denpende生成package.json
+/**
+ * @description npm支持2，根据dependencies生成package.json
+ */
 gulp.task("generatePackageJson", () => {
   return gulp
     .src("./package.json")
     .pipe(
-      jsonTransform(function(data, file) {
+      jsonTransform(() => {
         return {
-          dependencies: dependencies
+          dependencies: pkg.dependencies
         };
       })
     )
-    .pipe(gulp.dest("dist"));
+    .pipe(gulp.dest(distPath));
 });
 
-gulp.task("npm", () => {
-  return gulp
-    .src(`${builtPath}/**/*.js`)
-    .pipe(
-      npm({
-        dest: builtPath
-      })
-    )
-    .pipe(gulp.dest(builtPath));
-});
+// //监听
+// gulp.task("watch", () => {
+//   gulp.watch(tsPath, gulp.series("compile-ts"));
+//   var watcher = gulp.watch(copyPath, gulp.series("copyChange"));
+//   gulp.watch(watchLessPath, gulp.series("less")); //Change
+//   watcher.on("unlink", function (filepath) {
+//     var filePathFromSrc = path.relative(path.resolve("src"), filepath);
+//     var destFilePath = path.resolve(builtPath, filePathFromSrc);
+//     del.sync(destFilePath);
+//   });
+// });
 
-//编译less
-gulp.task("less", () => {
-  return gulp
-    .src(lessPath, option)
-    .pipe(
-      less().on("error", function(e) {
-        console.error(e.message);
-        this.emit("end");
-      })
-    )
-    .pipe(postcss([autoprefixer]))
-    .pipe(
-      rename(function(path) {
-        path.extname = ".wxss";
-      })
-    )
-    .pipe(gulp.dest(dist));
-});
-
-//编译less(只改动有变动的文件）!
-gulp.task("lessChange", () => {
-  return gulp
-    .src(lessPath, option)
-    .pipe(changed(dist))
-    .pipe(
-      less().on("error", function(e) {
-        console.error(e.message);
-        this.emit("end");
-      })
-    )
-    .pipe(postcss([autoprefixer]))
-    .pipe(
-      rename(function(path) {
-        path.extname = ".wxss";
-      })
-    )
-    .pipe(gulp.dest(dist));
-});
-
-// 编译
-gulp.task("tsCompile", function() {
-  return tsProject
-    .src()
-    .pipe(sourcemaps.init())
-    .pipe(tsProject())
-    .js.pipe(sourcemaps.write())
-    .pipe(gulp.dest(builtPath));
-});
-
-//监听
-gulp.task("watch", () => {
-  gulp.watch(tsPath, gulp.series("tsCompile"));
-  var watcher = gulp.watch(copyPath, gulp.series("copyChange"));
-  // gulp.watch(nodeModulesCopyPath, gulp.series('copyNodeModulesChange'));
-  gulp.watch(watchLessPath, gulp.series("less")); //Change
-  watcher.on("unlink", function(filepath) {
-    var filePathFromSrc = path.relative(path.resolve("src"), filepath);
-    // Concatenating the 'build' absolute path used by gulp.dest in the scripts task
-    var destFilePath = path.resolve(builtPath, filePathFromSrc);
-    // console.log({filepath, filePathFromSrc, destFilePath})
-    del.sync(destFilePath);
-  });
-});
-
-//开发并监听
+/**
+ * @description 通用编译
+ */
 gulp.task(
-  "default",
+  "compile",
   gulp.series(
-    // sync
+    "clean",
     gulp.parallel(
-      "copy",
       "copyNodeModules",
       "generatePackageJson",
-      "less",
-      "tsCompile"
-    ),
-    // "npm",
-    "watch"
+      "compile-ts",
+      "compile-less",
+      "copy"
+    )
   )
 );
 
-//上线
+/**
+ * @description 编译、监听
+ */
+gulp.task(
+  "watch",
+  gulp.series("compile", function wather() {
+    gulp.watch(tsFiles, gulp.parallel("compile-ts"));
+    gulp.watch(lessFiles, gulp.parallel("compile-less"));
+    gulp.watch(copyPath, gulp.parallel("copy"));
+    $.watch("src/**", e => {
+      console.log(`[watch]:${e.path} has ${e.event}`);
+    });
+  })
+);
+
+/**
+ * @description 生产环境打包
+ */
 gulp.task(
   "build",
   gulp.series(
-    // sync
-    "clear",
-    gulp.parallel(
-      // async
-      "copy",
-      "copyNodeModules",
-      "generatePackageJson",
-      "less",
-      "tsCompile"
-    )
-    // "npm"
+    "compile",
+    gulp.parallel("minify-wxml", "minify-json", "minify-image")
   )
 );
-
-function npm(options) {
-  const npmCache = {};
-  const { dest = "dist" } = options;
-  return through.obj((file, encoding, callback) => {
-    // console.log(file);
-    if (file.isNull()) {
-      return callback(null, file);
-    }
-    const cwd = file.cwd;
-    const filePath = file.path;
-    // console.log(filePath);
-    const srcReg = new RegExp(`(\\${path.sep})src(?=\\${path.sep})`, "i");
-    const fileDistPath = path.dirname(filePath.replace(srcReg, `$1${dest}`));
-    let codeStr = file.contents.toString();
-    const tree = dependency({
-      filename: filePath,
-      directory: cwd,
-      detective: {
-        es6: {
-          mixedImports: true
-        }
-      },
-      filter: path => {
-        return /node_modules/i.test(path);
-      }
-    });
-
-    const dependencyTree = tree[filePath];
-    if (/[^\w_.-]async(?![\w_.-])/.test(codeStr)) {
-      const regeneratorPath = path.join(
-        cwd,
-        "node_modules",
-        "regenerator-runtime/runtime-module.js"
-      );
-      dependencyTree[regeneratorPath] = {};
-      codeStr = `import regeneratorRuntime from 'regenerator-runtime'\n${codeStr}`;
-    }
-
-    Object.keys(dependencyTree).forEach(entry => {
-      const dirname = path.dirname(entry);
-      const { pkg } = readPkg.sync({
-        cwd: dirname
-      });
-      let moduleName = pkg.name;
-      const outputFileName = path.basename(entry);
-      const distPath = path.join(cwd, dest, "npm", moduleName);
-      const outputFilePath = path.join(distPath, outputFileName);
-      const importReg = new RegExp(
-        `import\\s*(\\{?\s*[\\w_-]+\\s*\\}?)\\s*from\\s*['']${moduleName}(?:[\\w_\\/-]+)*['']`,
-        "i"
-      );
-      codeStr = codeStr.replace(
-        importReg,
-        `import $1 from '${handlerRelivePaht(
-          path.relative(fileDistPath, outputFilePath)
-        )}'`
-      );
-
-      const match = matches(codeStr);
-
-      match.forEach(function(m) {
-        if (m.name.indexOf("../") === -1 && m.name.indexOf("./") === -1) {
-          // 判断m.variable，是否存在
-          let templ;
-          if (m.variable) {
-            templ = `var ${m.variable} = require('${handlerRelivePaht(
-              path.relative(fileDistPath, outputFilePath)
-            )}')`;
-          } else {
-            templ = `require('${handlerRelivePaht(
-              path.relative(fileDistPath, outputFilePath)
-            )}')`;
-          }
-          codeStr = codeStr.replace(m.string, templ);
-        }
-      });
-
-      if (!npmCache[entry]) {
-        webpack(
-          {
-            mode: "production",
-            entry,
-            output: {
-              filename: outputFileName,
-              path: distPath,
-              libraryTarget: "commonjs2"
-            }
-          },
-          error => {
-            if (error) {
-              console.error(error);
-            }
-          }
-        );
-        npmCache[entry] = outputFilePath;
-      }
-    });
-    file.contents = Buffer.from(codeStr);
-
-    return callback(null, file);
-  });
-}
