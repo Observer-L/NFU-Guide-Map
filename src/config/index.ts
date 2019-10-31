@@ -4,7 +4,7 @@ import panorama from "./panorama";
 import { key } from "./secret";
 
 export default {
-  debug: false,
+  debug: true,
   markerStyle,
   cloud,
   panorama,
