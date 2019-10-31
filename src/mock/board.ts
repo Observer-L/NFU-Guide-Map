@@ -19,18 +19,6 @@ export default [
         ]
       },
       {
-        type: "校车",
-        desc: "校车是XXX",
-        price: "22元",
-        location: "汽车站",
-        contact: [
-          {
-            name: "校车管理处",
-            phone: "123456"
-          }
-        ]
-      },
-      {
         type: "公交",
         desc: "牌坊11路12路4路卫东站。。。",
         price: "2元",

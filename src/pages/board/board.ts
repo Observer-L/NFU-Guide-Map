@@ -143,6 +143,11 @@ Page({
         });
     }
   },
+  contactAction(e: any) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.phone
+    });
+  },
   onLoad() {
     this.loadBoardMessages();
     this.loadComments();

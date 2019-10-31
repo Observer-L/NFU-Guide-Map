@@ -9,15 +9,22 @@
       <view class="board">
         <view class="container">
           <van-collapse value="{{ activeNum }}" bindchange="toggleBoard">
-
-            <van-collapse-item wx:for="{{messages}}" wx:key="{{index}}" title="{{item.type}}" name="{{index}}">
+            <van-collapse-item wx:for="{{messages}}" wx:key="{{index}}" icon="logistics" title="{{item.type}}"
+              name="{{index}}">
               <block wx:for="{{item.data}}" wx:key="{{index}}">
-                <view class="content">{{item.type}}</view>
-                <view>{{item.desc}}</view>
+                <view class="type">{{item.type}}</view>
+                <view class="msg">
+                  <div class="desc">{{item.desc}}</div>
+                  <div class="contact">
+                    <block wx:for="{{item.contact}}" wx:key="{{contact.phone}}" wx:for-item="contact">
+                      <div class="person" wx:if="{{contact.phone}}" data-phone="{{contact.phone}}"
+                        bindtap="contactAction">{{contact.name}}：<span class="phone">{{contact.phone}}</span></div>
+                    </block>
+                  </div>
+                  <div class="price" wx:if="{{item.price}}">费用：{{item.price}}</div>
+                </view>
               </block>
-
             </van-collapse-item>
-
           </van-collapse>
         </view>
       </view>

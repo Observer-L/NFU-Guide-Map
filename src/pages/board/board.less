@@ -1,11 +1,28 @@
 /**board.wxss**/
-
+@import "../../assets/styles/_variabes.less";
 .first-wrapper {
   position: absolute;
   z-index: 101;
   padding: 50rpx;
   box-sizing: border-box;
   width: 100%;
+}
+
+.board {
+  .type {
+    font-weight: bold;
+  }
+  .msg {
+    margin-bottom: 20rpx;
+    div {
+      display: block;
+    }
+    .contact {
+      .phone {
+        color: @color-darker;
+      }
+    }
+  }
 }
 
 /* COMMENT */
@@ -234,5 +251,5 @@
   position: absolute;
   width: 90%;
   margin: 0 5%;
-  bottom: 360rpx;
+  bottom: 90rpx;
 }

@@ -3,3 +3,4 @@ dist/
 src/**/*.wxs
 src/typings
 gulpfile.js
+mock/

@@ -14,7 +14,7 @@
   "license": "MIT",
   "miniprogram": "dist",
   "dependencies": {
-    "vant-weapp": "^0.5.19"
+    "vant-weapp": "^0.5.22"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.6.0",
