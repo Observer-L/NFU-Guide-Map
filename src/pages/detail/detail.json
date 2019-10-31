@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "Back": "../../components/BackBtn/back",
-    "txv-video": "plugin://tencentvideo/video"
+    "Back": "../../components/BackBtn/back"
   }
 }

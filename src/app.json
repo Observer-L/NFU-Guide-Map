@@ -13,12 +13,6 @@
     "navigationBarTitleText": "南苑导览",
     "navigationBarTextStyle": "white"
   },
-  "plugins": {
-    "tencentvideo": {
-      "version": "1.2.4",
-      "provider": "wxa75efa648b60994b"
-    }
-  },
   "permission": {
     "scope.userLocation": {
       "desc": "您的位置信息将用于小程序位置接口的效果展示"

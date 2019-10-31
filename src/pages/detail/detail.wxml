@@ -40,9 +40,8 @@
     <view class="title">简介</view>
     <!-- TODO: rich-text -->
     <view class="content">{{marker.desc}}</view>
-    <!-- VIDEO -->
     <view class="video-wrapper" wx:if="{{marker.video.src}}">
-      <txv-video vid="{{marker.video.src}}" playerid="{{marker.video.src}}"></txv-video>
+      <video id="myVideo" src="{{marker.video.src}}" controls></video>
       <view class="copyright" wx:if="{{marker.video.owner}}">该视频为<span class="name">「{{marker.video.owner}}」</span>版权所有
       </view>
     </view>
